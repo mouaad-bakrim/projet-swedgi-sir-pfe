@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  projetdb:
+    container_name: projet-database
+    image: mysql:5.7.37
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+        MYSQL_DATABASE: MYDATABASE
+        MYSQL_USER: DB_USER
+        MYSQL_PASSWORD: DB_PASSWORD
+    volumes:
+      - projet-mysql-data:/var/lib/mysql
+    ports:
+        - "2100:3306"
+    networks:
+        - projet-dev
+  stagephpmyadmin:
+    container_name: projet-phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - '2200:80'
+    restart: always
+    environment:
+        PMA_HOST: projetdb
+        UPLOAD_LIMIT: 120M
+    depends_on:
+        - projetdb
+    networks:
+        - projet-dev
+  stagephp:
+    container_name: projet-php
+    build:
+      context: ./Docker
+      dockerfile: Dockerfile
+    depends_on:
+      - projetdb
+    restart: always
+    volumes:
+      - ./app:/var/www/html
+      - ./vhost:/etc/apache2/sites-enabled
+    ports:
+      - "2300:80"
+    networks:
+        - projet-dev
+networks:
+    projet-dev:
+volumes:
+    projet-mysql-data:
