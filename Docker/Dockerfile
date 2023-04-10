@@ -17,8 +17,8 @@ RUN  a2enmod rewrite
 
 RUN apt install -y vim
 WORKDIR /var/www/
-RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
-RUN php composer-setup.php --install-dir=/bin --filename=composer
+#RUN curl -sS https://getcomposer.org/installer -o composer-setup.php
+#RUN php composer-setup.php --install-dir=/bin --filename=composer
 
 RUN apt-get update && apt-get install -y \
     zlib1g-dev \
