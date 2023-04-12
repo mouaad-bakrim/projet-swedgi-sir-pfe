@@ -2,83 +2,82 @@
 
 namespace App\Entity;
 
-use App\Repository\ClientRepository;
-use Doctrine\DBAL\Types\Types;
+use App\Repository\ClientsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ClientRepository::class)]
-class Client
+#[ORM\Entity(repositoryClass: ClientsRepository::class)]
+class Clients
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
     #[ORM\Column(length: 50)]
     private ?string $prenom = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $adresse = null;
 
-    #[ORM\Column]
-    private ?int $code_postale = null;
-
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 50)]
     private ?string $ville = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 50)]
+    private ?string $codePostal = null;
+
+    #[ORM\Column(length: 50)]
     private ?string $pays = null;
 
-    #[ORM\Column]
-    private ?int $telMobile = null;
+    #[ORM\Column(length: 50)]
+    private ?string $telMobile = null;
 
-    #[ORM\Column]
-    private ?int $telBureau = null;
+    #[ORM\Column(length: 50)]
+    private ?string $telBureau = null;
 
-    #[ORM\Column]
-    private ?int $fax = null;
+    #[ORM\Column(length: 50)]
+    private ?string $fax = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $siteWeb = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nomSocieté = null;
+    private ?string $type = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $nomSociete = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $rc = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $rC = null;
-
-    #[ORM\Column(length: 20)]
     private ?string $capital = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 50)]
     private ?string $cnss = null;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 50)]
     private ?string $patente = null;
 
-    #[ORM\Column]
-    private ?int $identificatinFiscale = null;
+    #[ORM\Column(length: 50)]
+    private ?string $ice = null;
 
-    #[ORM\Column]
-    private ?int $ice = null;
+    #[ORM\Column(length: 50)]
+    private ?string $comptesBancaire = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $compteBancaire = null;
+    #[ORM\Column(length: 50)]
+    private ?string $identificationFiscale = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $agenceBancaire = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $exercice = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $type = null;
+    #[ORM\Column(length: 50)]
+    private ?string $exercice = null;
 
     public function getId(): ?int
     {
@@ -121,18 +120,6 @@ class Client
         return $this;
     }
 
-    public function getCodePostale(): ?int
-    {
-        return $this->code_postale;
-    }
-
-    public function setCodePostale(int $code_postale): self
-    {
-        $this->code_postale = $code_postale;
-
-        return $this;
-    }
-
     public function getVille(): ?string
     {
         return $this->ville;
@@ -141,6 +128,18 @@ class Client
     public function setVille(string $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?string
+    {
+        return $this->codePostal;
+    }
+
+    public function setCodePostal(string $codePostal): self
+    {
+        $this->codePostal = $codePostal;
 
         return $this;
     }
@@ -157,36 +156,36 @@ class Client
         return $this;
     }
 
-    public function getTelMobile(): ?int
+    public function getTelMobile(): ?string
     {
         return $this->telMobile;
     }
 
-    public function setTelMobile(int $telMobile): self
+    public function setTelMobile(string $telMobile): self
     {
         $this->telMobile = $telMobile;
 
         return $this;
     }
 
-    public function getTelBureau(): ?int
+    public function getTelBureau(): ?string
     {
         return $this->telBureau;
     }
 
-    public function setTelBureau(int $telBureau): self
+    public function setTelBureau(string $telBureau): self
     {
         $this->telBureau = $telBureau;
 
         return $this;
     }
 
-    public function getFax(): ?int
+    public function getFax(): ?string
     {
         return $this->fax;
     }
 
-    public function setFax(int $fax): self
+    public function setFax(string $fax): self
     {
         $this->fax = $fax;
 
@@ -217,26 +216,38 @@ class Client
         return $this;
     }
 
-    public function getNomSocieté(): ?string
+    public function getType(): ?string
     {
-        return $this->nomSocieté;
+        return $this->type;
     }
 
-    public function setNomSocieté(string $nomSocieté): self
+    public function setType(string $type): self
     {
-        $this->nomSocieté = $nomSocieté;
+        $this->type = $type;
 
         return $this;
     }
 
-    public function getRC(): ?string
+    public function getNomSociete(): ?string
     {
-        return $this->rC;
+        return $this->nomSociete;
     }
 
-    public function setRC(string $rC): self
+    public function setNomSociete(string $nomSociete): self
     {
-        $this->rC = $rC;
+        $this->nomSociete = $nomSociete;
+
+        return $this;
+    }
+
+    public function getRc(): ?string
+    {
+        return $this->rc;
+    }
+
+    public function setRc(string $rc): self
+    {
+        $this->rc = $rc;
 
         return $this;
     }
@@ -258,7 +269,7 @@ class Client
         return $this->cnss;
     }
 
-    public function setCnss(?string $cnss): self
+    public function setCnss(string $cnss): self
     {
         $this->cnss = $cnss;
 
@@ -277,38 +288,38 @@ class Client
         return $this;
     }
 
-    public function getIdentificatinFiscale(): ?int
-    {
-        return $this->identificatinFiscale;
-    }
-
-    public function setIdentificatinFiscale(int $identificatinFiscale): self
-    {
-        $this->identificatinFiscale = $identificatinFiscale;
-
-        return $this;
-    }
-
-    public function getIce(): ?int
+    public function getIce(): ?string
     {
         return $this->ice;
     }
 
-    public function setIce(int $ice): self
+    public function setIce(string $ice): self
     {
         $this->ice = $ice;
 
         return $this;
     }
 
-    public function getCompteBancaire(): ?string
+    public function getComptesBancaire(): ?string
     {
-        return $this->compteBancaire;
+        return $this->comptesBancaire;
     }
 
-    public function setCompteBancaire(string $compteBancaire): self
+    public function setComptesBancaire(string $comptesBancaire): self
     {
-        $this->compteBancaire = $compteBancaire;
+        $this->comptesBancaire = $comptesBancaire;
+
+        return $this;
+    }
+
+    public function getIdentificationFiscale(): ?string
+    {
+        return $this->identificationFiscale;
+    }
+
+    public function setIdentificationFiscale(string $identificationFiscale): self
+    {
+        $this->identificationFiscale = $identificationFiscale;
 
         return $this;
     }
@@ -325,26 +336,14 @@ class Client
         return $this;
     }
 
-    public function getExercice(): ?\DateTimeInterface
+    public function getExercice(): ?string
     {
         return $this->exercice;
     }
 
-    public function setExercice(\DateTimeInterface $exercice): self
+    public function setExercice(string $exercice): self
     {
         $this->exercice = $exercice;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
 
         return $this;
     }

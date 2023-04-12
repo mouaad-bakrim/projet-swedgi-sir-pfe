@@ -14,51 +14,51 @@ class Categorie
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $libellé = null;
+    private ?string $libellee = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Description = null;
+    private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $code_groupe = null;
+    private ?string $codeGroupe = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLibellé(): ?string
+    public function getLibellee(): ?string
     {
-        return $this->libellé;
+        return $this->libellee;
     }
 
-    public function setLibellé(string $libellé): self
+    public function setLibellee(string $libellee): self
     {
-        $this->libellé = $libellé;
+        $this->libellee = $libellee;
 
         return $this;
     }
 
     public function getDescription(): ?string
     {
-        return $this->Description;
+        return $this->description;
     }
 
-    public function setDescription(string $Description): self
+    public function setDescription(string $description): self
     {
-        $this->Description = $Description;
+        $this->description = $description;
 
         return $this;
     }
 
     public function getCodeGroupe(): ?string
     {
-        return $this->code_groupe;
+        return $this->codeGroupe;
     }
 
-    public function setCodeGroupe(string $code_groupe): self
+    public function setCodeGroupe(string $codeGroupe): self
     {
-        $this->code_groupe = $code_groupe;
+        $this->codeGroupe = $codeGroupe;
 
         return $this;
     }
