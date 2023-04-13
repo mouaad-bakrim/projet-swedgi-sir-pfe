@@ -21,28 +21,14 @@ class Categorie
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $codeGroupe = null;
-
-    /**
-     * @return string|null
-     */
-    public function getCodeGroupe(): ?string
-    {
-        return $this->codeGroupe;
-    }
-
-    /**
-     * @param string|null $codeGroupe
-     */
-    public function setCodeGroupe(?string $codeGroupe): void
-    {
-        $this->codeGroupe = $codeGroupe;
-    }
 
 
     #[ORM\OneToMany(mappedBy: 'Categorie', targetEntity: Client::class)]
     private Collection $clients;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $codeGroupe = null;
+
 
     public function __construct()
     {
@@ -104,6 +90,18 @@ class Categorie
                 $client->setCategorie(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCodeGroupe(): ?string
+    {
+        return $this->codeGroupe;
+    }
+
+    public function setCodeGroupe(?string $codeGroupe): self
+    {
+        $this->codeGroupe = $codeGroupe;
 
         return $this;
     }
