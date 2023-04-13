@@ -13,7 +13,6 @@ class ClientType extends AbstractType
     {
         $builder
             ->add('groupe')
-            ->add('codeGroupe')
             ->add('societe')
             ->add('nom')
             ->add('prenom')
