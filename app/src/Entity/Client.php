@@ -16,8 +16,6 @@ class Client
     #[ORM\Column]
     private ?bool $groupe = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $codeGroupe = null;
 
     #[ORM\Column(length: 255)]
     private ?string $societe = null;
@@ -92,24 +90,9 @@ class Client
         return $this->groupe;
     }
 
-    public function setGroupe(bool $groupe): self
-    {
-        $this->groupe = $groupe;
 
-        return $this;
-    }
 
-    public function getCodeGroupe(): ?string
-    {
-        return $this->codeGroupe;
-    }
 
-    public function setCodeGroupe(string $codeGroupe): self
-    {
-        $this->codeGroupe = $codeGroupe;
-
-        return $this;
-    }
 
     public function getSociete(): ?string
     {
