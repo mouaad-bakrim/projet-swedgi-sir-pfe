@@ -1,14 +1,21 @@
+
+
 {% extends 'base2.html.twig' %}
 
 {% block title %}New Client{% endblock %}
 
 {% block body %}
-    <h1>Create new Client</h1>
-
-<div class="form mb-2">
-    {{ include('client/_form.html.twig') }}
-</div>
-    <a href="{{ path('app_client_index') }}" class="btn btn-primary">back to list</a>
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Create Client</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-info float-right" href="{{ path('app_client_index') }}">
+                    View All Projects
+                </a>
+            </div>
+            <div class="card-body">
+                {{ include('client/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
-
-

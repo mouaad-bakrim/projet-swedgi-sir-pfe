@@ -1,13 +1,20 @@
+
 {% extends 'base2.html.twig' %}
 
 {% block title %}Edit Client{% endblock %}
 
 {% block body %}
-    <h1>Edit Client</h1>
-
-    {{ include('client/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_client_index') }}" class="btn btn-primary">back to list</a>
-
-    {{ include('client/_delete_form.html.twig') }}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Edit Client</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-info float-right" href="{{ path('app_client_index') }}">
+                    View All Client
+                </a>
+            </div>
+            <div class="card-body">
+                {% include 'client/_form.html.twig' with {'button_label': 'Update Client', 'button_color': 'btn-outline-success'}  %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

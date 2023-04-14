@@ -1,107 +1,79 @@
+
+
+
 {% extends 'base2.html.twig' %}
 
-{% block title %}Client{% endblock %}
+{% block title %}Project{% endblock %}
 
 {% block body %}
-    <h1>Client</h1>
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Show Client</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-info float-right" href="{{ path('app_client_index') }}">
+                    View All Client
+                </a>
+            </div>
+            <div class="card-body">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ client.id }}</td>
-            </tr>
-            <tr>
-                <th>Groupe</th>
-                <td>{{ client.groupe ? 'Yes' : 'No' }}</td>
-            </tr>
+                <b class="text-muted">id:</b>
+                <p>{{ client.id }}</p>
 
-            <tr>
-                <th>Societe</th>
-                <td>{{ client.societe }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ client.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ client.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ client.adresse }}</td>
-            </tr>
-            <tr>
-                <th>CodePostal</th>
-                <td>{{ client.codePostal }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ client.ville }}</td>
-            </tr>
-            <tr>
-                <th>Pays</th>
-                <td>{{ client.pays }}</td>
-            </tr>
-            <tr>
-                <th>TelMobile</th>
-                <td>{{ client.telMobile }}</td>
-            </tr>
-            <tr>
-                <th>TelBureau</th>
-                <td>{{ client.telBureau }}</td>
-            </tr>
-            <tr>
-                <th>Fax</th>
-                <td>{{ client.fax }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ client.email }}</td>
-            </tr>
-            <tr>
-                <th>SiteWeb</th>
-                <td>{{ client.siteWeb }}</td>
-            </tr>
-            <tr>
-                <th>NomSociete</th>
-                <td>{{ client.nomSociete }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ client.type }}</td>
-            </tr>
-            <tr>
-                <th>Rc</th>
-                <td>{{ client.rc }}</td>
-            </tr>
-            <tr>
-                <th>Capital</th>
-                <td>{{ client.capital }}</td>
-            </tr>
-            <tr>
-                <th>Cnss</th>
-                <td>{{ client.cnss }}</td>
-            </tr>
-            <tr>
-                <th>Patente</th>
-                <td>{{ client.patente }}</td>
-            </tr>
-            <tr>
-                <th>IdenticicationFiscale</th>
-                <td>{{ client.identicicationFiscale }}</td>
-            </tr>
-            <tr>
-                <th>Ice</th>
-                <td>{{ client.ice }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <b class="text-muted">groupe:</b>
+                <p>{{ client.groupe ? 'Yes' : 'No' }}</p>
 
-<a href="{{ path('app_client_index') }} class="btn btn-primary">Retour à la liste</a>
+                <b class="text-muted">societe:</b>
+                <p>{{ client.societe }}</p>
+                <b class="text-muted">adresse:</b>
+                <p>{{ client.adresse }}</p>
 
-<a href="{{ path('app_client_edit', {'id': client.id}) }}" class="btn btn-success">Editer</a>
+                <b class="text-muted">codePostal:</b>
+                <p>{{ client.codePostal }}</p>
 
-{{ include('client/_delete_form.html.twig') }}
+                <b class="text-muted">adresse:</b>
+                <p>{{ client.adresse }}</p>
+
+                <b class="text-muted">prenom:</b>
+                <p>{{ client.prenom }}</p>
+                <b class="text-muted">nom:</b>
+                <p>{{ client.nom }}</p>
+
+                <b class="text-muted">vile:</b>
+                <p>{{ client.vile }}</p>
+
+                <b class="text-muted">paye:</b>
+                <p>{{ client.paye }}</p>
+
+                <b class="text-muted">telMobile:</b>
+                <p>{{ client.telMobile }}</p>
+
+                <b class="text-muted">telBureau:</b>
+                <p>{{ client.telBureau }}</p>
+                <b class="text-muted">fax:</b>
+                <p>{{ client.fax }}</p>
+                <b class="text-muted">email:</b>
+                <p>{{ client.email }}</p>
+                <b class="text-muted">siteweb:</b>
+                <p>{{ client.siteWeb }}</p>
+
+                <b class="text-muted">nomSociete:</b>
+                <p>{{ client.nomSociete }}</p>
+                <b class="text-muted">type:</b>
+                <p>{{ client.type }}</p>
+                <b class="text-muted">rc:</b>
+                <p>{{ client.rc }}</p>
+                <b class="text-muted">Capital:</b>
+                <p>{{ client.capital }}</p>
+                <b class="text-muted">Cnss:</b>
+                <p>{{ client.cnss }}</p>
+                <b class="text-muted">Pantente:</b>
+                <p>{{ client.patente }}</p>
+                <b class="text-muted">identicicationFiscale:</b>
+                <p>{{ client.identicicationFiscale }}</p>
+                <b class="text-muted">Ice :</b>
+                <p>{{ client.ice }}</p>
+            </div>
+        </div>
+
+    </div>
 {% endblock %}
