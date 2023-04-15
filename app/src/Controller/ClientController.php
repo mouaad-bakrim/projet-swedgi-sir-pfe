@@ -25,7 +25,7 @@ class ClientController extends AbstractController
     public function new(Request $request, ClientRepository $clientRepository): Response
     {
         $client = new Client();
-        $form = $this->createForm(Client1Type::class, $client);
+        $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
