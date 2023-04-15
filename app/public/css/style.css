@@ -1,9 +1,10 @@
 body{
     margin:0;
     color:#6a6f8c;
-    background:url(https://www.cabinetmcs.fr/wp-content/uploads/2019/02/Expert-comptable-78.jpg) no-repeat center;
+    background:url(https://wallpaperaccess.com/full/685208.jpg) no-repeat center;
     font:600 16px/18px 'Open Sans',sans-serif;
     background-size: cover;
+    height: 100vh;
     background-position: center center;
 }
 *,:after,:before{box-sizing:border-box}
@@ -15,8 +16,8 @@ a{color:inherit;text-decoration:none}
     width:100%;
     border-radius: 20px;
     margin:auto;
-    max-width:525px;
-    min-height:670px;
+    max-width:400px;
+    min-height:500px;
     position:relative;
     background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
     box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
@@ -64,7 +65,7 @@ a{color:inherit;text-decoration:none}
     border-color:#1161ee;
 }
 .login-form{
-    min-height:345px;
+    min-height:375px;
     position:relative;
     perspective:1000px;
     transform-style:preserve-3d;
