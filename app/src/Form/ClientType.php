@@ -15,6 +15,7 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
             ->add('societe')
             ->add('nom')
             ->add('prenom')
