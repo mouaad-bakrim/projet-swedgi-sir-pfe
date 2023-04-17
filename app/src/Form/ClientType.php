@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Categorie;
 use App\Entity\Client;
+use phpDocumentor\Reflection\Type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -29,7 +30,8 @@ class ClientType extends AbstractType
             ->add('email')
             ->add('siteWeb')
             ->add('nomSociete')
-            ->add('type')
+            ->add('type',EntityType::class,[
+                'class' => type::class])
             ->add('rc')
             ->add('capital')
             ->add('cnss')
