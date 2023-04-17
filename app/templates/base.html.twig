@@ -5,11 +5,28 @@
     <title>{% block title %}{% endblock %}</title>
     {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
     {% block stylesheets %}
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
+        <link  href="../Jquery/jquery.multiselect.css" rel="stylesheet"/>
+        <link  href="../Jquery/style.css" rel="stylesheet" />
+        <link  href="../Jquery/prettify.css" rel="stylesheet" />
+        <link href="../Jquery/jquery.multiselect.css" rel="stylesheet"/>
+        <link href="/RetailSmart/jsp/Jquery/jquery.multiselect.css" rel="stylesheet"/>
+        <link href="../Jquery/jquery.multiselect.css" rel="stylesheet"/>
+        <link href="/RetailSmart/Jquery/jquery.multiselect.css" rel="stylesheet"/>
+
+
+
+
+
+
+
+
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons-core.min.css" integrity="sha512-OmevVDECSDeo7M4G+Nvh0+VLVGS2XnEOkXWJcJ0TRom3GpGgc/ryQIgpRZw20mb5eR2U0sqsm33MaR8yD1zdsQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- Google Font: Source Sans Pro -->
-        <link rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css" integrity="sha512-0/rEDduZGrqo4riUlwqyuHDQzp2D1ZCgH/gFIfjMIL5az8so6ZiXyhf1Rg8i6xsjv+z/Ubc4tt1thLigEcu6Ug==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
         <!-- Ionicons -->
@@ -53,6 +70,10 @@
     {% block javascripts %}
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="../../Jquery/prettify.js"></script>
+        <script  src="../Jquery/jquery.multiselect.js"></script>
+        <script  src="../Jquery/prettify.js"></script>
+
 
 
         <script>
@@ -73,7 +94,8 @@
             }
 
         </script>
-
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></script>
+        <script src="{{ asset('asset/js/bootstrap.min.js')}}"></script>
         <!-- Bootstrap 4 -->
         <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <!-- ChartJS -->
@@ -124,7 +146,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        <img class="animation__shake" src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
     </div>
 
     <!-- Navbar -->
@@ -149,6 +171,7 @@
                 <a class="nav-link" data-widget="navbar-search" href="#" role="button">
                     <i class="fas fa-search"></i>
                 </a>
+
                 <div class="navbar-search-block">
                     <form class="form-inline">
                         <div class="input-group input-group-sm">
@@ -177,7 +200,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <img src="{{ asset('dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Brad Diesel
@@ -193,7 +216,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="{{ asset('dist/img/user8-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     John Pierce
@@ -209,7 +232,7 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="{{ asset('dist/img/user3-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Nora Silvester
@@ -271,7 +294,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
-            <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">SweExpert</span>
         </a>
@@ -281,7 +304,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">Alexander Pierce</a>
@@ -289,19 +312,19 @@
             </div>
 
             <!-- SidebarSearch Form -->
-            <div class="form-inline">
-                <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                           aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-sidebar">
-                            <i class="fas fa-search fa-fw"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <!-- <div class="form-inline">    -------------------------------search
+                 <div class="input-group" data-widget="sidebar-search">
+                     <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search">
+                     <div class="input-group-append">
+                         <button class="btn btn-sidebar">
+                             <i class="fas fa-search fa-fw"></i>
+                         </button>
+                     </div>
+                 </div>
+             </div>   -->
 
-            <!-- Sidebar Menu -->
+             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
@@ -341,9 +364,10 @@
                             <i class="nav-icon fas fa-table"></i>
                             <p>
                                 Tables
-                                <i class="fas fa-angle-left right"></i>
+                          <!--      <i class="fas fa-angle-left right"></i>  -->
                             </p>
                         </a>
+                        <!--
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="pages/tables/simple.html" class="nav-link">
@@ -363,9 +387,10 @@
                                     <p>jsGrid</p>
                                 </a>
                             </li>
-                        </ul>
+                        </ul>      -->
+
                     </li>
-                    <li class="nav-header">EXAMPLES</li>
+                <!--    <li class="nav-header">EXAMPLES</li> -->
                     <li class="nav-item">
                         <a href="pages/calendar.html" class="nav-link">
                             <i class="nav-icon far fa-calendar-alt"></i>
@@ -382,9 +407,10 @@
                             <i class="nav-icon fas fa-book"></i>
                             <p>
                                 Pages
-                                <i class="fas fa-angle-left right"></i>
+                              <!--  <i class="fas fa-angle-left right"></i>  -->
                             </p>
                         </a>
+                        <!--
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="pages/examples/invoice.html" class="nav-link">
@@ -437,6 +463,7 @@
                                 </a>
                             </li>
                         </ul>
+                        -->
                     </li>
 
 
