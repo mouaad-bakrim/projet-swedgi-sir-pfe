@@ -13,8 +13,6 @@ class Client
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?bool $groupe = null;
 
 
     #[ORM\Column(length: 255)]
@@ -85,10 +83,7 @@ class Client
         return $this->id;
     }
 
-    public function isGroupe(): ?bool
-    {
-        return $this->groupe;
-    }
+
 
 
 

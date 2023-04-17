@@ -8,16 +8,74 @@
 
     <div class="row my-5">
         <div class="col-md-7 mx-auto my-5" >
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{message}}
-                </div>
-            {% endfor %}
-
-            <div class="card" style="width: 1200px;">
+            <div class="card" style="width: 750px; margin-top:-80px;">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>List des categories</span>
-                    <a href="{{path('categorie_store')}}" class="btn btn-sm btn-primary">Add</a>
+
+
+                            <button type="button" class="btn btn-info add-new" data-bs-toggle="modal" data-bs-target="#addClient"><i class="fa fa-plus"></i> Add New</button>
+
+
+
+                    <div class="modal fade" id="addClient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                        <body>
+                        <div class="my-4">
+                            <div class="toolbar">
+                                <button type="button" class="btn btn-info add-new" data-bs-toggle="modal" data-bs-target="#addEmployee"><i class="fa fa-plus"></i> Add New</button>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="addEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add new Redevable</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <form>
+                                            <div class="mb-3">
+                                                <label  class="form-label">Nom </label>
+                                                <input type="text" name="nom"  class="form-control"  aria-describedby="emailHelp" [(ngModel)]="redevable.nom">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label  class="form-label">Prenom </label>
+                                                <input type="text" name="prenom" class="form-control"   aria-describedby="emailHelp" [(ngModel)]="redevable.prenom">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Cin </label>
+                                                <input type="text" name="cin" class="form-control"   aria-describedby="emailHelp" [(ngModel)]="redevable.cin">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add redevable</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 mx-auto">
+                            <div class="card">
+                                <div class="card-header">
+                                    Create new categorie
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
