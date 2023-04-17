@@ -3,76 +3,116 @@
 namespace App\Controller;
 
 use App\Entity\Client;
-use App\Form\Client1Type;
+use App\Form\ClientType;
 use App\Repository\ClientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
 
-#[Route('/client')]
+
 class ClientController extends AbstractController
 {
-    #[Route('/', name: 'app_client_index', methods: ['GET'])]
-    public function index(ClientRepository $clientRepository): Response
+    private $clientRepository;
+    private $entityManager;
+    public function __construct(ClientRepository $clientRepository,  ManagerRegistry $doctrine)
     {
+        $this->clientRepository = $clientRepository;
+        $this->entityManager = $doctrine->getManager();
+    }
+
+    #[Route('/client', name: 'client')]
+    public function index(): Response
+    {
+        $clients = $this->clientRepository->findAll();
         return $this->render('client/index.html.twig', [
-            'clients' => $clientRepository->findAll(),
+            'clients' => $clients,
         ]);
     }
 
-    #[Route('/new', name: 'app_client_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ClientRepository $clientRepository): Response
+//new
+
+    #[Route('/add/client', name: 'client_add')]
+    public function add(Request $request): Response
     {
         $client = new Client();
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $clientRepository->save($client, true);
+            $client = $form->getData();
 
-            return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
+            $this->entityManager->persist($client);
+            $this->entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Your client was saved'
+            );
+
+            return $this->redirectToRoute('client');
         }
 
-        return $this->renderForm('client/new.html.twig', [
-            'client' => $client,
+        return $this->renderForm('client/create.html.twig', [
             'form' => $form,
-        ]);
+        ] );
     }
 
-    #[Route('/{id}', name: 'app_client_show', methods: ['GET'])]
+    //show
+
+    #[Route('/client/details/{id}', name: 'client_show')]
     public function show(Client $client): Response
     {
         return $this->render('client/show.html.twig', [
             'client' => $client,
         ]);
+
     }
 
-    #[Route('/{id}/edit', name: 'app_client_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Client $client, ClientRepository $clientRepository): Response
+
+
+
+    #[Route('/client/edit/{id}', name: 'client_edit')]
+    public function edit(Client $client , Request $request): Response
     {
-        $form = $this->createForm(Client1Type::class, $client);
+
+        $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $clientRepository->save($client, true);
+            $client = $form->getData();
 
-            return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
+            $this->entityManager->persist($client);
+            $this->entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Your client was updated'
+            );
+
+            return $this->redirectToRoute('client');
         }
 
         return $this->renderForm('client/edit.html.twig', [
-            'client' => $client,
             'form' => $form,
-        ]);
+        ] );
+
     }
 
-    #[Route('/{id}', name: 'app_client_delete', methods: ['POST'])]
-    public function delete(Request $request, Client $client, ClientRepository $clientRepository): Response
+    #[Route('/client/delete/{id}', name: 'client_delete')]
+    public function delete(Client $client): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$client->getId(), $request->request->get('_token'))) {
-            $clientRepository->remove($client, true);
-        }
+        $this->entityManager->remove($client);
+        $this->entityManager->flush();
+        $this->addFlash(
+            'success',
+            'Your client was removed'
+        );
 
-        return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
-        }
+        return $this->redirectToRoute('client');
+
+
+    }
+
 }
