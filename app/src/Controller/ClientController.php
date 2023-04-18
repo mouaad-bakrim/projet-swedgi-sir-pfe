@@ -16,7 +16,8 @@ class ClientController extends AbstractController
 {
     private $clientRepository;
     private $entityManager;
-    public function __construct(ClientRepository $clientRepository,  ManagerRegistry $doctrine)
+
+    public function __construct(ClientRepository $clientRepository, ManagerRegistry $doctrine)
     {
         $this->clientRepository = $clientRepository;
         $this->entityManager = $doctrine->getManager();
@@ -56,25 +57,11 @@ class ClientController extends AbstractController
 
         return $this->renderForm('client/create.html.twig', [
             'form' => $form,
-        ] );
-    }
-
-    //show
-
-    #[Route('/client/details/{id}', name: 'client_show')]
-    public function show(Client $client): Response
-    {
-        return $this->render('client/show.html.twig', [
-            'client' => $client,
         ]);
-
     }
-
-
-
 
     #[Route('/client/edit/{id}', name: 'client_edit')]
-    public function edit(Client $client , Request $request): Response
+    public function edit(Client $client, Request $request): Response
     {
 
         $form = $this->createForm(ClientType::class, $client);
@@ -96,7 +83,7 @@ class ClientController extends AbstractController
 
         return $this->renderForm('client/edit.html.twig', [
             'form' => $form,
-        ] );
+        ]);
 
     }
 
@@ -114,10 +101,11 @@ class ClientController extends AbstractController
 
 
     }
+
+    //show
     #[Route('/client/view/{id}', name: 'client_view')]
     public function view(Client $client, Request $request): Response
     {
-
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
 
@@ -140,5 +128,4 @@ class ClientController extends AbstractController
         ]);
 
     }
-
 }

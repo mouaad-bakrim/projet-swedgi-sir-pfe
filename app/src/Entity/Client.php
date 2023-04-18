@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
@@ -54,8 +56,6 @@ class Client
     #[ORM\Column(length: 255)]
     private ?string $nomSociete = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $type = null;
 
     #[ORM\Column(length: 255)]
     private ?string $rc = null;
@@ -77,6 +77,14 @@ class Client
 
     #[ORM\ManyToOne(inversedBy: 'clients')]
     private ?Categorie $Categorie = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $type = null;
+
+    public function __construct()
+    {
+        $this->types = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -245,18 +253,6 @@ class Client
         return $this;
     }
 
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
     public function getRc(): ?string
     {
         return $this->rc;
@@ -343,5 +339,47 @@ class Client
     public function __toString()
     {
         return $this ->libellee;
+    }
+
+
+    /*
+    public function getTypes(): Collection
+    {
+        return $this->types;
+    }
+
+    public function addType(Type $type): self
+    {
+        if (!$this->types->contains($type)) {
+            $this->types->add($type);
+            $type->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeType(Type $type): self
+    {
+        if ($this->types->removeElement($type)) {
+            // set the owning side to null (unless already changed)
+            if ($type->getClient() === $this) {
+                $type->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+    */
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(?string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }
