@@ -4,13 +4,13 @@
 
 {% block body %}
 
-    <div class="row my-5">
-        <div class="col-md-7 mx-auto my-5" >
-            <div class="card" style="width: 750px; margin-top: -70px;">
+    <div class="row my-2">
+        <div class="col-md-7 mx-auto my-1" >
+            <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>List des categories</span>
                 </div>
-                <div class="card-body">
+
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
@@ -18,24 +18,11 @@
                                 <th>Id</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
-                                <th>Societe</th>
-                                <th>Adresse</th>
-                                <th>CodePostal</th>
                                 <th>Ville</th>
-                                <th>Pays</th>
                                 <th>TelMobile</th>
-                                <th>TelBureau</th>
-                                <th>Fax</th>
                                 <th>Email</th>
-                                <th>SiteWeb</th>
                                 <th>NomSociete</th>
                                 <th>Type</th>
-                                <th>Rc</th>
-                                <th>Capital</th>
-                                <th>Cnss</th>
-                                <th>Patente</th>
-                                <th>IdenticicationFiscale</th>
-                                <th>Ice</th>
                                 <th>actions</th>
                             </tr>
                             </thead>
@@ -45,24 +32,11 @@
                                     <td>{{ client.id }}</td>
                                     <td>{{ client.nom }}</td>
                                     <td>{{ client.prenom }}</td>
-                                    <td>{{ client.societe }}</td>
-                                    <td>{{ client.adresse }}</td>
-                                    <td>{{ client.codePostal }}</td>
                                     <td>{{ client.ville }}</td>
-                                    <td>{{ client.pays }}</td>
                                     <td>{{ client.telMobile }}</td>
-                                    <td>{{ client.telBureau }}</td>
-                                    <td>{{ client.fax }}</td>
                                     <td>{{ client.email }}</td>
-                                    <td>{{ client.siteWeb }}</td>
                                     <td>{{ client.nomSociete }}</td>
                                     <td>{{ client.type }}</td>
-                                    <td>{{ client.rc }}</td>
-                                    <td>{{ client.capital }}</td>
-                                    <td>{{ client.cnss }}</td>
-                                    <td>{{ client.patente }}</td>
-                                    <td>{{ client.identicicationFiscale }}</td>
-                                    <td>{{ client.ice }}</td>
                                     <td class="d-flex justify-content-between align-items-center">
                                         <a href="{{ path('client_show',{id: client.id}) }}" class="btn btn-sm btn-dark">show</a>
                                         <a href="{{ path('client_edit',{id: client.id}) }}" class="btn btn-sm btn-warning">edit</a>
@@ -74,7 +48,6 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
             </div>
 
         </div>

@@ -114,5 +114,31 @@ class ClientController extends AbstractController
 
 
     }
+    #[Route('/client/view/{id}', name: 'client_view')]
+    public function view(Client $client, Request $request): Response
+    {
+
+        $form = $this->createForm(ClientType::class, $client);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $client = $form->getData();
+
+            $this->entityManager->persist($client);
+            $this->entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'you can show informations of client'
+            );
+
+            return $this->redirectToRoute('client');
+        }
+
+        return $this->renderForm('client/show.html.twig', [
+            'form' => $form,
+        ]);
+
+    }
 
 }
