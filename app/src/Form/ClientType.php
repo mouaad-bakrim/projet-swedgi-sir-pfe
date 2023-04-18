@@ -30,8 +30,7 @@ class ClientType extends AbstractType
             ->add('email')
             ->add('siteWeb')
             ->add('nomSociete')
-            ->add('type',EntityType::class,[
-                'class' => type::class])
+            ->add('type')
             ->add('rc')
             ->add('capital')
             ->add('cnss')
@@ -41,7 +40,7 @@ class ClientType extends AbstractType
             ->add('Categorie', EntityType::class,[
                 'class' => categorie::class
                 ] )
-            ->add('Submit',SubmitType::class)
+        # ->add('Submit',SubmitType::class)
         ;
     }
 

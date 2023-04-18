@@ -7,7 +7,7 @@
 
 {% block body %}
     {{ form_start(form) }}
-    <div class="row my-4" style="margin-top: 20px">
+    <div class="row my-4 mt-0">
     <div class="col-md-8 mx-auto">
                 <section class="content">
                     <div class="container-fluid">
@@ -53,11 +53,10 @@
 
                                             <div class="input-group col-md-3">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="bi bi-phone-fill"></i></span>
+                                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                                 </div>
                                                 {{ form_widget(form.telBureau, {'attr': {'class': 'form-control',  'placeholder':'Tel-Bureau'}}) }}
                                             </div>
-
                                             <div class="input-group col-md-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">@</span>
