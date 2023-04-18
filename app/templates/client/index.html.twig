@@ -38,7 +38,7 @@
                                     <td>{{ client.nomSociete }}</td>
                                     <td>{{ client.type }}</td>
                                     <td class="d-flex justify-content-between align-items-center">
-                                        <a href="{{ path('client_show',{id: client.id}) }}" class="btn btn-sm btn-dark">show</a>
+                                        <a href="{{ path('client_view',{id: client.id}) }}" class="btn btn-sm btn-dark">show</a>
                                         <a href="{{ path('client_edit',{id: client.id}) }}" class="btn btn-sm btn-warning">edit</a>
                                         <a href="{{ path('client_delete',{id: client.id}) }}" class="btn btn-sm btn-danger">delete</a>
                                     </td>
