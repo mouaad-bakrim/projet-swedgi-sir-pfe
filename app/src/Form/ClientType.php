@@ -31,12 +31,12 @@ class ClientType extends AbstractType
             ->add('siteWeb')
             ->add('nomSociete')
             ->add('type', ChoiceType::class, [
-                'choices' => [
-                    'SARL' => null,
-                    'SARL AU' => null,
-                    'PP' => null,
-                ],
-            ])
+        'choices'  => [
+            'SARL' => 'SARL',
+            'SARL AU' => 'SARL AU',
+            'PP' => 'PP',
+        ],
+    ])
             ->add('rc')
             ->add('capital')
             ->add('cnss')
@@ -45,7 +45,7 @@ class ClientType extends AbstractType
             ->add('ice')
             ->add('Categorie', EntityType::class, [
                 'class' => categorie::class
-            ])# ->add('Submit',SubmitType::class)
+            ]) ->add('Back',SubmitType::class)
         ;
     }
 

@@ -34,7 +34,7 @@ class CategorieController extends AbstractController
 
 //new
 
-    #[Route('/store/categorie', name: 'categorie_store')]
+    #[Route('/add/categorie', name: 'categorie_store')]
     public function store(Request $request): Response
     {
         $categorie = new Categorie();
@@ -61,19 +61,6 @@ class CategorieController extends AbstractController
     }
 
     //show
-
-    #[Route('/categorie/details/{id}', name: 'categorie_show')]
-    public function show(Categorie $categorie): Response
-    {
-        return $this->render('categorie/show.html.twig', [
-            'categorie' => $categorie,
-        ]);
-
-    }
-
-
-
-
     #[Route('/categorie/edit/{id}', name: 'categorie_edit')]
     public function edit(Categorie $categorie , Request $request): Response
     {
@@ -115,5 +102,31 @@ class CategorieController extends AbstractController
 
 
     }
+    #[Route('/categorie/show/{id}', name: 'categorie_show')]
+    public function show(Categorie $categorie , Request $request): Response
+    {
+
+        $form = $this->createForm(CategorieType::class, $categorie);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $categorie = $form->getData();
+
+            $this->entityManager->persist($categorie);
+            $this->entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'You can see categories'
+            );
+
+            return $this->redirectToRoute('categorie');
+        }
+
+        return $this->renderForm('categorie/show.html.twig', [
+            'form' => $form,
+        ] );
 
     }
+
+}
