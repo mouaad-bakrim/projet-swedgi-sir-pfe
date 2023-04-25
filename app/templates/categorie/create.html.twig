@@ -3,16 +3,58 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-    <div class="row my-4" style="margin-top: 20px">
-        <div class="col-md-8 mx-auto">
-            <div class="card">
-                <div class="card-header">
-                    Create new categorie
+    {{ form_start(form) }}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1 class="text-success">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                <small>Create Categorie!</small>
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Default box -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Categorie</h3>
+                    <div class="box-tools pull-right">
+                        <a href="{{ path('categorie') }}" >
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="card-body">
-                    {{ form(form) }}
-                </div>
+                <section class="content">
+
+                    <div class="row">
+                        <label class="control-label col-md-2" for="">libellee :</label>
+                        <div class="col-md-10">
+                            <p>{{ form_widget(form.libellee, {'attr': {'class': 'form-control', 'placeholder':'libellee'}}) }}</p>
+                        </div>
+
+                        <label class="control-label col-sm-2" for="">description :</label>
+                        <div class="col-sm-10">
+                            <p>{{ form_widget(form.description, {'attr': {'class': 'form-control',  'placeholder':'description'}}) }}</p>
+                        </div>
+
+                        <label class="control-label col-sm-2" for=""> codeGroupe :</label>
+                        <div class="col-sm-10">
+                            <p> {{ form_widget(form.codeGroupe, {'attr': {'class': 'form-control',  'placeholder':'codeGroupe'}}) }}</p>
+                        </div>
+
+                        <div class="card-footer col-sm-4 text-center">
+                            <button type="submit" class="btn btn-primary">Validé</button>
+
+
+                        </div>
+                    </div>
+                </section>
             </div>
-        </div>
+        </section>
     </div>
+
+    {{ form_end(form) }}
 {% endblock %}

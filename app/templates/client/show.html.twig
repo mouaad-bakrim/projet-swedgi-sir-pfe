@@ -1,19 +1,97 @@
 {% extends 'base.html.twig' %}
-
-
-{% block title %}view client{% endblock %}
+{% block title %}show categorie{% endblock %}
 
 {% block body %}
-    <div class="row my-4">
-        <div class="col-md-8 mx-auto">
-            <div class="card">
-                <div class="card-header">
-                    view client
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                <small class="text-primary">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    Show Client!</small>
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Default box -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h4 class="box-title">Client</h4>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i
+                                    class="fa fa-times"></i></button>
+                    </div>
                 </div>
-                <div class="card-body">
-                    {{ form(form) }}
-                </div>
-            </div>
-        </div>
+
+                <div class="box-body">
+
+                    <div class="box-header with-border">
+                        <a href="{{ path('client_edit',{id: client.id}) }}" class="btn btn-sm btn-primary btn-sm">
+                            Edite Client
+                            <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+                        </a>
+
+                        <a href="{{ path('client_delete',{id: client.id}) }}" class="btn btn-danger btn-sm">
+                            Delete
+                            <span class="fa fa-trash-o" aria-hidden="true"></span>
+
+                        </a>
+
+                        <a id="print-button" href="{{ path('app_pdf_generator') }}" class="btn btn-success btn-sm">
+                            Print
+                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+
+                        </a>
+                        <div class="pull-right">
+                            <a href="{{ path('client') }}" class="btn btn-sm btn-warning btn-sm">
+                                <i class="fa fa-reply" aria-hidden="true"></i>
+                                Reteurn
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <section class="content">
+
+                        <div class="col-sm-4  ">
+                            <label class="control-label col-sm-2">Nom:</label> <p class="col-sm-10">{{ client.nom }}</p>
+                            <label class="control-label col-sm-3">Prenom:</label> <p class="col-sm-8">{{ client.prenom }}</p>
+                            <label class="control-label col-sm-3"> email:</label> <p class="col-sm-8"> {{ client.email }}</p>
+                            <label class="control-label col-sm-3">telMobile:</label>  <p class="col-sm-8">{{ client.telMobile }}</p>
+                            <label class="control-label col-sm-3" >telBureau:</label>  <p class="col-sm-8">{{ client.telBureau }}</p>
+                            <label class="control-label col-sm-3"> fax:</label> <p class="col-sm-8"> {{ client.fax }}</p>
+                        </div>
+                        <div class=" col-sm-4">
+                            <label class="control-label col-sm-3"> adresse: </label>  <p class="col-sm-9">{{ client.adresse }}</p>
+                            <label class="control-label col-sm-3"> ville:</label> <p class="col-sm-8"> {{ client.ville }}</p>
+                            <label class="control-label col-sm-3"> codePostal: </label>  <p class="col-sm-8">{{ client.codePostal }}</p>
+                            <label class="control-label col-sm-3"> pays:</label>  <p class="col-sm-8">{{ client.pays }}</p>
+                        </div>
+                        <div class=" col-sm-4">
+                            <label class="control-label col-sm-3">cnss:</label> <p class="col-sm-8"> {{ client.cnss }}</p>
+                            <label class="control-label col-sm-3">societe:</label>  <p class="col-sm-8">{{ client.societe }}</p>
+                            <label class="control-label col-sm-3">type:</label> <p class="col-sm-8"> {{ client.type }}</p>
+                            <label class="control-label col-sm-3">siteWeb:</label>  <p class="col-sm-8">{{ client.siteWeb }}</p>
+                            <label class="control-label col-sm-3">nomSociete:</label>  <p class="col-sm-8">{{ client.nomSociete }}</p>
+                            <label class="control-label col-sm-3">rc:</label>  <p class="col-sm-8">{{ client.rc }}</p>
+                            <label class="control-label col-sm-3" >identicicationFiscale:</label>  <p class="col-sm-8">{{ client.identicicationFiscale }}</p>
+                            <label class="control-label col-sm-3"> Categorie:</label>  <p class="col-sm-8">{{ client.Categorie }}</p>
+                            <label class="control-label col-sm-3"> ice:</label> <p class="col-sm-8"> {{ client.ice }}</p>
+                            <label class="control-label col-sm-3"> patente:</label>  <p class="col-sm-8">{{ client.patente }}</p>
+                            <label class="control-label col-sm-3"> capital:</label>  <p class="col-sm-8">{{ client.capital }}</p>
+                        </div>
+                    </section>
+
+
+                </div><!-- /.box-body -->
+
+
+            </div><!-- /.box -->
+        </section>
     </div>
 {% endblock %}

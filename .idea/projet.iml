@@ -138,6 +138,11 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/doctrine-fixtures-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/data-fixtures" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfonycasts/reset-password-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/webpack-encore-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/dompdf/dompdf" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/sabberworm/php-css-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/phenx/php-font-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/phenx/php-svg-lib" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

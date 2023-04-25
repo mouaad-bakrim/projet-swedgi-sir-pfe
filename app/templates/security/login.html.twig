@@ -1,18 +1,12 @@
 {% extends 'base2.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
-        {% block stylesheets %}
-
-            <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-
-
-        {% endblock %}
 
 
 {% block body %}
     <form method="post">
         {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            <div class="alert alert-danger bg-info">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
         <!-- {% if app.user %}
@@ -22,67 +16,39 @@
     {% endif %} -->
 
 
-        <div class="login-wrap">
-            <div class="login-html">
-                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
-                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
-                <div class="login-form">
-                    <div class="sign-in-htm">
-                        <div class="group">
-                            <label for="user" class="label">Username</label>
-                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="input" autocomplete="email" required autofocus>
-                        </div>
-                        <div class="group">
-                            <label for="pass" class="label">Password</label>
-                            <input type="password" name="password" id="pass" data-type="password" class="input" autocomplete="current-password" required>
-                            <input type="hidden" name="_csrf_token"
-                                   value="{{ csrf_token('authenticate') }}"
-                            >
-                        </div>
-                        <div class="group">
-                            <input id="check" type="checkbox" class="check" checked>
-                            <label for="check"><span class="icon"></span> Keep me Signed in</label> <br>
-                            <a style="color: #00a8c6;margin-top: 20px" href="{{ path('app_forgot_password_request') }}">forgot password</a>
-                        </div>
-                        <div class="group">
-                            <input type="submit" class="button" value="Sign In">
-                        </div>
-                        <div class="hr"></div>
-                        <div class="foot-lnk">
-                            <a href="#forgot">Forgot Password?</a>
-                        </div>
-                    </div>
-                    <div class="sign-up-htm">
-                        <div class="group">
-                            <label for="user" class="label">Username</label>
-                            <input id="user" type="text" class="input">
-                        </div>
-                        <div class="group">
-                            <label for="pass" class="label">Password</label>
-                            <input id="pass" type="password" class="input" data-type="password">
-                        </div>
-                        <div class="group">
-                            <label for="pass" class="label">Repeat Password</label>
-                            <input id="pass" type="password" class="input" data-type="password">
-                        </div>
-                        <div class="group">
-                            <label for="pass" class="label">Email Address</label>
-                            <input id="pass" type="text" class="input">
-                        </div>
-                        <div class="group">
-                            <input type="submit" class="button" value="Sign Up">
-                        </div>
-                        <div class="hr"></div>
-                        <div class="foot-lnk">
-                            <label for="tab-1">Already Member?>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+        <section class="container">
+            <div class="login">
+                <h1>Login </h1>
+                <p><input type="text" value="{{ last_username }}" name="email" id="username" placeholder="Username"
+                          autocomplete="email" required></p>
+
+                    <p><input type="password" name="password" id="pass" data-type="password" class="input"
+                              autocomplete="current-password" required></p>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}">
+
+                <p class="remember_me">
+                    <label>
+                        <input type="checkbox" name="remember_me" id="remember_me">
+                        Remember me on this computer
+                    </label>
+                </p>
+
+                <p class="submit"> <input type="submit" class="button" value="Submit">
+                </p>
+
+
             </div>
-        </div>
+            <div class="login-help">
+                <a href="{{ path('app_forgot_password_request') }}">Forgot Password?</a>
+            </div>
+
+        </section>
 
     </form>
+
+
+
 
 
 

@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% block stylesheets %}
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-theme.min.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
+
+    <link href="{{ asset('assets/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    {% endblock %}
+</head>
+
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/jquery-3.1.1.min.js') }}"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('dist/js/app.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('dist/js/demo.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/admin.js') }}"></script>
+
+    <script type="text/javascript">
+
+
+        print();
+    </script>
+
+
+{% endblock %}
+{% block header %}
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="{{ path('categorie') }}" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>M</b>B</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Swe</b>DGI E'xperte</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+        </nav>
+    </header>
+
+
+    <!-- =============================================== -->
+
+    <!-- Left side column. contains the sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+
+                <li class="header">MAIN NAVIGATION</li>
+
+                <li class="treeview">
+                    <a href="home.php">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li class="treeview">
+                    <a href="{{ path('categorie')}}">
+                        <i class="fa fa-th-list"></i>
+                        <span>Categoriy</span>
+                    </a>
+                </li>
+
+                <li class="treeview">
+                    <a href="{{ path('client') }}">
+                        <i class="fa fa-user"></i>
+                        <span>Client</span>
+                    </a>
+                </li>
+
+                <li class="header">SETTINGS</li>
+                <li> <a href="#"><i class="fa fa-key"></i>
+                        <span>Change Password</span>
+                    </a>
+                </li>
+
+
+                <li><a href="#"><i class="fa fa-sign-out"></i>
+                        <span>Logout</span></a>
+                </li>
+
+
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+
+    <div class="control-sidebar-bg"></div>
+    {% endblock %}
+    {% block body %}{% endblock %}
+
+
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Bakrim</b>
+        </div>
+        <strong>Copyright &copy; 2023 <a href="">Swedgi</a>.</strong> SwedExperte
+        <a href=""></a>
+    </footer>
+
+</div>
+
+</body>
+</html>
+

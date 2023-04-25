@@ -141,6 +141,11 @@
       <path value="$PROJECT_DIR$/app/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/app/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/app/vendor/symfonycasts/reset-password-bundle" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/app/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/app/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/app/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/app/vendor/phenx/php-svg-lib" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />

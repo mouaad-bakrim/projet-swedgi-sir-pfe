@@ -16,7 +16,7 @@ class CategorieType extends AbstractType
             ->add('libellee')
             ->add('description')
             ->add('codeGroupe')
-            ->add('Back',SubmitType::class)
+           // ->add('Back',SubmitType::class)
         ;
     }
 

@@ -45,7 +45,7 @@ class ClientType extends AbstractType
             ->add('ice')
             ->add('Categorie', EntityType::class, [
                 'class' => categorie::class
-            ]) ->add('Back',SubmitType::class)
+            ])
         ;
     }
 

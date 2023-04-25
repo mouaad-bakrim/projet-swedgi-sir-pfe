@@ -4,17 +4,55 @@
 
 {% block body %}
 
-    <div class="row my-2">
-        <div class="col-md-7 mx-auto my-1" >
-            <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>List des categories</span>
+
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                <small>Welcome Administrator!</small>
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Default box -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Client</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i
+                                    class="fa fa-times"></i></button>
+                    </div>
                 </div>
+                <div class="box-body">
+                    <!-- Start creating your amazing application! -->
+                    <a href="{{ path('client_add') }}" class="btn btn-sm btn-success btn-sm">Add Client
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+                    <button id="delLaun" type="button" class="btn btn-danger btn-sm">
+                        Delete
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button>
+                    <div id="table-laundry"></div>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <!-- Footer -->
+
+
+
+
+
 
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
+                        <table id="myTable-laundry" class="table table-bordered table-hover table-striped">
                             <thead>
                             <tr>
+                                <th></th>
                                 <th>Id</th>
                                 <th>Nom</th>
                                 <th>Prenom</th>
@@ -27,8 +65,10 @@
                             </tr>
                             </thead>
                             <tbody>
+
                             {% for client in clients %}
-                                <tr>
+                                <tr align="center">
+                                    <td><input type="checkbox" name="imSlepy" value="<?= $l['laun_id']; ?>"></td>
                                     <td>{{ client.id }}</td>
                                     <td>{{ client.nom }}</td>
                                     <td>{{ client.prenom }}</td>
@@ -37,20 +77,30 @@
                                     <td>{{ client.email }}</td>
                                     <td>{{ client.nomSociete }}</td>
                                     <td>{{ client.type }}</td>
-                                    <td class="d-flex justify-content-between align-items-center">
-                                        <a href="{{ path('client_view',{id: client.id}) }}" class="btn btn-sm btn-dark">show</a>
-                                        <a href="{{ path('client_edit',{id: client.id}) }}" class="btn btn-sm btn-warning">edit</a>
-                                        <a href="{{ path('client_delete',{id: client.id}) }}" class="btn btn-sm btn-danger">delete</a>
-                                    </td>
+                                <td class="d-flex justify-content-between align-items-center">
+                                    <a href="{{ path('client_view',{id: client.id}) }}" class="btn btn-xs btn-primary">
+                                        <span class="fa fa-eye" aria-hidden="true"></span>
+                                    </a>
+                                    <a href="{{ path('client_edit',{id: client.id}) }}"  class="btn btn-warning btn-xs">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </a>
+                                    <a href="{{ path('client_delete',{id: client.id}) }}" class="btn btn-xs btn-danger">
+                                        <span class="fa fa-trash-o" aria-hidden="true"></span>
 
-                                </tr>
+                                    </a>
+                                </td>
                             {% endfor %}
+
                             </tbody>
                         </table>
                     </div>
-            </div>
 
-        </div>
-    </div>
+                </div>
+            </div><!-- /.box -->
+
+
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
 
 {% endblock %}

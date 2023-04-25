@@ -102,8 +102,9 @@ class ClientController extends AbstractController
 
     }
 
+
     //show
-    #[Route('/client/view/{id}', name: 'client_view')]
+   /* #[Route('/client/view/{id}', name: 'client_view')]
     public function view(Client $client, Request $request): Response
     {
         $form = $this->createForm(ClientType::class, $client);
@@ -127,5 +128,24 @@ class ClientController extends AbstractController
             'form' => $form,
         ]);
 
+    }*/
+
+    #[Route('/client/view/{id}', name: 'client_view')]
+    public function showw(Client $client, Request $request): Response
+    {
+
+        $form = $this->createForm(ClientType::class, $client);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $client = $form->getData();
+        }
+        return $this->renderForm('client/show.html.twig', [
+            'client' => $client,
+        ]);
+
     }
+
+
+
 }

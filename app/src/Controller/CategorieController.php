@@ -5,11 +5,15 @@ namespace App\Controller;
 use App\Entity\Categorie;
 use App\Form\CategorieType;
 use App\Repository\CategorieRepository;
+use Dompdf\Dompdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+
+
 
 class CategorieController extends AbstractController
 {
@@ -57,12 +61,12 @@ class CategorieController extends AbstractController
 
         return $this->renderForm('categorie/create.html.twig', [
             'form' => $form,
-       ] );
+        ]);
     }
 
     //show
     #[Route('/categorie/edit/{id}', name: 'categorie_edit')]
-    public function edit(Categorie $categorie , Request $request): Response
+    public function edit(Categorie $categorie, Request $request): Response
     {
 
         $form = $this->createForm(CategorieType::class, $categorie);
@@ -84,7 +88,7 @@ class CategorieController extends AbstractController
 
         return $this->renderForm('categorie/edit.html.twig', [
             'form' => $form,
-        ] );
+        ]);
 
     }
 
@@ -102,31 +106,64 @@ class CategorieController extends AbstractController
 
 
     }
-    #[Route('/categorie/show/{id}', name: 'categorie_show')]
-    public function show(Categorie $categorie , Request $request): Response
-    {
 
-        $form = $this->createForm(CategorieType::class, $categorie);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $categorie = $form->getData();
 
-            $this->entityManager->persist($categorie);
-            $this->entityManager->flush();
 
-            $this->addFlash(
-                'success',
-                'You can see categories'
-            );
 
-            return $this->redirectToRoute('categorie');
-        }
 
-        return $this->renderForm('categorie/show.html.twig', [
-            'form' => $form,
-        ] );
 
+
+
+
+
+
+
+
+    /* #[Route('/categorie/show/{id}', name: 'categorie_show')]
+     public function show(Categorie $categorie, Request $request): Response
+     {
+
+         $form = $this->createForm(CategorieType::class, $categorie);
+         $form->handleRequest($request);
+
+         if ($form->isSubmitted() && $form->isValid()) {
+             $categorie = $form->getData();
+
+             $this->entityManager->persist($categorie);
+             $this->entityManager->flush();
+
+             $this->addFlash(
+                 'success',
+                 'You can see categories'
+             );
+
+             return $this->redirectToRoute('categorie');
+         }
+
+         return $this->renderForm('categorie/show.html.twig', [
+             'form' => $form,
+         ]);
+
+     }*/
+
+    //show list
+#[Route('/categorie/show/{id}', name: 'categorie_show')]
+    public function showw(Categorie $categorie, Request $request): Response
+{
+
+    $form = $this->createForm(CategorieType::class, $categorie);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $categorie = $form->getData();
     }
+    return $this->renderForm('categorie/show.html.twig', [
+        'categorie' => $categorie,
+    ]);
 
 }
+
+
+}
+
