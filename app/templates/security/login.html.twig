@@ -1,5 +1,4 @@
 {% extends 'base2.html.twig' %}
-
 {% block title %}Log in!{% endblock %}
 
 
@@ -22,10 +21,21 @@
                 <p><input type="text" value="{{ last_username }}" name="email" id="username" placeholder="Username"
                           autocomplete="email" required></p>
 
-                    <p><input type="password" name="password" id="pass" data-type="password" class="input"
-                              autocomplete="current-password" required></p>
-                    <input type="hidden" name="_csrf_token"
-                           value="{{ csrf_token('authenticate') }}">
+                <p><input type="password" name="password" id="pass" data-type="password" class="input"
+                          autocomplete="current-password" required>
+                    <input type="checkbox" id="check" style="margin-top: 10px" onclick="show();"> Show</p>
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}">
+                <script>
+                    function show(){
+                        var pass =document.getElementById('pass');
+                        if (document.getElementById('check').checked){
+                            pass.setAttribute('type','text');
+                        }else{
+                            pass.setAttribute('type','password');
+                        }
+                    }
+                </script>
 
                 <p class="remember_me">
                     <label>
@@ -46,14 +56,4 @@
         </section>
 
     </form>
-
-
-
-
-
-
-
-
-
-
 {% endblock %}

@@ -22,6 +22,9 @@ class Periodicite
     #[ORM\Column]
     private ?bool $direct = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?TacheType $TacheType = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Periodicite
     public function setDirect(bool $direct): self
     {
         $this->direct = $direct;
+
+        return $this;
+    }
+
+    public function getTacheType(): ?TacheType
+    {
+        return $this->TacheType;
+    }
+
+    public function setTacheType(?TacheType $TacheType): self
+    {
+        $this->TacheType = $TacheType;
 
         return $this;
     }
