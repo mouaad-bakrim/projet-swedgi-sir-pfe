@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\MissionRepository;
+use App\Repository\MiissionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: MissionRepository::class)]
+#[ORM\Entity(repositoryClass: MiissionRepository::class)]
 class Mission
 {
     #[ORM\Id]
@@ -13,44 +13,44 @@ class Mission
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $CNSS = null;
+    #[ORM\Column(length: 50)]
+    private ?string $cnss = null;
 
-    #[ORM\Column]
-    private ?float $IR = null;
+    #[ORM\Column(length: 50)]
+    private ?string $salares = null;
 
-    #[ORM\Column]
-    private ?float $salaire = null;
+    #[ORM\Column(length: 50)]
+    private ?string $tva = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $juridique = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $cAC = null;
+    #[ORM\Column(length: 50)]
+    private ?string $cac = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $audit = null;
 
-    #[ORM\Column]
-    private ?float $augmentationCapital = null;
+    #[ORM\Column(length: 50)]
+    private ?string $augmentationDeCapital = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $constitution = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $transformationPP = null;
+    #[ORM\Column(length: 50)]
+    private ?string $transformationPp = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $cessionPart = null;
+    private ?string $cessionDesParts = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $livreCoteParaphe = null;
+    private ?string $livresCotesParaphes = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $taxeProfessionnelle = null;
+    private ?string $taxesProfessionnelles = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $tenueComptabilite = null;
+    private ?string $tenueDeComptabilite = null;
 
     #[ORM\Column(length: 255)]
     private ?string $controle = null;
@@ -62,48 +62,54 @@ class Mission
     private ?string $saisie = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $aCompteIs = null;
+    private ?string $acompteIs = null;
 
     #[ORM\Column(length: 255)]
     private ?string $bilan = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $autres = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $ir = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCNSS(): ?string
+    public function getCnss(): ?string
     {
-        return $this->CNSS;
+        return $this->cnss;
     }
 
-    public function setCNSS(string $CNSS): self
+    public function setCnss(string $cnss): self
     {
-        $this->CNSS = $CNSS;
+        $this->cnss = $cnss;
 
         return $this;
     }
 
-    public function getIR(): ?float
+    public function getSalares(): ?string
     {
-        return $this->IR;
+        return $this->salares;
     }
 
-    public function setIR(float $IR): self
+    public function setSalares(string $salares): self
     {
-        $this->IR = $IR;
+        $this->salares = $salares;
 
         return $this;
     }
 
-    public function getSalaire(): ?float
+    public function getTva(): ?string
     {
-        return $this->salaire;
+        return $this->tva;
     }
 
-    public function setSalaire(float $salaire): self
+    public function setTva(string $tva): self
     {
-        $this->salaire = $salaire;
+        $this->tva = $tva;
 
         return $this;
     }
@@ -120,14 +126,14 @@ class Mission
         return $this;
     }
 
-    public function getCAC(): ?string
+    public function getCac(): ?string
     {
-        return $this->cAC;
+        return $this->cac;
     }
 
-    public function setCAC(string $cAC): self
+    public function setCac(string $cac): self
     {
-        $this->cAC = $cAC;
+        $this->cac = $cac;
 
         return $this;
     }
@@ -144,14 +150,14 @@ class Mission
         return $this;
     }
 
-    public function getAugmentationCapital(): ?float
+    public function getAugmentationDeCapital(): ?string
     {
-        return $this->augmentationCapital;
+        return $this->augmentationDeCapital;
     }
 
-    public function setAugmentationCapital(float $augmentationCapital): self
+    public function setAugmentationDeCapital(string $augmentationDeCapital): self
     {
-        $this->augmentationCapital = $augmentationCapital;
+        $this->augmentationDeCapital = $augmentationDeCapital;
 
         return $this;
     }
@@ -168,62 +174,62 @@ class Mission
         return $this;
     }
 
-    public function getTransformationPP(): ?string
+    public function getTransformationPp(): ?string
     {
-        return $this->transformationPP;
+        return $this->transformationPp;
     }
 
-    public function setTransformationPP(string $transformationPP): self
+    public function setTransformationPp(string $transformationPp): self
     {
-        $this->transformationPP = $transformationPP;
+        $this->transformationPp = $transformationPp;
 
         return $this;
     }
 
-    public function getCessionPart(): ?string
+    public function getCessionDesParts(): ?string
     {
-        return $this->cessionPart;
+        return $this->cessionDesParts;
     }
 
-    public function setCessionPart(string $cessionPart): self
+    public function setCessionDesParts(string $cessionDesParts): self
     {
-        $this->cessionPart = $cessionPart;
+        $this->cessionDesParts = $cessionDesParts;
 
         return $this;
     }
 
-    public function getLivreCoteParaphe(): ?string
+    public function getLivresCotesParaphes(): ?string
     {
-        return $this->livreCoteParaphe;
+        return $this->livresCotesParaphes;
     }
 
-    public function setLivreCoteParaphe(string $livreCoteParaphe): self
+    public function setLivresCotesParaphes(string $livresCotesParaphes): self
     {
-        $this->livreCoteParaphe = $livreCoteParaphe;
+        $this->livresCotesParaphes = $livresCotesParaphes;
 
         return $this;
     }
 
-    public function getTaxeProfessionnelle(): ?string
+    public function getTaxesProfessionnelles(): ?string
     {
-        return $this->taxeProfessionnelle;
+        return $this->taxesProfessionnelles;
     }
 
-    public function setTaxeProfessionnelle(string $taxeProfessionnelle): self
+    public function setTaxesProfessionnelles(string $taxesProfessionnelles): self
     {
-        $this->taxeProfessionnelle = $taxeProfessionnelle;
+        $this->taxesProfessionnelles = $taxesProfessionnelles;
 
         return $this;
     }
 
-    public function getTenueComptabilite(): ?string
+    public function getTenueDeComptabilite(): ?string
     {
-        return $this->tenueComptabilite;
+        return $this->tenueDeComptabilite;
     }
 
-    public function setTenueComptabilite(string $tenueComptabilite): self
+    public function setTenueDeComptabilite(string $tenueDeComptabilite): self
     {
-        $this->tenueComptabilite = $tenueComptabilite;
+        $this->tenueDeComptabilite = $tenueDeComptabilite;
 
         return $this;
     }
@@ -264,14 +270,14 @@ class Mission
         return $this;
     }
 
-    public function getACompteIs(): ?string
+    public function getAcompteIs(): ?string
     {
-        return $this->aCompteIs;
+        return $this->acompteIs;
     }
 
-    public function setACompteIs(string $aCompteIs): self
+    public function setAcompteIs(string $acompteIs): self
     {
-        $this->aCompteIs = $aCompteIs;
+        $this->acompteIs = $acompteIs;
 
         return $this;
     }
@@ -284,6 +290,30 @@ class Mission
     public function setBilan(string $bilan): self
     {
         $this->bilan = $bilan;
+
+        return $this;
+    }
+
+    public function getAutres(): ?string
+    {
+        return $this->autres;
+    }
+
+    public function setAutres(string $autres): self
+    {
+        $this->autres = $autres;
+
+        return $this;
+    }
+
+    public function getIr(): ?string
+    {
+        return $this->ir;
+    }
+
+    public function setIr(string $ir): self
+    {
+        $this->ir = $ir;
 
         return $this;
     }
