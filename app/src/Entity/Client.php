@@ -81,9 +81,15 @@ class Client
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $type = null;
 
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Contrat::class)]
+    private Collection $Client;
+
+
+
     public function __construct()
     {
         $this->types = new ArrayCollection();
+        $this->Client = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -379,6 +385,48 @@ class Client
     public function setType(?string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getContrat(): ?contrat
+    {
+        return $this->Contrat;
+    }
+
+    public function setContrat(?contrat $Contrat): self
+    {
+        $this->Contrat = $Contrat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contrat>
+     */
+    public function getClient(): Collection
+    {
+        return $this->Client;
+    }
+
+    public function addClient(Contrat $client): self
+    {
+        if (!$this->Client->contains($client)) {
+            $this->Client->add($client);
+            $client->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClient(Contrat $client): self
+    {
+        if ($this->Client->removeElement($client)) {
+            // set the owning side to null (unless already changed)
+            if ($client->getClient() === $this) {
+                $client->setClient(null);
+            }
+        }
 
         return $this;
     }
