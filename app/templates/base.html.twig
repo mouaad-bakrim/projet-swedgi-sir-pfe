@@ -27,7 +27,6 @@
 </head>
 
 
-
 {% block javascripts %}
     <script src="{{ asset('assets/js/jquery-3.1.1.min.js') }}"></script>
     <!-- Bootstrap 3.3.5 -->
@@ -42,7 +41,7 @@
 
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#myTable-laundry').DataTable();
         });
 
@@ -88,32 +87,54 @@
 
                 <li class="header">MAIN NAVIGATION</li>
 
+
                 <li class="treeview">
-                    <a href="{{ path('app_home')}}">
+                    <a href="{{ path('app_home') }}">
                         <i class="fa fa-home"></i>
                         <span>Home</span>
                     </a>
                 </li>
 
-                <li class="treeview">
-                    <a href="{{ path('categorie')}}">
-                        <i class="fa fa-th-list"></i>
-                        <span>Categoriy</span>
-                    </a>
-                </li>
+                <ul class="sidebar-menu">
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-cog"></i>
+                            <span>Paramétrage</span>
+                        </a>
+                    </li>
 
-                <li class="treeview">
-                    <a href="{{ path('client') }}">
-                        <i class="fa fa-user"></i>
-                        <span>Client</span>
-                    </a>
-                </li>
+                    <li class="treeview">
+                        <a href="{{ path('categorie') }}">
+                            <i class="fa fa-th-list"></i>
+                            <span>Categoriy</span>
+                        </a>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="{{ path('client') }}">
+                            <i class="fa fa-user"></i>
+                            <span>Client</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-thumb-tack"></i>
+                            <span>TacheType</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-clock-o"></i>
+                            <span>Periodicits</span>
+                        </a>
+                    </li>
+                </ul>
 
                 <li class="header">SETTINGS</li>
-               <li> <a href="#"><i class="fa fa-key"></i>
+                <li><a href="#"><i class="fa fa-key"></i>
                         <span>Change Password</span>
-                </a>
-               </li>
+                    </a>
+                </li>
 
 
                 <li><a href="{{ path('app_logout') }}"><i class="fa fa-sign-out"></i>
@@ -127,10 +148,10 @@
     </aside>
 
 
-<div class="control-sidebar-bg"></div>
+    <div class="control-sidebar-bg"></div>
 
-{% endblock %}
-{% block body %}{% endblock %}
+    {% endblock %}
+    {% block body %}{% endblock %}
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
