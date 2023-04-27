@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Form;
-
+use App\Entity\Tache;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -37,7 +37,12 @@ class TacheType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => TacheType::class,
+            'data_class' => Tache::class,
         ]);
     }
 }
+
+
+
+
+
