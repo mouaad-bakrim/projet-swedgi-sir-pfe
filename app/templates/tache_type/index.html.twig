@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TacheTypeController!{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                <small>Welcome Administrator!</small>
+            </h1>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Default box -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">tachetype</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i
+                                    class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <!-- Start creating your amazing application! -->
+                    <a href="{{ path('tachetype_add') }}" class="btn btn-sm btn-success btn-sm">Add tachetype
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+                    <button id="delLaun" type="button" class="btn btn-danger btn-sm">
+                        Delete
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button>
+                    <div id="table-laundry"></div>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <!-- Footer -->
+
+
+
+
+
+
+                    <div class="table-responsive">
+                        <table id="myTable-laundry" class="table table-bordered table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Id</th>
+                                <th>designation</th>
+                                <th>description</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for tachetype in tachetypes %}
+                            <tr align="center">
+                                <td><input type="checkbox" name="imSlepy" value="<?= $l['laun_id']; ?>"></td>
+                                <td>{{ tachetype.id }}</td>
+                                <td>{{ tachetype.designation }}</td>
+                                <td>{{ tachetype.description }}</td>
+                                <td class="d-flex justify-content-between align-items-center">
+
+                                    <a href="{{ path('tachetype_edit',{id: tachetype.id}) }}"  class="btn btn-warning btn-xs">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </a>
+                                    <a href="{{ path('tachetype_delete',{id: tachetype.id}) }}" class="btn btn-xs btn-danger">
+                                        <span class="fa fa-trash-o" aria-hidden="true"></span>
+
+                                    </a>
+                                </td>
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div><!-- /.box -->
+
+
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+
+{% endblock %}
