@@ -32,7 +32,7 @@
                 <div class="box-body">
                     <!-- Start creating your amazing application! -->
 
-                    <a href="{{ path('categorie_store') }}" class="btn btn-sm btn-success btn-sm">Add Periodicite
+                    <a href="{{ path('periodicite_add') }}" class="btn btn-sm btn-success btn-sm">Add Periodicite
                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
 
                     <button id="delLaun" type="button" class="btn btn-danger btn-sm">
@@ -73,7 +73,7 @@
 
                             {% for periodicite in periodicites %}
                                 <tr align="center">
-                                    <td><input type="checkbox" name="categorie[]" value="{{ categorie.id }}"></td>
+                                    <td><input type="checkbox" name="periodicite[]" value="{{ categorie.id }}"></td>
                                     <td>{{ loop.index }}</td>
                                     <td>{{ periodicite.designation }}</td>
                                     <td>{{ periodicite.duree }}</td>
