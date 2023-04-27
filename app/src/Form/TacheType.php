@@ -15,6 +15,7 @@ class TacheType extends AbstractType
             ->add('description')
             ->add('designation', ChoiceType::class, [
                 'choices'  => [
+                    'add Tache' => 'add Tache',
                     'CNSS' => 'CNSS',
                     'salaire' => 'salaire',
                     'TVA' => 'PP',
