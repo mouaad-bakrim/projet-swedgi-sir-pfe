@@ -347,7 +347,7 @@ class Client
 
     public function __toString()
     {
-        return $this ->dateDebut->format('d/m/Y');
+        return $this ->nomSociete;
     }
 
 
