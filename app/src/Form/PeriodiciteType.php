@@ -22,7 +22,7 @@ class PeriodiciteType extends AbstractType
                 ],
             ])
             ->add('direct')
-            ->add('TacheType')
+            ->add('Tache')
         ;
     }
 

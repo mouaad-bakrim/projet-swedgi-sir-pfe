@@ -21,7 +21,7 @@ class Contrat
     private ?Client $client = null;
 
     #[ORM\ManyToOne(inversedBy: 'Contrat')]
-    private ?TacheType $tacheType = null;
+    private ?Tache $tacheType = null;
 
     public function getId(): ?int
     {
@@ -52,13 +52,12 @@ class Contrat
         return $this;
     }
 
-
-    public function getTacheType(): ?TacheType
+    public function getTacheType(): ?Tache
     {
         return $this->tacheType;
     }
 
-    public function setTacheType(?TacheType $tacheType): self
+    public function setTacheType(?Tache $tacheType): self
     {
         $this->tacheType = $tacheType;
 
