@@ -33,7 +33,7 @@ class TacheTypeController extends AbstractController
     public function add(Request $request): Response
     {
         $tachetype = new TacheType();
-        $form = $this->createForm(TacheTypeType::class, $tachetype);
+        $form = $this->createForm(TacheType::class, $tachetype);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -60,7 +60,7 @@ class TacheTypeController extends AbstractController
     public function edit(Tachetype $tachetype, Request $request): Response
     {
 
-        $form = $this->createForm(TachetypeType::class, $tachetype);
+        $form = $this->createForm(TacheType::class, $tachetype);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
