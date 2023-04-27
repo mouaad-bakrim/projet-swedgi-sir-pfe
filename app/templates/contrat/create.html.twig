@@ -10,7 +10,7 @@
         <section class="content-header">
             <h1 class="text-success">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                <small>add periodicity</small>
+                <small>add contrat</small>
             </h1>
         </section>
 
@@ -20,9 +20,9 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Periodicite</h3>
+                    <h3 class="box-title">contrat</h3>
                     <div class="box-tools pull-right">
-                        <a href="{{ path('periodicite') }}" >
+                        <a href="{{ path('contrat') }}" >
                             <i class="fa fa-times"></i>
                         </a>
                     </div>
@@ -31,13 +31,17 @@
 
                     <div class="row">
 
-                        <label class="control-label col-sm-2" for=""> tacheType :</label>
+                        <label class="control-label col-sm-2" for=""> dateDebut :</label>
                         <div class="col-sm-10">
-                            <p> {{ form_widget(form.TacheType, {'attr': {'class': 'form-control',  'placeholder':'tache Type'}}) }}</p>
+                            <p> {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control',  'placeholder':'tache Type'}}) }}</p>
                         </div>
-                        <label class="control-label col-sm-2" for="">duree :</label>
+                        <label class="control-label col-sm-2" for="">client :</label>
                         <div class="col-sm-10">
-                            <p>{{ form_widget(form.duree, {'attr': {'class': 'form-control',  'placeholder':'duree'}}) }}</p>
+                            <p>{{ form_widget(form.client, {'attr': {'class': 'form-control',  'placeholder':'duree'}}) }}</p>
+                        </div>
+                        <label class="control-label col-sm-2" for="">tacheType :</label>
+                        <div class="col-sm-10">
+                            <p>{{ form_widget(form.tacheType, {'attr': {'class': 'form-control',  'placeholder':'duree'}}) }}</p>
                         </div>
 
 

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Periodicite;
 use App\Form\PeriodiciteType;
 use App\Repository\PeriodiciteRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class PeriodiciteController extends AbstractController
         $this->entityManager = $doctrine->getManager();
     }
 
-    #[Route('/periodicite', name: 'app_periodicite')]
+    #[Route('/periodicite', name: 'periodicite')]
     public function index(): Response
     {
         $periodicites = $this->clientRepository->findAll();

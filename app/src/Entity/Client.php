@@ -88,7 +88,6 @@ class Client
     private ?User $user = null;
 
 
-
     public function __construct()
     {
         $this->types = new ArrayCollection();
@@ -345,40 +344,13 @@ class Client
 
         return $this;
     }
+
     public function __toString()
     {
-        return $this ->libellee;
+        return $this ->dateDebut->format('d/m/Y');
     }
 
 
-    /*
-    public function getTypes(): Collection
-    {
-        return $this->types;
-    }
-
-    public function addType(Type $type): self
-    {
-        if (!$this->types->contains($type)) {
-            $this->types->add($type);
-            $type->setClient($this);
-        }
-
-        return $this;
-    }
-
-    public function removeType(Type $type): self
-    {
-        if ($this->types->removeElement($type)) {
-            // set the owning side to null (unless already changed)
-            if ($type->getClient() === $this) {
-                $type->setClient(null);
-            }
-        }
-
-        return $this;
-    }
-    */
 
     public function getType(): ?string
     {

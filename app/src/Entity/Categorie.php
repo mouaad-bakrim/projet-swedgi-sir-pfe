@@ -85,6 +85,11 @@ class Categorie
     {
         return $this->clients;
     }
+    public function __toString()
+    {
+        return $this ->nom;
+
+    }
 
     public function addClient(Client $client): self
     {
@@ -107,8 +112,5 @@ class Categorie
 
         return $this;
     }
-    public function __toString()
-    {
-        return $this ->libellee;
-    }
+
 }

@@ -52,6 +52,7 @@ class Contrat
         return $this;
     }
 
+
     public function getTacheType(): ?TacheType
     {
         return $this->tacheType;
