@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: PeriodiciteRepository::class)]
 class Periodicite
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -17,7 +18,7 @@ class Periodicite
     private ?string $designation = null;
 
     #[ORM\Column(nullable: true)]
-    private ?float $duree = null;
+    private ?string $duree = null;
 
     #[ORM\Column]
     private ?bool $direct = null;
@@ -39,12 +40,12 @@ class Periodicite
         return $this;
     }
 
-    public function getDuree(): ?float
+    public function getDuree(): ?string
     {
         return $this->duree;
     }
 
-    public function setDuree(?float $duree): self
+    public function setDuree(?string $duree): self
     {
         $this->duree = $duree;
 
@@ -63,6 +64,14 @@ class Periodicite
         return $this;
     }
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity=Tache::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $Tache;
+    public function getTache(): ?Tache
+    {
+        return $this->Tache;
+    }
 
 }
