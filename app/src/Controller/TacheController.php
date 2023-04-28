@@ -22,7 +22,7 @@ class TacheController extends AbstractController
         $this->entityManager = $doctrine->getManager();
     }
 
-    #[Route('/tache', name: 'app_tache')]
+    #[Route('/tache', name: 'tache')]
     public function index(): Response
     {
         $taches = $this->tacheRepository->findAll();

@@ -25,14 +25,18 @@ class Periodicite
     #[ORM\Column]
     private ?bool $direct = null;
 
-  /*  #[ORM\OneToMany(mappedBy: 'periodicite', targetEntity: tache::class)]
+    #[ORM\OneToMany(mappedBy: 'periodicite', targetEntity: tache::class)]
     private Collection $tache;
+
+
 
     public function __construct()
     {
+        $this->taches = new ArrayCollection();
         $this->tache = new ArrayCollection();
     }
-*/
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,36 +79,6 @@ class Periodicite
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity=Tache::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    protected $Tache;
-    public function getTache(): ?Tache
-    {
-        return $this->Tache;
-    }
-
-
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Tache::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    protected $Tache;
-
-    #[ORM\OneToMany(mappedBy: 'Periodicite', targetEntity: Tache::class)]
-    private Collection $taches;
-
-    public function __construct()
-    {
-        $this->taches = new ArrayCollection();
-    }
-    public function getTache(): ?Tache
-    {
-        return $this->Tache;
-    }
-
-    /**
      * @return Collection<int, Tache>
      */
     public function getTaches(): Collection
@@ -112,26 +86,49 @@ class Periodicite
         return $this->taches;
     }
 
-    public function addTach(Tache $tach): self
+    /**
+     * @return Collection<int, tache>
+     */
+    public function getTache(): Collection
     {
-        if (!$this->taches->contains($tach)) {
-            $this->taches->add($tach);
-            $tach->setPeriodicite($this);
+        return $this->tache;
+    }
+
+    public function addTache(tache $tache): self
+    {
+        if (!$this->tache->contains($tache)) {
+            $this->tache->add($tache);
+            $tache->setPeriodicite($this);
         }
 
         return $this;
     }
 
-    public function removeTach(Tache $tach): self
+    public function removeTache(tache $tache): self
     {
-        if ($this->taches->removeElement($tach)) {
+        if ($this->tache->removeElement($tache)) {
             // set the owning side to null (unless already changed)
-            if ($tach->getPeriodicite() === $this) {
-                $tach->setPeriodicite(null);
+            if ($tache->getPeriodicite() === $this) {
+                $tache->setPeriodicite(null);
             }
         }
 
         return $this;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
