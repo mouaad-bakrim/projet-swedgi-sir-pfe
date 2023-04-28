@@ -21,8 +21,6 @@ class PeriodiciteType extends AbstractType
                     '1' => '1',
                 ],
             ])
-            ->add('direct')
-            ->add('Tache')
         ;
     }
 
@@ -32,4 +30,5 @@ class PeriodiciteType extends AbstractType
             'data_class' => Periodicite::class,
         ]);
     }
+
 }
