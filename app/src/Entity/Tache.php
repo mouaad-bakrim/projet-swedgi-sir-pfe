@@ -23,7 +23,7 @@ class Tache
     private ?string $description = null;
 
 
-
+/*
     #[ORM\OneToMany(mappedBy: 'tache', targetEntity: Contrat::class)]
     private Collection $contrats;
 
@@ -34,7 +34,7 @@ class Tache
     {
         $this->contrats = new ArrayCollection();
     }
-
+*/
     public function getId(): ?int
     {
         return $this->id;
@@ -67,10 +67,10 @@ class Tache
 
 
 
-    /**
-     * @return Collection<int, Contrat>
-     */
-    public function getContrats(): Collection
+  #  /**
+   #  * @return Collection<int, Contrat>
+    # */
+/*    public function getContrats(): Collection
     {
         return $this->contrats;
     }
@@ -109,6 +109,6 @@ class Tache
         return $this;
     }
 
-
+*/
 }
 
