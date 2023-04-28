@@ -28,7 +28,7 @@ class TacheType extends AbstractType
                     'saisie' => 'saisie',
                     'acompteIs' => 'acompteIs',
                     'autre' => 'autre',
-                    'transformationPp' => 'transformationPp',
+                    'transformationPP' => 'transformationPP',
                 ],
             ])
 
