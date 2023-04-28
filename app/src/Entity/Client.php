@@ -347,7 +347,7 @@ class Client
 
     public function __toString()
     {
-        return $this ->nomSociete;
+        return $this ->nom;
     }
 
 

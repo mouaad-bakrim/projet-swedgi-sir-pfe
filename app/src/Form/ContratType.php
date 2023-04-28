@@ -15,6 +15,7 @@ class ContratType extends AbstractType
             ->add('dateDebut')
             ->add('client')
             ->add('tacheType')
+            ->add('montant')
         ;
     }
 

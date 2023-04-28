@@ -16,6 +16,24 @@ class Contrat
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateDebut = null;
+    #[ORM\Column(length: 255)]
+    private ?string $montant = null;
+
+    /**
+     * @return string|null
+     */
+    public function getMontant(): ?string
+    {
+        return $this->montant;
+    }
+
+    /**
+     * @param string|null $montant
+     */
+    public function setMontant(?string $montant): void
+    {
+        $this->montant = $montant;
+    }
 
     #[ORM\ManyToOne(inversedBy: 'Client')]
     private ?Client $client = null;
@@ -77,5 +95,10 @@ class Contrat
         $this->tache = $tache;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this ->montant;
     }
 }

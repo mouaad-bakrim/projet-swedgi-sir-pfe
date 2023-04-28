@@ -32,7 +32,7 @@
                 <div class="box-body">
                     <!-- Start creating your amazing application! -->
 
-                    <a href="{{ path('contrat_add') }}" class="btn btn-sm btn-success btn-sm">Add Periodicite
+                    <a href="{{ path('contrat_add') }}" class="btn btn-sm btn-success btn-sm">Add contrat
                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
 
 
@@ -47,6 +47,7 @@
                                 <th>Date Debut</th>
                                 <th>Client</th>
                                 <th>TacheType</th>
+                                <th>montant</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -58,6 +59,7 @@
                                     <td>{{ contrat.dateDebut }}</td>
                                     <td>{{ contrat.client }}</td>
                                     <td>{{ contrat.tacheType }}</td>
+                                    <td>{{ contrat.montant }}</td>
 
                                     <td class="d-flex justify-content-between align-items-center">
 

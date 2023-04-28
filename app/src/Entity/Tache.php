@@ -22,11 +22,13 @@ class Tache
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'taches')]
-    private ?periodicite $periodicite = null;
+
 
     #[ORM\OneToMany(mappedBy: 'tache', targetEntity: Contrat::class)]
     private Collection $contrats;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?periodicite $periodicite = null;
 
     public function __construct()
     {
@@ -62,17 +64,8 @@ class Tache
         return $this;
     }
 
-    public function getPeriodicite(): ?periodicite
-    {
-        return $this->periodicite;
-    }
 
-    public function setPeriodicite(?periodicite $periodicite): self
-    {
-        $this->periodicite = $periodicite;
 
-        return $this;
-    }
 
     /**
      * @return Collection<int, Contrat>
@@ -103,4 +96,19 @@ class Tache
 
         return $this;
     }
+
+    public function getPeriodicite(): ?periodicite
+    {
+        return $this->periodicite;
+    }
+
+    public function setPeriodicite(?periodicite $periodicite): self
+    {
+        $this->periodicite = $periodicite;
+
+        return $this;
+    }
+
+
 }
+
