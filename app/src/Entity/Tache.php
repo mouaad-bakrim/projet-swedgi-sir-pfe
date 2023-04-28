@@ -25,6 +25,9 @@ class Tache
     #[ORM\ManyToOne(inversedBy: 'tache')]
     private ?Periodicite $periodicite = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Tache')]
+    private ?Periodicite $periodicitees = null;
+
 
 
 
@@ -73,6 +76,18 @@ class Tache
     public function setPeriodicite(?Periodicite $periodicite): self
     {
         $this->periodicite = $periodicite;
+
+        return $this;
+    }
+
+    public function getPeriodicitees(): ?Periodicite
+    {
+        return $this->periodicitees;
+    }
+
+    public function setPeriodicitees(?Periodicite $periodicitees): self
+    {
+        $this->periodicitees = $periodicitees;
 
         return $this;
     }

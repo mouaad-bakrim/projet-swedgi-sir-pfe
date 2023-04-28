@@ -25,16 +25,14 @@ class Periodicite
     #[ORM\Column]
     private ?bool $direct = null;
 
-    #[ORM\OneToMany(mappedBy: 'periodicite', targetEntity: tache::class)]
-    private Collection $tache;
-
-
+    #[ORM\OneToMany(mappedBy: 'periodicitees', targetEntity: Tache::class)]
+    private Collection $Tache;
 
     public function __construct()
     {
-        $this->taches = new ArrayCollection();
-        $this->tache = new ArrayCollection();
+        $this->Tache = new ArrayCollection();
     }
+
 
 
     public function getId(): ?int
@@ -81,51 +79,32 @@ class Periodicite
     /**
      * @return Collection<int, Tache>
      */
-    public function getTaches(): Collection
-    {
-        return $this->taches;
-    }
-
-    /**
-     * @return Collection<int, tache>
-     */
     public function getTache(): Collection
     {
-        return $this->tache;
+        return $this->Tache;
     }
 
-    public function addTache(tache $tache): self
+    public function addTache(Tache $tache): self
     {
-        if (!$this->tache->contains($tache)) {
-            $this->tache->add($tache);
-            $tache->setPeriodicite($this);
+        if (!$this->Tache->contains($tache)) {
+            $this->Tache->add($tache);
+            $tache->setPeriodicitees($this);
         }
 
         return $this;
     }
 
-    public function removeTache(tache $tache): self
+    public function removeTache(Tache $tache): self
     {
-        if ($this->tache->removeElement($tache)) {
+        if ($this->Tache->removeElement($tache)) {
             // set the owning side to null (unless already changed)
-            if ($tache->getPeriodicite() === $this) {
-                $tache->setPeriodicite(null);
+            if ($tache->getPeriodicitees() === $this) {
+                $tache->setPeriodicitees(null);
             }
         }
 
         return $this;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
