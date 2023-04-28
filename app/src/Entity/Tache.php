@@ -22,6 +22,12 @@ class Tache
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
+    #[ORM\ManyToOne(inversedBy: 'taches')]
+    private ?Periodicite $Periodicite = null;
+
+/*    #[ORM\ManyToOne(inversedBy: 'tache')]
+    private ?Periodicite $periodicite = null;
+*/
 
 /*
     #[ORM\OneToMany(mappedBy: 'tache', targetEntity: Contrat::class)]
@@ -110,5 +116,21 @@ class Tache
     }
 
 */
+
+public function getPeriodicite(): ?Periodicite
+{
+    return $this->periodicite;
+}
+
+public function setPeriodicite(?Periodicite $periodicite): self
+{
+    $this->periodicite = $periodicite;
+
+    return $this;
+}
+    public function __toString()
+    {
+        return $this ->designation;
+    }
 }
 
