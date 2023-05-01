@@ -44,7 +44,11 @@ class Contrat
     private ?tache $tache = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $datedebut = null;
+    private ?\DateTimeInterface $dateDebut = null;
+
+
+
+
 
     public function getId(): ?int
     {
@@ -96,15 +100,24 @@ class Contrat
         return $this ->montant;
     }
 
-    public function getDatedebut(): ?\DateTimeInterface
+    public function getDateDebut(): ?\DateTimeInterface
     {
-        return $this->datedebut;
+        return $this->dateDebut;
     }
 
-    public function setDatedebut(\DateTimeInterface $datedebut): self
+    public function setDateDebut(\DateTimeInterface $dateDebut): self
     {
-        $this->datedebut = $datedebut;
+        $this->dateDebut = $dateDebut;
 
         return $this;
     }
+
+
+
+
+
+
+
+
+
 }

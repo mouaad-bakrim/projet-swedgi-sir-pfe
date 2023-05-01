@@ -43,7 +43,7 @@
                         <table id="myTable-laundry" class="table table-bordered table-hover table-striped">
                             <thead>
                             <tr>
-                                <th></th>
+                                <th>id</th>
                                 <th>Date Debut</th>
                                 <th>Client</th>
                                 <th>TacheType</th>
@@ -54,8 +54,7 @@
 
                             {% for contrat in contrats %}
                                 <tr align="center">
-                                    <td><input type="checkbox" name="categorie[]" value="{{ contrat.id }}"></td>
-                                    <td>{{ loop.index }}</td>
+                                    <td>{{ contrat.id }}</td>
                                     <td>{{ contrat.dateDebut |  date('d/m/Y')}}</td>
                                     <td>{{ contrat.client }}</td>
                                     <td>{{ contrat.tacheType }}</td>

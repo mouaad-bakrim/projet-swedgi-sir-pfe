@@ -22,7 +22,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">contrat</h3>
                     <div class="box-tools pull-right">
-                        <a href="{{ path('contrat') }}" >
+                        <a href="{{ path('contrat') }}">
                             <i class="fa fa-times"></i>
                         </a>
                     </div>
@@ -30,35 +30,46 @@
                 <section class="content">
 
                     <div class="row">
-
-                        <label class="control-label col-sm-2" for=""> dateDebut :</label>
-                        <div class="col-sm-10">
-                            <p> {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control',  'placeholder':'tache Type'}}) }}</p>
+                        <div class="form-group col-sm-2">
+                            <label class="control-label" for="dateDebut">Date :</label>
                         </div>
-                        <label class="control-label col-sm-2" for="">client :</label>
-                        <div class="col-sm-10">
-                            <p>{{ form_widget(form.client, {'attr': {'class': 'form-control',  'placeholder':'duree'}}) }}</p>
+                        <div class="form-group col-sm-4">
+                            {{ form_widget(form.dateDebut.year, {'attr': {'class': 'form-control', 'placeholder': 'YYYY'}}) }}
                         </div>
-                        <label class="control-label col-sm-2" for="">tacheType :</label>
-                        <div class="col-sm-10">
-                            <p>{{ form_widget(form.tacheType, {'attr': {'class': 'form-control',  'placeholder':'duree'}}) }}</p>
-                        </div>   <label class="control-label col-sm-2" for="">montant :</label>
-                        <div class="col-sm-10">
-                            <p>{{ form_widget(form.montant, {'attr': {'class': 'form-control',  'placeholder':'montant'}}) }}</p>
+                        <div class="form-group col-sm-3">
+                            {{ form_widget(form.dateDebut.month, {'attr': {'class': 'form-control', 'placeholder': 'MM'}}) }}
                         </div>
-
-
-
-                        <div class="card-footer col-sm-4 text-center">
-                            <button type="submit" class="btn btn-primary">Validé</button>
-
-
+                        <div class="form-group col-sm-3">
+                            {{ form_widget(form.dateDebut.day, {'attr': {'class': 'form-control', 'placeholder': 'DD'}}) }}
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label class="control-label" for="client">Client :</label>
+                        </div>
+                        <div class="form-group col-sm-10">
+                            {{ form_widget(form.client, {'attr': {'class': 'form-control', 'placeholder':'Client'}}) }}
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label class="control-label" for="tacheType">Type de tâche :</label>
+                        </div>
+                        <div class="form-group col-sm-10">
+                            {{ form_widget(form.tacheType, {'attr': {'class': 'form-control', 'placeholder':'Type de tâche'}}) }}
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label class="control-label" for="montant">Montant :</label>
+                        </div>
+                        <div class="form-group col-sm-10">
+                            {{ form_widget(form.montant, {'attr': {'class': 'form-control', 'placeholder':'Montant'}}) }}
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <button type="submit" class="btn btn-primary">Valider</button>
                         </div>
                     </div>
+
                 </section>
             </div>
         </section>
     </div>
 
     {{ form_end(form) }}
+
 {% endblock %}

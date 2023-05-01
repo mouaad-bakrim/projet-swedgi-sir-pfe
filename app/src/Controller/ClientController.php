@@ -37,6 +37,7 @@ class ClientController extends AbstractController
     #[Route('/add/client', name: 'client_add')]
     public function add(Request $request): Response
     {
+
         $client = new Client();
         $form = $this->createForm(ClientType::class, $client);
         $form->handleRequest($request);
@@ -47,10 +48,8 @@ class ClientController extends AbstractController
             $this->entityManager->persist($client);
             $this->entityManager->flush();
 
-            $this->addFlash(
-                'success',
-                'Your client was saved'
-            );
+
+            $this->addFlash('success', 'Client ajouté avec succès');
 
             return $this->redirectToRoute('client');
         }
@@ -58,6 +57,7 @@ class ClientController extends AbstractController
         return $this->renderForm('client/create.html.twig', [
             'form' => $form,
         ]);
+
     }
 
     #[Route('/client/edit/{id}', name: 'client_edit')]

@@ -144,6 +144,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/phenx/php-font-lib" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/phenx/php-svg-lib" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/templating" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/workflow" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

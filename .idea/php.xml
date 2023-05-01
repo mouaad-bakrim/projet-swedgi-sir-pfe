@@ -147,6 +147,7 @@
       <path value="$PROJECT_DIR$/app/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/app/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/templating" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/workflow" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
