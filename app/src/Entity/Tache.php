@@ -25,6 +25,15 @@ class Tache
     #[ORM\ManyToOne(inversedBy: 'tache')]
     private ?Periodicite $periodicite = null;
 
+    #[ORM\OneToMany(mappedBy: 'tache', targetEntity: Periodicite::class)]
+    private Collection $periodicites;
+
+    public function __construct()
+    {
+        $this->periodicites = new ArrayCollection();
+    }
+
+
 
 
 
@@ -76,6 +85,37 @@ class Tache
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Periodicite>
+     */
+    public function getPeriodicites(): Collection
+    {
+        return $this->periodicites;
+    }
+
+    public function addPeriodicite(Periodicite $periodicite): self
+    {
+        if (!$this->periodicites->contains($periodicite)) {
+            $this->periodicites->add($periodicite);
+            $periodicite->setTache($this);
+        }
+
+        return $this;
+    }
+
+    public function removePeriodicite(Periodicite $periodicite): self
+    {
+        if ($this->periodicites->removeElement($periodicite)) {
+            // set the owning side to null (unless already changed)
+            if ($periodicite->getTache() === $this) {
+                $periodicite->setTache(null);
+            }
+        }
+
+        return $this;
+    }
+
 
 
 }

@@ -13,7 +13,7 @@ class PeriodiciteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('designation')
+            ->add('tacheType')
             ->add('duree', ChoiceType::class, [
                 'choices'  => [
                     '1/12' => '1/12',

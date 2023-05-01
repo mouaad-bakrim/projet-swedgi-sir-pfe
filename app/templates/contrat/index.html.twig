@@ -56,7 +56,7 @@
                                 <tr align="center">
                                     <td><input type="checkbox" name="categorie[]" value="{{ contrat.id }}"></td>
                                     <td>{{ loop.index }}</td>
-                                    <td>{{ contrat.dateDebut }}</td>
+                                    <td>{{ contrat.dateDebut |  date('d/m/Y')}}</td>
                                     <td>{{ contrat.client }}</td>
                                     <td>{{ contrat.tacheType }}</td>
                                     <td>{{ contrat.montant }}</td>
