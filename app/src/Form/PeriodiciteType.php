@@ -13,12 +13,30 @@ class PeriodiciteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('tacheType')
+
+            ->add('designation', ChoiceType::class, [
+                'choices'  => [
+                    'add Tache' => 'add Tache',
+                    'CNSS' => 'CNSS',
+                    'salaire' => 'salaire',
+                    'TVA' => 'PP',
+                    'IR' => 'IR',
+                    'Bilan' => 'Bilan',
+                    'taxeProfessionnelle' => 'taxeProfessionnelle',
+                    'livreCoteParaphe' => 'livreCoteParaphe',
+                    'tenueDeComptabilite' => 'tenueDeComptabilite',
+                    'revision' => 'revision',
+                    'saisie' => 'saisie',
+                    'acompteIs' => 'acompteIs',
+                    'autre' => 'autre',
+                    'transformationPP' => 'transformationPP',
+                ],
+            ])
             ->add('duree', ChoiceType::class, [
                 'choices'  => [
-                    '1/12' => '1/12',
-                    '1/4' => '1/4',
-                    '1' => '1',
+                    'Mensuel' => 'Mensuel',
+                    'Trimestriel' => 'Trimestriel',
+                    'Annuel' => 'Annuel',
                 ],
             ])
         ;

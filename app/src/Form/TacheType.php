@@ -12,25 +12,8 @@ class TacheType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('tacheType')
             ->add('description')
-            ->add('designation', ChoiceType::class, [
-                'choices'  => [
-                    'add Tache' => 'add Tache',
-                    'CNSS' => 'CNSS',
-                    'salaire' => 'salaire',
-                    'TVA' => 'PP',
-                    'IR' => 'IR',
-                    'Bilan' => 'Bilan',
-                    'taxeProfessionnelle' => 'taxeProfessionnelle',
-                    'livreCoteParaphe' => 'livreCoteParaphe',
-                    'tenueDeComptabilite' => 'tenueDeComptabilite',
-                    'revision' => 'revision',
-                    'saisie' => 'saisie',
-                    'acompteIs' => 'acompteIs',
-                    'autre' => 'autre',
-                    'transformationPP' => 'transformationPP',
-                ],
-            ])
 
         ;
     }

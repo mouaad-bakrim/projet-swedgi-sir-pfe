@@ -16,10 +16,14 @@
             <h1>
                 <small>Welcome Administrator!</small>
             </h1>
+
+
         </section>
+
 
         <!-- Main content -->
         <section class="content">
+
 
             <!-- Default box -->
             <div class="box">
@@ -43,40 +47,49 @@
                         Delete
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </button>
+                    {% for flash_message in app.session.flashbag.get('success') %}
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 pull-right">
+                            <div class="alert alert-dismissible alert-success">
+                                <button type="button" class="close" data-dismiss="alert">x</button>
+                                <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
+                            </div>
+                            <script>
+                                // Automatically close the alert after 5 seconds
+                                setTimeout(function() {
+                                    $(".alert").alert('close');
+                                }, 2000);
+                            </script>
+                        </div>
+                    {% endfor %}
 
 
+                    {% for flash_message in app.session.flashbag.get('delete') %}
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 pull-right">
+                            <div class="alert alert-dismissible alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">x</button>
+                                <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
+                            </div>
+                            <script>
+                                // Automatically close the alert after 5 seconds
+                                setTimeout(function() {
+                                    $(".alert").alert('close');
+                                }, 2000);
+                            </script>
+                        </div>
+                    {% endfor %}
                     <div id="table-laundry"></div>
                 </div><!-- /.box-body -->
                 <div class="box-footer">
                     <!-- Add -->
 
+
+
+
                     <!---fin---->
-                    {% for flash_message in app.session.flashbag.get('success') %}
-                        <div class="alert alert-dismissible alert-info">
-                            <button type="button" class="close" data-dismiss="alert">x</button>
-                            <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
-                        </div>
-                        <script>
-                            // Automatically close the alert after 5 seconds
-                            setTimeout(function() {
-                                $(".alert").alert('close');
-                            }, 2000);
-                        </script>
-                    {% endfor %}
 
 
-                    {% for flash_message in app.session.flashbag.get('delete') %}
-                        <div class="alert alert-dismissible alert-danger">
-                            <button type="button" class="close" data-dismiss="alert">x</button>
-                            <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
-                        </div>
-                        <script>
-                            // Automatically close the alert after 5 seconds
-                            setTimeout(function() {
-                                $(".alert").alert('close');
-                            }, 2000);
-                        </script>
-                    {% endfor %}
+
+
 
 
 
