@@ -98,7 +98,7 @@ class CategorieController extends AbstractController
         $this->entityManager->remove($categorie);
         $this->entityManager->flush();
         $this->addFlash(
-            'success',
+            'delete',
             'Your categorie was removed'
         );
 
