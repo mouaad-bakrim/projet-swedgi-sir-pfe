@@ -19,7 +19,7 @@ class PeriodiciteType extends AbstractType
                     'add Tache' => 'add Tache',
                     'CNSS' => 'CNSS',
                     'salaire' => 'salaire',
-                    'TVA' => 'PP',
+                    'TVA' => 'TVA',
                     'IR' => 'IR',
                     'Bilan' => 'Bilan',
                     'taxeProfessionnelle' => 'taxeProfessionnelle',

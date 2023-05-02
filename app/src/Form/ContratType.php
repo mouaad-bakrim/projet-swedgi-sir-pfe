@@ -12,10 +12,10 @@ class ContratType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('montant')
             ->add('dateDebut')
             ->add('client')
-            ->add('tacheType')
-            ->add('montant')
+            ->add('Tache')
         ;
     }
 

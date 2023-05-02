@@ -10,91 +10,88 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: PeriodiciteRepository::class)]
 class Periodicite
 {
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $designation = null;
 
-
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $duree = null;
 
+    #[ORM\OneToMany(mappedBy: 'Periodicite', targetEntity: Tache::class)]
+    private Collection $taches;
 
-    #[ORM\ManyToOne(inversedBy: 'periodicites')]
-    private ?Tache $tacheType = null;
-
-    /**
-     * @return Tache|null
-     */
-    public function getTacheType(): ?Tache
+    public function __construct()
     {
-        return $this->tacheType;
+        $this->taches = new ArrayCollection();
     }
 
-    /**
-     * @param Tache|null $tacheType
-     */
-    public function setTacheType(?Tache $tacheType): void
+    public function __toString()
     {
-        $this->tacheType = $tacheType;
+        return $this ->designation;
     }
-
-    #[ORM\ManyToOne(inversedBy: 'periodicites')]
-    private ?tache $tache = null;
-
-
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    public function getDesignation(): ?string
+    {
+        return $this->designation;
+    }
 
+    public function setDesignation(string $designation): self
+    {
+        $this->designation = $designation;
 
+        return $this;
+    }
 
     public function getDuree(): ?string
     {
         return $this->duree;
     }
 
-    public function setDuree(?string $duree): self
+    public function setDuree(string $duree): self
     {
         $this->duree = $duree;
 
         return $this;
     }
 
-    public function getTache(): ?tache
+    /**
+     * @return Collection<int, Tache>
+     */
+    public function getTaches(): Collection
     {
-        return $this->tache;
+        return $this->taches;
     }
 
-    public function setTache(?tache $tache): self
+    public function addTach(Tache $tach): self
     {
-        $this->tache = $tache;
+        if (!$this->taches->contains($tach)) {
+            $this->taches->add($tach);
+            $tach->setPeriodicite($this);
+        }
 
         return $this;
     }
 
+    public function removeTach(Tache $tach): self
+    {
+        if ($this->taches->removeElement($tach)) {
+            // set the owning side to null (unless already changed)
+            if ($tach->getPeriodicite() === $this) {
+                $tach->setPeriodicite(null);
+            }
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return $this;
+    }
 
 
 

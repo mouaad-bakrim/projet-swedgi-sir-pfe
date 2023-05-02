@@ -16,24 +16,20 @@ class Tache
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $designation = null;
-
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'tache')]
-    private ?Periodicite $periodicite = null;
 
-    #[ORM\OneToMany(mappedBy: 'tache', targetEntity: Periodicite::class)]
-    private Collection $periodicites;
+    #[ORM\ManyToOne(inversedBy: 'taches')]
+    private ?Periodicite $Periodicite = null;
+
+    #[ORM\OneToMany(mappedBy: 'Tache', targetEntity: Contrat::class)]
+    private Collection $contrats;
 
     public function __construct()
     {
-        $this->periodicites = new ArrayCollection();
+        $this->contrats = new ArrayCollection();
     }
-
-
 
 
 
@@ -42,81 +38,60 @@ class Tache
         return $this->id;
     }
 
-    public function getDesignation(): ?string
-    {
-        return $this->designation;
-    }
-
-    public function setDesignation(?string $designation): self
-    {
-        $this->designation = $designation;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription(string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-
-
-
-    public function __toString()
-    {
-        return $this ->designation;
-    }
-
     public function getPeriodicite(): ?Periodicite
     {
-        return $this->periodicite;
+        return $this->Periodicite;
     }
-
-    public function setPeriodicite(?Periodicite $periodicite): self
+    public function setPeriodicite(?Periodicite $Periodicite): self
     {
-        $this->periodicite = $periodicite;
+        $this->Periodicite = $Periodicite;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Periodicite>
+     * @return Collection<int, Contrat>
      */
-    public function getPeriodicites(): Collection
+    public function getContrats(): Collection
     {
-        return $this->periodicites;
+        return $this->contrats;
     }
 
-    public function addPeriodicite(Periodicite $periodicite): self
+    public function addContrat(Contrat $contrat): self
     {
-        if (!$this->periodicites->contains($periodicite)) {
-            $this->periodicites->add($periodicite);
-            $periodicite->setTache($this);
+        if (!$this->contrats->contains($contrat)) {
+            $this->contrats->add($contrat);
+            $contrat->setTache($this);
         }
 
         return $this;
     }
 
-    public function removePeriodicite(Periodicite $periodicite): self
+    public function removeContrat(Contrat $contrat): self
     {
-        if ($this->periodicites->removeElement($periodicite)) {
+        if ($this->contrats->removeElement($contrat)) {
             // set the owning side to null (unless already changed)
-            if ($periodicite->getTache() === $this) {
-                $periodicite->setTache(null);
+            if ($contrat->getTache() === $this) {
+                $contrat->setTache(null);
             }
         }
 
         return $this;
     }
-
-
-
+    public function __toString()
+    {
+        return $this ->description;
+    }
 }
-
