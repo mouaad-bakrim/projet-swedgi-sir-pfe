@@ -43,7 +43,7 @@
 }
 
 .skin-blue .main-header .logo {
-    background-color: #1a2226;
+    background-color: #424548;
     color: #fff;
     border-bottom: 0 solid transparent
 }
@@ -85,7 +85,7 @@
 
 .skin-blue .sidebar-menu > li > .treeview-menu {
     margin: 0 1px;
-    background: #2c3b41
+    background: #3e4041
 }
 
 .skin-blue .sidebar a {

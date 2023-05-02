@@ -26,11 +26,15 @@ class ClientController extends AbstractController
     #[Route('/client', name: 'client')]
     public function index(): Response
     {
+
         $clients = $this->clientRepository->findAll();
         return $this->render('client/index.html.twig', [
             'clients' => $clients,
+
         ]);
+
     }
+
 
 //new
 

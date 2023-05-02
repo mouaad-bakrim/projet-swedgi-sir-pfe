@@ -42,8 +42,7 @@
                         <a href="{{ path('categorie_store') }}" class="btn btn-sm btn-success btn-sm">Add Categorie
                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
 
-                    <button id="delLaun" type="button" class="btn btn-danger btn-sm">
-
+                    <button id="delLaun" type="button" class="btn btn-danger btn-sm" disabled>
                         Delete
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </button>
@@ -109,7 +108,7 @@
 
                             {% for categorie in categories %}
                                 <tr align="center">
-                                    <td><input type="checkbox" name="categorie[]" value="{{ categorie.id }}"></td>
+                                    <td><input class="checkbox" type="checkbox" value="{{ categorie.id }}"></td>
                                     <td>{{ loop.index }}</td>
                                     <td>{{ categorie.libellee }}</td>
                                     <td>{{ categorie.description }}</td>
@@ -143,4 +142,12 @@
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
+    <script>
+        $(document).ready(function(){
+            // enable delete button when one or more checkboxes are checked
+            $(".checkbox").click(function(){
+                $("#delLaun").prop("disabled", $(".checkbox:checked").length == 0);
+            });
+        });
+    </script>
             {% endblock %}
