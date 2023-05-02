@@ -31,14 +31,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-  /*  #[ORM\OneToMany(mappedBy: 'user', targetEntity: client::class)]
+ /*   #[ORM\OneToMany(mappedBy: 'user', targetEntity: client::class)]
     private Collection $client;
 
     public function __construct()
     {
         $this->client = new ArrayCollection();
-    } */
-
+    }
+*/
     public function getId(): ?int
     {
         return $this->id;
@@ -107,6 +107,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getClient(): Collection
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param Collection $client
+     */
+    public function setClient(Collection $client): void
+    {
+        $this->client = $client;
     }
 
 

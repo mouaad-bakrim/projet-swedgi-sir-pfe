@@ -37,17 +37,12 @@ class Contrat
     #[ORM\ManyToOne(inversedBy: 'Client')]
     private ?Client $client = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Contrat')]
-    private ?Tache $tacheType = null;
-
-    #[ORM\ManyToOne(inversedBy: 'contrats')]
-    private ?tache $tache = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateDebut = null;
 
-
-
+    #[ORM\ManyToOne(inversedBy: 'contrats')]
+    private ?Tache $Tache = null;
 
 
     public function getId(): ?int
@@ -71,29 +66,8 @@ class Contrat
         return $this;
     }
 
-    public function getTacheType(): ?Tache
-    {
-        return $this->tacheType;
-    }
 
-    public function setTacheType(?Tache $tacheType): self
-    {
-        $this->tacheType = $tacheType;
 
-        return $this;
-    }
-
-    public function getTache(): ?tache
-    {
-        return $this->tache;
-    }
-
-    public function setTache(?tache $tache): self
-    {
-        $this->tache = $tache;
-
-        return $this;
-    }
 
     public function __toString()
     {
@@ -112,11 +86,17 @@ class Contrat
         return $this;
     }
 
+    public function getTache(): ?Tache
+    {
+        return $this->Tache;
+    }
 
+    public function setTache(?Tache $Tache): self
+    {
+        $this->Tache = $Tache;
 
-
-
-
+        return $this;
+    }
 
 
 
