@@ -15,9 +15,9 @@ class Periodicite
     #[ORM\Column]
     private ?int $id = null;
 
-/*    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255)]
     private ?string $designation = null;
-*/
+
     #[ORM\Column(length: 255)]
     private ?string $duree = null;
 
@@ -29,17 +29,17 @@ class Periodicite
         $this->taches = new ArrayCollection();
     }
 
- /*   public function __toString()
+    public function __toString()
     {
         return $this ->designation;
     }
-*/
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-  /*  public function getDesignation(): ?string
+    public function getDesignation(): ?string
     {
         return $this->designation;
     }
@@ -50,7 +50,7 @@ class Periodicite
 
         return $this;
     }
-*/
+
     public function getDuree(): ?string
     {
         return $this->duree;
