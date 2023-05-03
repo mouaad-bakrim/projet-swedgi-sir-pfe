@@ -26,6 +26,12 @@ class Tache
     #[ORM\OneToMany(mappedBy: 'Tache', targetEntity: Contrat::class)]
     private Collection $contrats;
 
+    #[ORM\ManyToOne(inversedBy: 'taches')]
+    private ?Task $Task = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $designation = null;
+
     public function __construct()
     {
         $this->contrats = new ArrayCollection();
@@ -92,6 +98,30 @@ class Tache
     }
     public function __toString()
     {
-        return $this ->description;
+        return $this ->designation;
+    }
+
+    public function getTask(): ?Task
+    {
+        return $this->Task;
+    }
+
+    public function setTask(?Task $Task): self
+    {
+        $this->Task = $Task;
+
+        return $this;
+    }
+
+    public function getDesignation(): ?string
+    {
+        return $this->designation;
+    }
+
+    public function setDesignation(string $designation): self
+    {
+        $this->designation = $designation;
+
+        return $this;
     }
 }

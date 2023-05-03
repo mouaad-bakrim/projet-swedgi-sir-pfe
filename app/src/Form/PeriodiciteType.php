@@ -16,7 +16,7 @@ class PeriodiciteType extends AbstractType
 
             ->add('designation', ChoiceType::class, [
                 'choices'  => [
-                    'add Tache' => 'add Tache',
+                    'add Tache' => 'tache',
                     'CNSS' => 'CNSS',
                     'salaire' => 'salaire',
                     'TVA' => 'TVA',
