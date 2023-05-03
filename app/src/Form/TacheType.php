@@ -25,8 +25,23 @@ class TacheType extends AbstractType
             'direct'=>'direct'
         ],
     ])
-            ->add('Periodicite', EntityType::class, [
-                'class' => periodicite::class
+            ->add('Periodicite', ChoiceType::class, [
+                'choices'  => [
+                    'add Tache' => 'tache',
+                    'CNSS' => 'CNSS',
+                    'salaire' => 'salaire',
+                    'TVA' => 'TVA',
+                    'IR' => 'IR',
+                    'Bilan' => 'Bilan',
+                    'taxeProfessionnelle' => 'taxeProfessionnelle',
+                    'livreCoteParaphe' => 'livreCoteParaphe',
+                    'tenueDeComptabilite' => 'tenueDeComptabilite',
+                    'revision' => 'revision',
+                    'saisie' => 'saisie',
+                    'acompteIs' => 'acompteIs',
+                    'autre' => 'autre',
+                    'transformationPP' => 'transformationPP',
+                ],
             ])
             ->add('Task')
         ;
