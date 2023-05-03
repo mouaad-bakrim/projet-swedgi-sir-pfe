@@ -42,13 +42,14 @@
                         <a href="{{ path('categorie_store') }}" class="btn btn-sm btn-success btn-sm">Add Categorie
                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
 
-                    <button id="delLaun" type="button" class="btn btn-danger btn-sm" disabled>
+                    <button id="delLaun" type="button" class="btn btn-danger btn-sm">
+
                         Delete
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </button>
                     {% for flash_message in app.session.flashbag.get('success') %}
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3 pull-right">
-                            <div class="alert alert-dismissible alert-success">
+                            <div class="alert alert-dismissible alert-danger">
                                 <button type="button" class="close" data-dismiss="alert">x</button>
                                 <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
                             </div>
@@ -63,13 +64,12 @@
 
 
                     {% for flash_message in app.session.flashbag.get('delete') %}
-                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 pull-right">
+                        <div class="col-xs-6 col-sm-6 col-sm-offset-3 pull-right">
                             <div class="alert alert-dismissible alert-danger">
                                 <button type="button" class="close" data-dismiss="alert">x</button>
                                 <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
                             </div>
                             <script>
-                                // Automatically close the alert after 5 seconds
                                 setTimeout(function() {
                                     $(".alert").alert('close');
                                 }, 2000);
@@ -108,7 +108,7 @@
 
                             {% for categorie in categories %}
                                 <tr align="center">
-                                    <td><input class="checkbox" type="checkbox" value="{{ categorie.id }}"></td>
+                                    <td><input type="checkbox" name="categorie[]" value="{{ categorie.id }}"></td>
                                     <td>{{ loop.index }}</td>
                                     <td>{{ categorie.libellee }}</td>
                                     <td>{{ categorie.description }}</td>
@@ -142,12 +142,4 @@
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
-    <script>
-        $(document).ready(function(){
-            // enable delete button when one or more checkboxes are checked
-            $(".checkbox").click(function(){
-                $("#delLaun").prop("disabled", $(".checkbox:checked").length == 0);
-            });
-        });
-    </script>
             {% endblock %}

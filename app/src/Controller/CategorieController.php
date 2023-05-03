@@ -92,14 +92,16 @@ class CategorieController extends AbstractController
 
     }
 
+
+
     #[Route('/categorie/delete/{id}', name: 'categorie_delete')]
     public function delete(Categorie $categorie): Response
     {
         $this->entityManager->remove($categorie);
         $this->entityManager->flush();
         $this->addFlash(
-            'delete',
-            'Your categorie was removed'
+            'success',
+            'Your client was removed'
         );
 
         return $this->redirectToRoute('categorie');
@@ -107,45 +109,6 @@ class CategorieController extends AbstractController
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* #[Route('/categorie/show/{id}', name: 'categorie_show')]
-     public function show(Categorie $categorie, Request $request): Response
-     {
-
-         $form = $this->createForm(CategorieType::class, $categorie);
-         $form->handleRequest($request);
-
-         if ($form->isSubmitted() && $form->isValid()) {
-             $categorie = $form->getData();
-
-             $this->entityManager->persist($categorie);
-             $this->entityManager->flush();
-
-             $this->addFlash(
-                 'success',
-                 'You can see categories'
-             );
-
-             return $this->redirectToRoute('categorie');
-         }
-
-         return $this->renderForm('categorie/show.html.twig', [
-             'form' => $form,
-         ]);
-
-     }*/
 
     //show list
 #[Route('/categorie/show/{id}', name: 'categorie_show')]
