@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Contrat;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,10 @@ class ContratType extends AbstractType
     {
         $builder
             ->add('montant')
-            ->add('dateDebut')
+            ->add('dateDebut', DateType::class, [
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+            ])
             ->add('client')
             ->add('Tache')
         ;

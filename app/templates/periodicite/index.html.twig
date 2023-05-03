@@ -58,8 +58,7 @@
                     <div class="table-responsive">
                         <table id="myTable-laundry" class="table table-bordered table-hover table-striped">
                             <thead>
-                            <tr>
-                                <th></th>
+                            <tr align="center">
                                 <th>id</th>
                                 <th>designation</th>
                                 <th>Duree</th>
@@ -70,7 +69,6 @@
 
                             {% for periodicite in periodicites %}
                                 <tr align="center">
-                                    <td><input type="checkbox" name="periodicite[]" value="{{ periodicite.id }}"></td>
                                     <td>{{ loop.index }}</td>
                                     <td>{{ periodicite.designation }}</td>
                                     <td>{{ periodicite.duree }}</td>

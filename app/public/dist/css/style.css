@@ -1,6 +1,7 @@
 .skin-blue .main-header .navbar {
-    background-color: #1a2226
+    background-color: #009688
 }
+
 
 .skin-blue .main-header .navbar .nav > li > a {
     color: #fff
@@ -22,13 +23,30 @@
 
 .skin-blue .main-header .navbar .sidebar-toggle {
     color: #fff
+}.skin-blue .main-header .navbar .sidebar-toggle:hover{
+    color: #000
 }
 
 .skin-blue .main-header .navbar .sidebar-toggle:hover {
-    background-color: #367fa9
+    background-color: #fff
+}
+.app-nav__item{
+    margin-right: 30px;
+    color:#fff;
+}
+.usee{
+    margin-top: 15px;
 }
 
 @media (max-width: 767px) {
+    .app-nav__item{
+        margin-right: 20px;
+        color:#fff;
+    }
+    .usee{
+        margin-top: 10px;
+    }
+
     .skin-blue .main-header .navbar .dropdown-menu li.divider {
         background-color: rgba(220, 2, 2, 0.10)
     }
@@ -43,13 +61,14 @@
 }
 
 .skin-blue .main-header .logo {
-    background-color: #232425;
+    background-color: #009688;
     color: #fff;
     border-bottom: 0 solid transparent
 }
 
 .skin-blue .main-header .logo:hover {
-    background-color: #357ca5
+    background-color: #1a2226;
+    color: #000;
 }
 
 .skin-blue .main-header li.user-header {

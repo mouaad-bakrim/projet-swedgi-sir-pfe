@@ -57,6 +57,7 @@
                                 <th>Client</th>
                                 <th>TacheType</th>
                                 <th>montant</th>
+                                <th>actions</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -66,9 +67,8 @@
                                     <td>{{ contrat.id }}</td>
                                     <td>{{ contrat.dateDebut |  date('d/m/Y')}}</td>
                                     <td>{{ contrat.client }}</td>
-
+                                    <td>{{ contrat.Tache }}</td>
                                     <td>{{ contrat.montant }}</td>
-
                                     <td class="d-flex justify-content-between align-items-center">
 
                                         <a href="{{ path('contrat_add',{id: contrat.id}) }}"  class="btn btn-warning btn-xs">
