@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block body %}
 
     <div class="content-wrapper">
@@ -15,25 +16,27 @@
             <section class="content">
                 <div class="col-md-6 col-lg-3">
                     <div class="info-box bg-light shadow" style="border-radius:10px;">
-                        <span class="info-box-icon elevation-1" style="background-color: #009688; border-radius:10px;"><i class="icon fa fa-users fa-x"></i></span>
+                        <span class="info-box-icon elevation-1"
+                              style="background-color: #009688; border-radius:10px;"><i
+                                    class="icon fa fa-users fa-x"></i></span>
                         <div class="info-box-content">
                             <h4 class="info-box-text text-bold">Client</h4>
 
-                             <h4 class="text-bold"> {{ countClients }}</h4>
+                            <h4 class="text-bold"> {{ countClients }}</h4>
                         </div>
                     </div>
                 </div>
 
 
-
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box bg-light shadow"  style="border-radius:10px;">
-                        <span class="info-box-icon bg-blue elevation-1"  style="border-radius:10px;"><i class="fa fa-th-list"></i></span>
+                    <div class="info-box bg-light shadow" style="border-radius:10px;">
+                        <span class="info-box-icon bg-blue elevation-1" style="border-radius:10px;"><i
+                                    class="fa fa-th-list"></i></span>
 
                         <div class="info-box-content">
                             <h4 class="info-box-text text-bold">Categorie</h4>
 
-                                <h4 class="text-bold"> {{ countCategories }}</h4>
+                            <h4 class="text-bold"> {{ countCategories }}</h4>
 
                         </div>
                         <!-- /.info-box-content -->
@@ -42,39 +45,116 @@
                 </div>
 
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box bg-light shadow"  style="border-radius:10px;">
-                        <span class="info-box-icon bg-red elevation-1"  style="border-radius:10px;"><i class="fa fa-undo"></i></span>
+                    <div class="info-box bg-light shadow" style="border-radius:10px;">
+                        <span class="info-box-icon bg-red elevation-1" style="border-radius:10px;"><i
+                                    class="fa fa-undo"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text text-bold">Return</span>
-                            <span class="info-box-number text-right">
-                1            </span>
+                            <h4 class="info-box-text text-bold">Reteurn</h4>
+
+                            <h4 class="text-bold"> {{ countCategories }}</h4>
+
                         </div>
-                        <!-- /.info-box-content -->
+
                     </div>
                     <!-- /.info-box -->
                 </div>
 
 
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box bg-light shadow"  style="border-radius:10px;">
-                        <span class="info-box-icon bg-aqua elevation-1"  style="border-radius:10px;"><i class="fa fa-th-list"></i></span>
+                    <div class="info-box bg-light shadow" style="border-radius:10px;">
+                        <span class="info-box-icon bg-aqua elevation-1" style="border-radius:10px;"><i
+                                    class="fa fa-th-list"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text text-bold">Tache</span>
-                            <span class="info-box-number text-right">
-                4            </span>
+                            <h4 class="info-box-text text-bold">Tache</h4>
+
+                            <h4 class="text-bold"> {{ countCategories }}</h4>
+
                         </div>
-                        <!-- /.info-box-content -->
                     </div>
-                    <!-- /.info-box -->
-                </div>
-
-
+                    </div>
+                <main class="app-content">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-6">
+                            <div class="info-box bg-light shadow" style="border-radius:10px;">
+                            <div class="tile">
+                                <h3 class="tile-title">Monthly Sales</h3>
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6"> <div class="info-box bg-light shadow" style="border-radius:10px;">
+                            <div class="tile">
+                                <h3 class="tile-title">Support Requests</h3>
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </main>
             </section>
 
 
         </div>
+
     </div>
+
+
+    <script type="text/javascript" src="{{ asset('js/plugins/chart.js')}}"></script>
+    <script type="text/javascript">
+        var data = {
+            labels: ["January", "February", "March", "April", "May"],
+            datasets: [
+                {
+                    label: "My First dataset",
+                    fillColor: "rgba(220,220,220,0.2)",
+                    strokeColor: "rgba(220,220,220,1)",
+                    pointColor: "rgba(220,220,220,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(220,220,220,1)",
+                    data: [65, 59, 80, 81, 56]
+                },
+                {
+                    label: "My Second dataset",
+                    fillColor: "rgba(151,187,205,0.2)",
+                    strokeColor: "rgba(151,187,205,1)",
+                    pointColor: "rgba(151,187,205,1)",
+                    pointStrokeColor: "#fff",
+                    pointHighlightFill: "#fff",
+                    pointHighlightStroke: "rgba(151,187,205,1)",
+                    data: [28, 48, 40, 19, 86]
+                }
+            ]
+        };
+        var pdata = [
+            {
+                value: 300,
+                color: "#46BFBD",
+                highlight: "#5AD3D1",
+                label: "Complete"
+            },
+            {
+                value: 50,
+                color:"#F7464A",
+                highlight: "#FF5A5E",
+                label: "In-Progress"
+            }
+        ]
+
+        var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+        var lineChart = new Chart(ctxl).Line(data);
+
+        var ctxp = $("#pieChartDemo").get(0).getContext("2d");
+        var pieChart = new Chart(ctxp).Pie(pdata);
+    </script>
+
+
+
 {% endblock %}
 
