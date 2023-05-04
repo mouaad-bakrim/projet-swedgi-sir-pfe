@@ -22,7 +22,7 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Tach</h3>
                     <div class="box-tools pull-right">
-                        <a href="{{ path('app_tache') }}" >
+                        <a href="{{ path('app_typeTache') }}" >
                             <i class="fa fa-times"></i>
                         </a>
                     </div>
@@ -30,9 +30,9 @@
                 <section class="content">
 
                     <div class="row">
-                        <label class="control-label col-md-2" for="">periodicite:</label>
+                        <label class="control-label col-md-2" for="">mission:</label>
                         <div class="col-md-10">
-                            <p>{{ form_widget(form.Periodicite, {'attr': {'class': 'form-control', 'placeholder':'periodicite'}}) }}</p>
+                            <p>{{ form_widget(form.mission, {'attr': {'class': 'form-control', 'placeholder':'periodicite'}}) }}</p>
                         </div>
 
                         <label class="control-label col-md-2" for="">designation :</label>
@@ -49,9 +49,9 @@
 
                         <div class="card-footer col-sm-4 text-center">
 
-                            <a href="/tache">
-                                <button type="submit" class="btn btn-primary">Validé</button>
-                            </a>
+                            <div class="form-group col-sm-12">
+                                <button type="submit" class="btn btn-primary">Valider</button>
+                            </div>
 
 
 

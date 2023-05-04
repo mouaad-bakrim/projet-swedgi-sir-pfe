@@ -2,30 +2,18 @@
 
 namespace App\Form;
 
-use App\Entity\Periodicite;
-use App\Entity\Tache;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\TypeTache;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TacheType extends AbstractType
+class TypeTacheType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('description')
-            ->add('designation',ChoiceType::class, [
-        'choices'  => [
-            'add designation'=>'ffff',
-            'Mensuel' => 'Mensuel',
-            'Trimestriel' => 'Trimestriel',
-            'Annuel' => 'Annuel',
-            'direct'=>'direct'
-        ],
-    ])
-            ->add('Periodicite', ChoiceType::class, [
+            ->add('mission', ChoiceType::class, [
                 'choices'  => [
                     'add Tache' => 'tache',
                     'CNSS' => 'CNSS',
@@ -43,14 +31,24 @@ class TacheType extends AbstractType
                     'transformationPP' => 'transformationPP',
                 ],
             ])
-            ->add('Task')
+
+            ->add('designation',ChoiceType::class, [
+                'choices'  => [
+                    'add designation'=>'ffff',
+                    'Mensuel' => 'Mensuel',
+                    'Trimestriel' => 'Trimestriel',
+                    'Annuel' => 'Annuel',
+                    'direct'=>'direct'
+                ],
+            ])
+            ->add('description')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Tache::class,
+            'data_class' => TypeTache::class,
         ]);
     }
 }

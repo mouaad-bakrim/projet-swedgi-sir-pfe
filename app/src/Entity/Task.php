@@ -28,13 +28,10 @@ class Task
     #[ORM\ManyToOne(inversedBy: 'tasks')]
     private ?User $User = null;
 
-    #[ORM\OneToMany(mappedBy: 'Task', targetEntity: Tache::class)]
-    private Collection $taches;
 
-    public function __construct()
-    {
-        $this->taches = new ArrayCollection();
-    }
+
+
+
 
     public function getId(): ?int
     {
@@ -89,33 +86,9 @@ class Task
         return $this;
     }
 
-    /**
-     * @return Collection<int, Tache>
-     */
-    public function getTaches(): Collection
-    {
-        return $this->taches;
-    }
 
-    public function addTach(Tache $tach): self
-    {
-        if (!$this->taches->contains($tach)) {
-            $this->taches->add($tach);
-            $tach->setTask($this);
-        }
 
-        return $this;
-    }
 
-    public function removeTach(Tache $tach): self
-    {
-        if ($this->taches->removeElement($tach)) {
-            // set the owning side to null (unless already changed)
-            if ($tach->getTask() === $this) {
-                $tach->setTask(null);
-            }
-        }
 
-        return $this;
-    }
+
 }

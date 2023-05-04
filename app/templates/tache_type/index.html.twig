@@ -32,7 +32,7 @@
                 <div class="box-body">
                     <!-- Start creating your amazing application! -->
 
-                    <a href="{{ path('tache_add') }}" class="btn btn-sm btn-success btn-sm">Add Mission
+                    <a href="{{ path('typeTache_add') }}" class="btn btn-sm btn-success btn-sm">Add Mission
                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
 
 
@@ -53,7 +53,12 @@
                             <button type="button" class="close" data-dismiss="alert">x</button>
                             <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
                         </div>
-                    {% endfor %}
+                        <script>
+                            // Automatically close the alert after 5 seconds
+                            setTimeout(function() {
+                                $(".alert").alert('close');
+                            }, 2000);
+                        </script>                    {% endfor %}
 
 
 
@@ -62,24 +67,26 @@
                             <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Periodicite</th>
+                                <th>mission</th>
+                                <th>designation</th>
                                 <th>Description</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            {% for tache in taches %}
+                            {% for typeTache in typeTaches %}
                                 <tr align="center">
-                                    <td>{{ loop.index }}</td>
-
-                                    <td>{{ tache.description }}</td>
+                                    <td>{{ typeTache.id }}</td>
+                                    <td>{{ typeTache.mission }}</td>
+                                    <td>{{ typeTache.designation }}</td>
+                                    <td>{{ typeTache.description }}</td>
                                     <td class="d-flex justify-content-between align-items-center">
 
-                                        <a href="{{ path('tache_add',{id: tache.id}) }}"  class="btn btn-warning btn-xs">
+                                        <a href="{{ path('typeTache_add',{id: typeTache.id}) }}"  class="btn btn-warning btn-xs">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                         </a>
-                                        <a href="{{ path('tache_delete',{id: tache.id}) }}" class="btn btn-xs btn-danger">
+                                        <a href="{{ path('typeTache_delete',{id: typeTache.id}) }}" class="btn btn-xs btn-danger">
                                             <span class="fa fa-trash-o" aria-hidden="true"></span>
 
                                         </a>

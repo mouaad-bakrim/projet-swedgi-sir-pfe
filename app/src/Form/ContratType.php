@@ -19,7 +19,7 @@ class ContratType extends AbstractType
                 'format' => 'yyyy-MM-dd',
             ])
             ->add('client')
-            ->add('Tache')
+            ->add('TypeTache')
         ;
     }
 
