@@ -6,6 +6,7 @@ use App\Entity\Periodicite;
 use App\Entity\Tache;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,9 +16,34 @@ class TacheType extends AbstractType
     {
         $builder
             ->add('description')
-            ->add('periodicite', EntityType::class, [
-                'class' => periodicite::class
+            ->add('designation',ChoiceType::class, [
+        'choices'  => [
+            'add designation'=>'ffff',
+            'Mensuel' => 'Mensuel',
+            'Trimestriel' => 'Trimestriel',
+            'Annuel' => 'Annuel',
+            'direct'=>'direct'
+        ],
+    ])
+            ->add('Periodicite', ChoiceType::class, [
+                'choices'  => [
+                    'add Tache' => 'tache',
+                    'CNSS' => 'CNSS',
+                    'salaire' => 'salaire',
+                    'TVA' => 'TVA',
+                    'IR' => 'IR',
+                    'Bilan' => 'Bilan',
+                    'taxeProfessionnelle' => 'taxeProfessionnelle',
+                    'livreCoteParaphe' => 'livreCoteParaphe',
+                    'tenueDeComptabilite' => 'tenueDeComptabilite',
+                    'revision' => 'revision',
+                    'saisie' => 'saisie',
+                    'acompteIs' => 'acompteIs',
+                    'autre' => 'autre',
+                    'transformationPP' => 'transformationPP',
+                ],
             ])
+            ->add('Task')
         ;
     }
 

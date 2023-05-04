@@ -14,9 +14,9 @@ class PeriodiciteType extends AbstractType
     {
         $builder
 
-            ->add('designation', ChoiceType::class, [
+       /*     ->add('designation', ChoiceType::class, [
                 'choices'  => [
-                    'add Tache' => 'add Tache',
+                    'add Tache' => 'tache',
                     'CNSS' => 'CNSS',
                     'salaire' => 'salaire',
                     'TVA' => 'TVA',
@@ -31,7 +31,7 @@ class PeriodiciteType extends AbstractType
                     'autre' => 'autre',
                     'transformationPP' => 'transformationPP',
                 ],
-            ])
+            ])  */
             ->add('duree', ChoiceType::class, [
                 'choices'  => [
                     'Mensuel' => 'Mensuel',

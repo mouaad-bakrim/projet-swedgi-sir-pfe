@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Taske;
+use App\Entity\Task;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Taske>
+ * @extends ServiceEntityRepository<Task>
  *
- * @method Taske|null find($id, $lockMode = null, $lockVersion = null)
- * @method Taske|null findOneBy(array $criteria, array $orderBy = null)
- * @method Taske[]    findAll()
- * @method Taske[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Task|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Task|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Task[]    findAll()
+ * @method Task[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TaskeRepository extends ServiceEntityRepository
+class TaskRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Taske::class);
+        parent::__construct($registry, Task::class);
     }
 
-    public function save(Taske $entity, bool $flush = false): void
+    public function save(Task $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class TaskeRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Taske $entity, bool $flush = false): void
+    public function remove(Task $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class TaskeRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Taske[] Returns an array of Taske objects
+//     * @return Task[] Returns an array of Task objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class TaskeRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Taske
+//    public function findOneBySomeField($value): ?Task
 //    {
 //        return $this->createQueryBuilder('t')
 //            ->andWhere('t.exampleField = :val')
