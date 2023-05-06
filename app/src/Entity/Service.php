@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\TypeTacheRepository;
+use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: TypeTacheRepository::class)]
-class TypeTache
+#[ORM\Entity(repositoryClass: ServiceRepository::class)]
+class Service
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -24,7 +24,7 @@ class TypeTache
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\OneToMany(mappedBy: 'TypeTache', targetEntity: Contrat::class)]
+    #[ORM\OneToMany(mappedBy: 'Service', targetEntity: Contrat::class)]
     private Collection $contrats;
 
     public function __construct()
@@ -85,7 +85,7 @@ class TypeTache
     {
         if (!$this->contrats->contains($contrat)) {
             $this->contrats->add($contrat);
-            $contrat->setTypeTache($this);
+            $contrat->setservice($this);
         }
 
         return $this;
@@ -95,8 +95,8 @@ class TypeTache
     {
         if ($this->contrats->removeElement($contrat)) {
             // set the owning side to null (unless already changed)
-            if ($contrat->getTypeTache() === $this) {
-                $contrat->setTypeTache(null);
+            if ($contrat->getservice() === $this) {
+                $contrat->setservice(null);
             }
         }
 

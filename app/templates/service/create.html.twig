@@ -10,7 +10,7 @@
         <section class="content-header">
             <h1 class="text-success">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                <small>add mission</small>
+                <small>add Service</small>
             </h1>
         </section>
 
@@ -20,9 +20,9 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Tach</h3>
+                    <h3 class="box-title">Service</h3>
                     <div class="box-tools pull-right">
-                        <a href="{{ path('app_typeTache') }}" >
+                        <a href="{{ path('app_service') }}" >
                             <i class="fa fa-times"></i>
                         </a>
                     </div>
@@ -30,9 +30,9 @@
                 <section class="content">
 
                     <div class="row">
-                        <label class="control-label col-md-2" for="">mission:</label>
+                        <label class="control-label col-md-2" for="">métier:</label>
                         <div class="col-md-10">
-                            <p>{{ form_widget(form.mission, {'attr': {'class': 'form-control', 'placeholder':'periodicite'}}) }}</p>
+                            <p>{{ form_widget(form.mission, {'attr': {'class': 'form-control', 'placeholder':'métier'}}) }}</p>
                         </div>
 
                         <label class="control-label col-md-2" for="">designation :</label>

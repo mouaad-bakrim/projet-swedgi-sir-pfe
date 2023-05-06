@@ -93,6 +93,7 @@
                         <ul class="dropdown-menu settings-menu dropdown-menu-right">
                             <li><a class="dropdown-item" href=""><i class="fa fa-cog fa-lg"></i> Settings</a></li>
                             <li><a class="dropdown-item" href=""><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                            <li><a href="#"><i class="fa fa-key"></i><span>Change Password</span></a></li>
                             <li><a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
                         </ul>
 
@@ -126,17 +127,34 @@
                         <span>Home</span>
                     </a>
                 </li>
+
                 <li class="treeview">
-                    <a href="{{ path('contrat') }}">
-                        <i class="fa fa-briefcase"></i>
-                        <span>contrat</span>
+                    <a href="{{ path('app_task') }}">
+                        <i class="fa fa-thumb-tack"></i>
+                        <span>Mes taches</span>
                     </a>
                 </li>
                 <li class="treeview">
-                    <a href="{{ path('app_task') }}">
-                        <i class="fa fa-tasks"></i>
-                        <span>tasks</span>
+                    <a href="#">
+                        <i class="fa fa-briefcase"></i>
+                        <span>Administratif</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
+                    <ul class="treeview-menu">
+                        <li class="treeview">
+                            <a href="{{ path('contrat') }}">
+                                <i class="fa fa-briefcase"></i>
+                                <span>contrat</span>
+                            </a>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="{{ path('contrat') }}">
+                                <i class="fa fa-briefcase"></i>
+                                <span>Reglement</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="treeview">
                     <a href="#">
@@ -158,13 +176,13 @@
                             </a>
                         </li>
                         <li class="treeview">
-                            <a href="{{ path('app_typeTache') }}">
-                                <i class="fa fa-thumb-tack"></i>
-                                <span>Tache Type</span>
+                            <a href="{{ path('app_service') }}">
+                                <i class="fa fa-puzzle-piece"></i>
+                                <span>service</span>
                             </a>
                         </li>
                         <li class="treeview">
-                            <a href="">
+                            <a href="{{ path('periodicitie') }}">
                                 <i class="fa fa-clock-o"></i>
                                 <span>Periodicities</span>
                             </a>
@@ -172,20 +190,14 @@
                     </ul>
                 </li>
 
-                <!-- Settings -->
-                <li class="header">SETTINGS</li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-key"></i>
-                        <span>Change Password</span>
+                <li class="treeview">
+                    <a href="{{ path('index_app') }}">
+                        <i class="fa fa-user"></i>
+                        <span>User</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ path('app_logout') }}">
-                        <i class="fa fa-sign-out"></i>
-                        <span>Logout</span>
-                    </a>
-                </li>
+
+
 
             </ul>
         </section>

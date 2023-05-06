@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -31,25 +29,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Task::class)]
-    private Collection $tasks;
-
-    public function __construct()
-    {
-        $this->tasks = new ArrayCollection();
-    }
-
-
-
-
- /*   #[ORM\OneToMany(mappedBy: 'user', targetEntity: client::class)]
-    private Collection $client;
-
-    public function __construct()
-    {
-        $this->client = new ArrayCollection();
-    }
-*/
     public function getId(): ?int
     {
         return $this->id;
@@ -84,7 +63,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_ADMIN';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -119,54 +98,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
-
-    /**
-     * @return Collection
-     */
-    public function getClient(): Collection
-    {
-        return $this->client;
-    }
-
-    /**
-     * @param Collection $client
-     */
-    public function setClient(Collection $client): void
-    {
-        $this->client = $client;
-    }
-
-    /**
-     * @return Collection<int, Task>
-     */
-    public function getTasks(): Collection
-    {
-        return $this->tasks;
-    }
-
-    public function addTask(Task $task): self
-    {
-        if (!$this->tasks->contains($task)) {
-            $this->tasks->add($task);
-            $task->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTask(Task $task): self
-    {
-        if ($this->tasks->removeElement($task)) {
-            // set the owning side to null (unless already changed)
-            if ($task->getUser() === $this) {
-                $task->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-
-
-
 }

@@ -21,7 +21,7 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Mission</h3>
+                    <h3 class="box-title">Services</h3>
                     <div class="box-tools pull-right">
                         <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i></button>
@@ -32,7 +32,7 @@
                 <div class="box-body">
                     <!-- Start creating your amazing application! -->
 
-                    <a href="{{ path('typeTache_add') }}" class="btn btn-sm btn-success btn-sm">Add Mission
+                    <a href="{{ path('service_add') }}" class="btn btn-sm btn-success btn-sm">Add Service
                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
 
 
@@ -67,7 +67,7 @@
                             <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>mission</th>
+                                <th>métier</th>
                                 <th>designation</th>
                                 <th>Description</th>
                                 <th>Action</th>
@@ -75,18 +75,18 @@
                             </thead>
                             <tbody>
 
-                            {% for typeTache in typeTaches %}
+                            {% for service in services %}
                                 <tr align="center">
-                                    <td>{{ typeTache.id }}</td>
-                                    <td>{{ typeTache.mission }}</td>
-                                    <td>{{ typeTache.designation }}</td>
-                                    <td>{{ typeTache.description }}</td>
+                                    <td>{{ service.id }}</td>
+                                    <td>{{ service.mission }}</td>
+                                    <td>{{ service.designation }}</td>
+                                    <td>{{ service.description }}</td>
                                     <td class="d-flex justify-content-between align-items-center">
 
-                                        <a href="{{ path('typeTache_add',{id: typeTache.id}) }}"  class="btn btn-warning btn-xs">
+                                        <a href="{{ path('service_add',{id: service.id}) }}"  class="btn btn-warning btn-xs">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                         </a>
-                                        <a href="{{ path('typeTache_delete',{id: typeTache.id}) }}" class="btn btn-xs btn-danger">
+                                        <a href="{{ path('service_delete',{id: service.id}) }}" class="btn btn-xs btn-danger">
                                             <span class="fa fa-trash-o" aria-hidden="true"></span>
 
                                         </a>

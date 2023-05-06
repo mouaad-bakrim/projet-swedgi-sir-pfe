@@ -42,12 +42,28 @@ class Contrat
     private ?\DateTimeInterface $dateDebut = null;
 
     #[ORM\ManyToOne(inversedBy: 'contrats')]
-    private ?TypeTache $TypeTache = null;
+    private ?Service $Service = null;
 
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return Service|null
+     */
+    public function getService(): ?Service
+    {
+        return $this->Service;
+    }
+
+    /**
+     * @param Service|null $Service
+     */
+    public function setService(?Service $Service): void
+    {
+        $this->Service = $Service;
     }
 
 
@@ -86,17 +102,9 @@ class Contrat
         return $this;
     }
 
-    public function getTypeTache(): ?TypeTache
-    {
-        return $this->TypeTache;
-    }
 
-    public function setTypeTache(?TypeTache $TypeTache): self
-    {
-        $this->TypeTache = $TypeTache;
 
-        return $this;
-    }
+
 
 
 

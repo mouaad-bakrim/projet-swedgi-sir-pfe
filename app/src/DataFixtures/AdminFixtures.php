@@ -25,11 +25,7 @@ class AdminFixtures extends Fixture
         $admin2->setRoles(["ROLE_COLLABORATEUR"]);
         $manager->persist($admin2);
 
-        $admin3 = new User();
-        $admin3->setEmail('responsable@gmail.com');
-        $admin3->setPassword($this->hasher->hashPassword($admin3,'admin1234'));
-        $admin3->setRoles(["ROLE_RESPONSABLE"]);
-        $manager->persist($admin3);
+
 
         $manager->flush();
     }

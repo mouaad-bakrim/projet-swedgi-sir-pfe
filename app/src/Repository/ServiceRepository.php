@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\TypeTache;
+use App\Entity\Service;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<TypeTache>
+ * @extends ServiceEntityRepository<Service>
  *
- * @method TypeTache|null find($id, $lockMode = null, $lockVersion = null)
- * @method TypeTache|null findOneBy(array $criteria, array $orderBy = null)
- * @method TypeTache[]    findAll()
- * @method TypeTache[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Service|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Service|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Service[]    findAll()
+ * @method Service[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TypeTacheRepository extends ServiceEntityRepository
+class ServiceRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TypeTache::class);
+        parent::__construct($registry, Service::class);
     }
 
-    public function save(TypeTache $entity, bool $flush = false): void
+    public function save(Service $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class TypeTacheRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(TypeTache $entity, bool $flush = false): void
+    public function remove(Service $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class TypeTacheRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return TypeTache[] Returns an array of TypeTache objects
+//     * @return Service[] Returns an array of Service objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class TypeTacheRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?TypeTache
+//    public function findOneBySomeField($value): ?Service
 //    {
 //        return $this->createQueryBuilder('t')
 //            ->andWhere('t.exampleField = :val')
