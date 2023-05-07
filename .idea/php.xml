@@ -148,6 +148,7 @@
       <path value="$PROJECT_DIR$/app/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/templating" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/workflow" />
+      <path value="$PROJECT_DIR$/app/vendor/symfonycasts/verify-email-bundle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
