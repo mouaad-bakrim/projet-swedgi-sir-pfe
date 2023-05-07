@@ -1,0 +1,46 @@
+# config/packages/workflow.yaml
+framework:
+  workflows:
+    toy_request:
+      type: 'workflow' # or 'state_machine'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'status'
+      supports:
+        - App\Entity\Task
+      initial_marking: request
+      places:
+        - request
+        - responsable_validation_pending
+        - responsable_ok
+        - collaborateur_validation_pending
+        - collaborateur_ok
+        - order
+        - ordered
+        - received
+      transitions:
+        to_pending:
+          from: request
+          to: responsable_validation_pending
+        to_responsable_ok:
+          guard: "is_granted('ROLE_RESPONSABLE')"
+          from: responsable_validation_pending
+          to: responsable_ok
+        to_collaborateur_ok:
+          guard: "is_granted('ROLE_RESPONSABLE')"
+          from: collaborateur_validation_pending
+          to: collaborateur_ok
+        to_order:
+          guard: "is_granted('ROLE_RESPONSABLE')"
+          from: responsable_ok
+          to: order
+        to_ordered:
+          guard: "is_granted('ROLE_COLLABORATEUR')"
+          from: order
+          to:  ordered
+        to_received:
+          guard: "is_granted('ROLE_RESPONSABLE')"
+          from: ordered
+          to:   received

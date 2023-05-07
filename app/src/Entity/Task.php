@@ -28,6 +28,14 @@ class Task
     #[ORM\ManyToOne(inversedBy: 'tasks')]
     private ?User $User = null;
 
+    #[ORM\OneToMany(mappedBy: 'Task', targetEntity: Typetache::class)]
+    private Collection $typetaches;
+
+    public function __construct()
+    {
+        $this->typetaches = new ArrayCollection();
+    }
+
 
 
 
@@ -86,9 +94,40 @@ class Task
         return $this;
     }
 
+    /**
+     * @return Collection<int, Typetache>
+     */
+    public function getTypetaches(): Collection
+    {
+        return $this->typetaches;
+    }
 
+    public function addTypetach(Typetache $typetach): self
+    {
+        if (!$this->typetaches->contains($typetach)) {
+            $this->typetaches->add($typetach);
+            $typetach->setTask($this);
+        }
 
+        return $this;
+    }
 
+    public function removeTypetach(Typetache $typetach): self
+    {
+        if ($this->typetaches->removeElement($typetach)) {
+            // set the owning side to null (unless already changed)
+            if ($typetach->getTask() === $this) {
+                $typetach->setTask(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function settacheType(mixed $tacheType)
+    {
+        return $tacheType;
+    }
 
 
 }
