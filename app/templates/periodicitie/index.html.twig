@@ -1,20 +1,92 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PeriodicitieController!{% endblock %}
+{% block title %}Categorie List{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Mouad/PhpstormProjects/projet-swedgi-pfe/app/src/Controller/PeriodicitieController.php'|file_link(0) }}">src/Controller/PeriodicitieController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Mouad/PhpstormProjects/projet-swedgi-pfe/app/templates/periodicitie/index.html.twig'|file_link(0) }}">templates/periodicitie/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                <small>Welcome Administrator!</small>
+            </h1>
+
+
+        </section>
+
+
+        <!-- Main content -->
+        <section class="content">
+
+
+            <!-- Default box -->
+            <div class="box ">
+                <div class="box-header with-border">
+                    <h3 class="box-title">periodicitie</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="box-footer">
+
+
+                        <div class="table-responsive">
+                            <div class="card-body p-0">
+                                <table class="table table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Designation</th>
+                                        <th>Progress</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Mensuel</td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar progress-bar-danger" style="width: 9%"></div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td>Trimestriel</td>
+                                        <td>
+                                            <div class="progress progress-xs">
+                                                <div class="progress-bar bg-warning" style="width: 33%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Annuel</td>
+                                        <td>
+                                            <div class="progress progress-xs progress-striped active">
+                                                <div class="progress-bar bg-primary" style="width: 100%"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.box -->
+
+
+        </section>
+    </div>
+
 {% endblock %}
