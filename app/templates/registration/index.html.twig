@@ -73,6 +73,7 @@
                         <tr>
                             <th></th>
                             <th>Id</th>
+                            <th>username</th>
                             <th>email</th>
                             <th>password</th>
                             <th>Action</th>
@@ -84,6 +85,7 @@
                         <tr align="center">
                             <td><input type="checkbox" name="categorie[]" value=""></td>
                             <td>{{ loop.index }}</td>
+                            <td>{{ register.username }}</td>
                             <td>{{ register.email }}</td>
                             <td>{{ register.password }}</td>
                             <td class="d-flex justify-content-between align-items-center">
@@ -93,7 +95,7 @@
                                 <a  class="btn btn-warning btn-xs">
                                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 </a>
-                                <a  class="btn btn-xs btn-danger">
+                                <a  href="{{ path('register_delete',{id: register.id}) }}" class="btn btn-xs btn-danger">
                                     <span class="fa fa-trash-o" aria-hidden="true"></span>
 
                                 </a>
