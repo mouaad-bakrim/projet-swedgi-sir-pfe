@@ -140,7 +140,6 @@
       <path value="$PROJECT_DIR$/app/vendor/symfony/form" />
       <path value="$PROJECT_DIR$/app/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/app/vendor/doctrine/data-fixtures" />
-      <path value="$PROJECT_DIR$/app/vendor/symfonycasts/reset-password-bundle" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/webpack-encore-bundle" />
       <path value="$PROJECT_DIR$/app/vendor/dompdf/dompdf" />
       <path value="$PROJECT_DIR$/app/vendor/sabberworm/php-css-parser" />
@@ -148,6 +147,7 @@
       <path value="$PROJECT_DIR$/app/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/templating" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/workflow" />
+      <path value="$PROJECT_DIR$/app/vendor/symfonycasts/reset-password-bundle" />
       <path value="$PROJECT_DIR$/app/vendor/symfonycasts/verify-email-bundle" />
     </include_path>
   </component>

@@ -36,7 +36,6 @@ security:
     access_control:
      - { path: ^/admin, roles: ROLE_ADMIN }
      - { path: ^/collaborator, roles: ROLE_COLLABORATOR }
-     - { path: ^/, roles: ROLE_USER }
     # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

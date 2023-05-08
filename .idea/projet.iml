@@ -137,7 +137,6 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/form" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/doctrine-fixtures-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/data-fixtures" />
-      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfonycasts/reset-password-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/webpack-encore-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/dompdf/dompdf" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/sabberworm/php-css-parser" />
@@ -145,6 +144,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/phenx/php-svg-lib" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/templating" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/workflow" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfonycasts/reset-password-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfonycasts/verify-email-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
