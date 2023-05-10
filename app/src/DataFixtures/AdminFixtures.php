@@ -17,14 +17,21 @@ class AdminFixtures extends Fixture
         $admin = new User();
         $admin->setEmail('admin@gmail.com');
         $admin->setPassword($this->hasher->hashPassword($admin,'admin1234'));
+        $admin->setUsername('admin');
         $admin->setRoles(["ROLE_ADMIN"]);
         $manager->persist($admin);
         $admin2 = new User();
         $admin2->setEmail('collaborateur@gmail.com');
-        $admin2->setPassword($this->hasher->hashPassword($admin2,'admin1234'));
+        $admin2->setPassword($this->hasher->hashPassword($admin2,'collaborateur1234'));
+        $admin2->setUsername('collaborateur');
         $admin2->setRoles(["ROLE_COLLABORATEUR"]);
         $manager->persist($admin2);
-
+        $admin3 = new User();
+        $admin3->setEmail('responsable@gmail.com');
+        $admin3->setPassword($this->hasher->hashPassword($admin3,'responsable1234'));
+        $admin3->setUsername('responsable');
+        $admin3->setRoles(["ROLE_RESPONSABLE"]);
+        $manager->persist($admin3);
 
 
         $manager->flush();

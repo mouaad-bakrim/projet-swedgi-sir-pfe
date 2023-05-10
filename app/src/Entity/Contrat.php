@@ -44,6 +44,10 @@ class Contrat
     #[ORM\ManyToOne(inversedBy: 'contrats')]
     private ?Service $Service = null;
 
+   #[ORM\ManyToOne(inversedBy: 'contrats')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Task $tache = null;
+
 
     public function getId(): ?int
     {
@@ -102,11 +106,17 @@ class Contrat
         return $this;
     }
 
+    public function getTache(): ?Task
+    {
+        return $this->tache;
+    }
 
+    public function setTache(?Task $tache): self
+    {
+        $this->tache = $tache;
 
-
-
-
+        return $this;
+    }
 
 
 }

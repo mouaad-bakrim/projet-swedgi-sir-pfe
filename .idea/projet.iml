@@ -146,6 +146,9 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/workflow" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfonycasts/reset-password-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfonycasts/verify-email-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/uid" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/polyfill-uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/easycorp/easyadmin-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

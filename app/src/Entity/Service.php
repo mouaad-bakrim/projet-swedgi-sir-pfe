@@ -27,6 +27,10 @@ class Service
     #[ORM\OneToMany(mappedBy: 'Service', targetEntity: Contrat::class)]
     private Collection $contrats;
 
+    /*    #[ORM\ManyToOne(inversedBy: 'services')]
+      #[ORM\JoinColumn(nullable: false)]
+       private ?Task $tache = null;
+   */
     public function __construct()
     {
         $this->contrats = new ArrayCollection();
@@ -106,4 +110,17 @@ class Service
     {
         return $this ->mission;
     }
+
+  /*  public function getTache(): ?Task
+    {
+        return $this->tache;
+    }
+
+    public function setTache(?Task $tache): self
+    {
+        $this->tache = $tache;
+
+        return $this;
+    }
+  */
 }
