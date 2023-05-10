@@ -28,6 +28,9 @@ class Task
     #[ORM\ManyToOne(inversedBy: 'tasks')]
     private ?User $User = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Contrat $Centrat = null;
+
 
 
 
@@ -86,9 +89,24 @@ class Task
         return $this;
     }
 
+    public function getCentrat(): ?Contrat
+    {
+        return $this->Centrat;
+    }
+
+    public function setCentrat(?Contrat $Centrat): self
+    {
+        $this->Centrat = $Centrat;
+
+        return $this;
+    }
 
 
 
 
+    public function __toString()
+    {
+        return $this->dateDebut->format('Y-m-d');
+    }
 
 }

@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "bootstrap": "^5.2.0",
+        "build": "^0.1.4",
         "compose": "^0.1.2",
         "composer": "^4.1.0"
     }
