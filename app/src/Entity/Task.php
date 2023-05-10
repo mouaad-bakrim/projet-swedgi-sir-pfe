@@ -28,17 +28,8 @@ class Task
     #[ORM\ManyToOne(inversedBy: 'tasks')]
     private ?User $User = null;
 
-    #[ORM\OneToMany(mappedBy: 'tache', targetEntity: Service::class)]
-    private Collection $services;
-
-/*    #[ORM\OneToMany(mappedBy: 'tache', targetEntity: Contrat::class)]
-    private Collection $contrats;
-*/
-    public function __construct()
-    {
-        $this->services = new ArrayCollection();
-       # $this->contrats = new ArrayCollection();
-    }
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Contrat $Centrat = null;
 
 
 
@@ -98,62 +89,14 @@ class Task
         return $this;
     }
 
-  #  /**
-   #  * @return Collection<int, Service>
-    # */
- /*   public function getServices(): Collection
+    public function getCentrat(): ?Contrat
     {
-        return $this->services;
+        return $this->Centrat;
     }
 
-    public function addService(Service $service): self
+    public function setCentrat(?Contrat $Centrat): self
     {
-        if (!$this->services->contains($service)) {
-            $this->services->add($service);
-            $service->setTache($this);
-        }
-
-        return $this;
-    }
-
-    public function removeService(Service $service): self
-    {
-        if ($this->services->removeElement($service)) {
-            // set the owning side to null (unless already changed)
-            if ($service->getTache() === $this) {
-                $service->setTache(null);
-            }
-        }
-
-        return $this;
-    }
-*/
-    /**
-     * @return Collection<int, Contrat>
-     */
-    public function getContrats(): Collection
-    {
-        return $this->contrats;
-    }
-
-    public function addContrat(Contrat $contrat): self
-    {
-        if (!$this->contrats->contains($contrat)) {
-            $this->contrats->add($contrat);
-            $contrat->setTache($this);
-        }
-
-        return $this;
-    }
-
-    public function removeContrat(Contrat $contrat): self
-    {
-        if ($this->contrats->removeElement($contrat)) {
-            // set the owning side to null (unless already changed)
-            if ($contrat->getTache() === $this) {
-                $contrat->setTache(null);
-            }
-        }
+        $this->Centrat = $Centrat;
 
         return $this;
     }
@@ -161,5 +104,9 @@ class Task
 
 
 
+    public function __toString()
+    {
+        return $this->dateDebut->format('Y-m-d');
+    }
 
 }
