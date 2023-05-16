@@ -20,23 +20,15 @@
                         <thead>
                         <tr>
                             <th>id</th>
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <th>collaborateurs</th>
-                            {% endif %}
-                            <th>Service</th>
-                            <th>date</th>
-                            <th>designation</th>
-                            <th>Date de début</th>
-                            <th>Date de fin</th>
-                            <th>Durée</th>
-                            <th>Durée</th>
-                            <th>Statut</th>
+                            <th>Designation</th>
+                            <th>Description</th>
+                            <th>Mission</th>
                         </tr>
                         </thead>
                         <tbody>
 
 
-                        {% for contrat in contrats %}
+                        {% for service in services %}
                             {#
                             {% set dateDebut = null %}
                             {% if contrat.service.designation == 'Trimestriel' %}
@@ -48,73 +40,11 @@
                             {% endif %}
                             #}
                             <tr align="center">
-                                <td>{{ contrat.id }}</td>
-                                <td>{{ contrat.service }}</td>
-                                <td>{{ contrat.service.date|date('d/m/Y')}}</td>
-                                <td>{{ contrat.service.designation }}</td>
-                                <td>{{dateDebut|date('d/m/Y') }}</td>
-                                <td>{{ dateFin|date('d/m/Y') }}</td>
-                                <td>{{ diff.format('%a j, %h h,%m m,%s s') }}</td>
-                                <td>
-                                    <div id="affichage-temps-{{ contrat.id }}">&nbsp;</div>
-                                    <script type="text/javascript">
-                                        async function monWorkflow{{ contrat.id }}() {
-                                            // Définir le temps en secondes
-                                            var temps{{ contrat.id }} = 90;
+                                <td>{{ service.id }}</td>
+                                <td>{{ service.designation }}</td>
+                                <td>{{ service.description }}</td>
+                                <td>{{ service.mission }}</td>
 
-                                            // Définir une fonction pour afficher le temps restant
-                                            function afficherTempsRestant{{ contrat.id }}() {
-                                                var affichage = document.getElementById("affichage-temps-{{ contrat.id }}");
-                                                affichage.innerHTML = temps{{ contrat.id }} + " ... ";
-                                                temps{{ contrat.id }}--;
-
-                                                // Vérifier si le temps est écoulé
-                                                if (temps{{ contrat.id }} < 0) {
-                                                    clearInterval(intervalId{{ contrat.id }});
-                                                    affichage.innerHTML = "Terminé!";
-                                                    // Exécuter la tâche suivante dans le workflow
-                                                    maTacheSuivante();
-                                                } else {
-                                                    affichage.innerHTML += "en cours...";
-                                                }
-                                            }
-
-                                            // Appeler la fonction toutes les secondes
-                                            var intervalId{{ contrat.id }} = setInterval(afficherTempsRestant{{ contrat.id }}, 1000);
-                                        }
-
-                                        // Fonction pour exécuter la tâche suivante dans le workflow
-                                        function maTacheSuivante() {
-                                            // Mettre à jour le bouton en "Terminé"
-                                            var bouton = document.querySelector("#affichage-temps-" + contrat.id + " button");
-                                            bouton.innerHTML = "Terminé";
-                                        }
-                                    </script>
-                                </td>
-                                <td>
-                                    <button class="btn btn-primary" onclick="monWorkflow{{ contrat.id }}()">En attente</button>
-                                </td>
-
-                                {% for task in tasks %}
-                                    <td>
-                                    <td>
-                                        {% if task.status == 'in_progress' %}
-                                            <form action="{{ path('task_complete', {'id': task.id}) }}" method="post">
-                                                <button type="submit">Marquer comme terminé</button>
-                                            </form>
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        {% if task.status == 'draft' %}
-                                            <button>En attente</button>
-                                        {% elseif task.status == 'in_progress' %}
-                                            <button>Encours</button>
-                                        {% elseif task.status == 'completed' %}
-                                            <button>Terminé</button>
-                                        {% endif %}
-                                    </td>
-                                {% endfor %}
-                                </td>
 
                             </tr>
                         {% endfor %}

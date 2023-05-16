@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Service;
 use App\Entity\Task;
 use App\Repository\ContratRepository;
 use App\Repository\TaskRepository;
@@ -36,7 +37,7 @@ class TaskController extends AbstractController
     #[Route('/task', name: 'app_task')]
     public function index(): Response
     {
-        $dateFin = new DateTime();
+       /*  $dateFin = new DateTime();
         $dateFin->add(new DateInterval('P10D'));
         $date = new DateTime();
         $contrats = $this->contratRepository->findAll();
@@ -48,17 +49,12 @@ class TaskController extends AbstractController
         $now = new DateTime();
         $diff = $now->diff($dateDiff);
 
-        $dateDebut = new DateTime();
-
+        $dateDebut = new DateTime();*/
+        $repository = $this->entityManager->getRepository(Service::class);
+        $services = $repository->findBy(['date' => new \DateTime()]);
 
         return $this->render('task/index.html.twig', [
-            'diff' => $diff,
-            'date' => $date,
-            'dateDebut' => $dateDebut,
-            'dateFin' => $dateFin,
-            'contrats' => $contrats,
-            'users' => $users,
-            'tasks' => $tasks,
+            'services' => $services,
         ]);
     }
 
