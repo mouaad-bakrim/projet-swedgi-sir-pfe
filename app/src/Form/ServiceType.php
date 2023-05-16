@@ -14,7 +14,6 @@ class ServiceType extends AbstractType
     {
         $builder
             ->add('mission')
-
             ->add('designation',ChoiceType::class, [
                 'choices'  => [
                     'add designation'=>'ffff',
@@ -25,6 +24,7 @@ class ServiceType extends AbstractType
                 ],
             ])
             ->add('description')
+            ->add('date')
         ;
     }
 

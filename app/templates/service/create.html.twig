@@ -5,14 +5,7 @@
 {% block body %}
     {{ form_start(form) }}
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1 class="text-success">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                <small>add Service</small>
-            </h1>
-        </section>
+
 
         <!-- Main content -->
         <section class="content">
@@ -38,6 +31,10 @@
                         <label class="control-label col-md-2" for="">designation :</label>
                         <div class="col-md-10">
                             <p>{{ form_widget(form.designation, {'attr': {'class': 'form-control', 'placeholder':'designation'}}) }}</p>
+                        </div>
+                        <label class="control-label col-md-2" for="">designation :</label>
+                        <div class="col-md-10">
+                            <p>{{ form_widget(form.date, {'attr': {'class': 'form-control', 'placeholder':'date'}}) }}</p>
                         </div>
 
                         <label class="control-label col-sm-2" for="">description :</label>

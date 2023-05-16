@@ -32,6 +32,11 @@
                         <div class="col-md-10">
                             <p>{{ form_widget(registrationForm.username, {'attr': {'class': 'form-control', 'placeholder':'username'}}) }}</p>
                         </div>
+
+                        <label class="control-label col-md-2" for="">username :</label>
+                        <div class="col-md-10">
+                            <p>{{ form_widget(registrationForm.roles, {'attr': {'class': 'form-control', 'placeholder':'roles'}}) }}</p>
+                        </div>
                         <label class="control-label col-md-2" for="">email :</label>
                         <div class="col-md-10">
                             <p>{{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder':'email'}}) }}</p>
@@ -47,7 +52,7 @@
 
 
                         <div class="card-footer col-sm-4 text-center">
-                            <button type="submit" class="btn bg-premary">Register</button>
+                            <button type="submit" class="btn bg-premary">Add</button>
 
 
                         </div>

@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Role\Role;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -20,6 +22,7 @@ class RegistrationController extends AbstractController
 {
     private $registerRepository;
     private  $entityManager;
+    private $current_role;
 
     public function __construct(UserRepository $registerRepository, ManagerRegistry $doctrine)
     {
@@ -58,22 +61,41 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
-
+/*
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
                 $request
             );
-        }
+   */
+      /*      if ($this->current_role == 'ROLE_USER'){
+                $entityManager->persist($user);
+                $entityManager->flush();
+                
+            }else
+                return $userAuthenticator->authenticateUser(
+                    $user,
+                    $authenticator,
+                    $request
+                );
+*/
+       }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
 
-    //delete
+ /*   public function authenticate(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager){
+        $user = new User();
+        return $userAuthenticator->authenticateUser(
+            $user,
+            $authenticator,
+            $request
+        );
 
-
+    }
+*/
     #[Route('/register/delete/{id}', name: 'register_delete')]
     public function delete(User $register): Response
     {
@@ -86,10 +108,6 @@ class RegistrationController extends AbstractController
 
         return $this->redirectToRoute('index_app');
 
-
     }
-
-
-
 
 }

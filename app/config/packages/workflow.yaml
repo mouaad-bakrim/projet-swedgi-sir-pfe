@@ -1,0 +1,25 @@
+framework:
+  workflows:
+    task_request:
+      type: 'workflow'
+      audit_trail:
+        enabled: true
+      marking_store:
+        type: 'method'
+        property: 'status'
+      supports:
+        - App\Entity\Task
+      initial_marking: draft
+      places:
+        - draft
+        - in_progress
+        - completed
+      transitions:
+        to_progress:
+          from: draft
+          to: in_progress
+        to_completed:
+          from: in_progress
+          to: completed
+
+

@@ -1,3 +1,6 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+update_task_status:
+    path: '/task/{id}/update-status'
+    controller: 'App\Controller\TaskController::updateTaskStatus'

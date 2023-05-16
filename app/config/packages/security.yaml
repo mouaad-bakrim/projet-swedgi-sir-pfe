@@ -9,8 +9,14 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
-   # role_hierarchy:
-    #    ROLE_COLLABORATOR: [ ROLE_COLLABORATOR ]
+        # used to reload user from session & other features (e.g. switch_user)
+        # used to reload user from session & other features (e.g. switch_user)
+        # used to reload user from session & other features (e.g. switch_user)
+        # used to reload user from session & other features (e.g. switch_user)
+   #role_hierarchy:
+      #  ROLE_COLLABORATOR: [ ROLE_COLLABORATOR ]
+    role_hierarchy:
+            ROLE_USER: [ ROLE_LOGIN ]
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -34,8 +40,10 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-     - { path: ^/admin, roles: ROLE_ADMIN }
-    # - { path: ^/collaborator, roles: ROLE_COLLABORATOR }
+    - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/user, roles: ROLE_USER }
+    #- { path: ^/login, roles: ROLE_LOGIN }
+    - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

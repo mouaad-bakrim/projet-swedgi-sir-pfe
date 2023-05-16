@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
@@ -13,7 +14,7 @@ class Service
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private ?int $id;
 
     #[ORM\Column(length: 255)]
     private ?string $mission = null;
@@ -26,6 +27,13 @@ class Service
 
     #[ORM\OneToMany(mappedBy: 'Service', targetEntity: Contrat::class)]
     private Collection $contrats;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date = null;
+
+  #  #[ORM\ManyToOne(inversedBy: 'services')]
+   # #[ORM\JoinColumn(nullable: false)]
+    #private ?Task $tache = null;
 
     /*    #[ORM\ManyToOne(inversedBy: 'services')]
       #[ORM\JoinColumn(nullable: false)]
@@ -123,4 +131,28 @@ class Service
         return $this;
     }
   */
+
+ /* public function getTache(): ?Task
+  {
+      return $this->tache;
+  }
+
+  public function setTache(?Task $tache): self
+  {
+      $this->tache = $tache;
+
+      return $this;
+  }*/
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
 }
