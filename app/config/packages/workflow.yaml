@@ -1,7 +1,7 @@
 framework:
   workflows:
     task_request:
-      type: 'workflow'
+      type: 'state_machine'
       audit_trail:
         enabled: true
       marking_store:
@@ -21,5 +21,3 @@ framework:
         to_completed:
           from: in_progress
           to: completed
-
-

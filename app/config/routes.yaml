@@ -1,6 +1,11 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+task_complete:
+    path: '/task/{id}/complete'
+    controller: 'App\Controller\TaskController::complete'
+    methods: ['POST']
+
 update_task_status:
     path: '/task/{id}/update-status'
     controller: 'App\Controller\TaskController::updateTaskStatus'

@@ -50,11 +50,24 @@ class TaskController extends AbstractController
         $diff = $now->diff($dateDiff);
 
         $dateDebut = new DateTime();*/
+
+
         $repository = $this->entityManager->getRepository(Service::class);
         $services = $repository->findBy(['date' => new \DateTime()]);
 
+
+
+
+
+
+        $dateFin = new DateTime();
+        $dateFin->add(new DateInterval('P10D'));
+        $now = new dateTime();
+
+
         return $this->render('task/index.html.twig', [
             'services' => $services,
+            'dateFin' => $dateFin,
         ]);
     }
 

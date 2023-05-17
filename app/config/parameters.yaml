@@ -1,0 +1,7 @@
+# app/config/parameters.yaml
+parameters:
+  mailer_transport: smtp
+  mailer_host: 'smtp.gmail.com'
+  mailer_port: 587
+  mailer_user: 'bakrim2mo@gmail.com'
+  mailer_password: 'your_gmail_password'

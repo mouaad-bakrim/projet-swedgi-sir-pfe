@@ -21,8 +21,11 @@
                         <tr>
                             <th>id</th>
                             <th>Designation</th>
-                            <th>Description</th>
                             <th>Mission</th>
+                            <th>dataDebut</th>
+                            <th>dataFin</th>
+                            <th>durée</th>
+                            <th>statue</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,8 +45,11 @@
                             <tr align="center">
                                 <td>{{ service.id }}</td>
                                 <td>{{ service.designation }}</td>
-                                <td>{{ service.description }}</td>
                                 <td>{{ service.mission }}</td>
+                                <td>{{ service.date | date('d/m/Y') }}</td>
+                                <td>{{ dateFin | date('d/m/Y') }}</td>
+                                <td></td>
+                                <td></td>
 
 
                             </tr>
