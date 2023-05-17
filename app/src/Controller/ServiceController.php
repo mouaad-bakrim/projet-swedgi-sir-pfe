@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Service;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
+use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,6 +44,7 @@ class ServiceController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $service = $form->getData();
+
 
             $this->entityManager->persist($service);
             $this->entityManager->flush();

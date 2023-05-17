@@ -25,6 +25,7 @@ class ServiceType extends AbstractType
             ])
             ->add('description')
             ->add('date')
+
         ;
     }
 
