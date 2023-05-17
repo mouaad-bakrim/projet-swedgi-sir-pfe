@@ -31,6 +31,9 @@ class Service
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
+    #[ORM\Column]
+    private ?int $duree = null;
+
   #  #[ORM\ManyToOne(inversedBy: 'services')]
    # #[ORM\JoinColumn(nullable: false)]
     #private ?Task $tache = null;
@@ -152,6 +155,18 @@ class Service
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getDuree(): ?int
+    {
+        return $this->duree;
+    }
+
+    public function setDuree(int $duree): self
+    {
+        $this->duree = $duree;
 
         return $this;
     }

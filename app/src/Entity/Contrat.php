@@ -38,14 +38,17 @@ class Contrat
     private ?Client $client = null;
 
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+  /*  #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateDebut = null;
-
+*/
     #[ORM\ManyToOne(inversedBy: 'contrats')]
     private ?Service $Service = null;
 
     #[ORM\ManyToOne(inversedBy: 'contrats')]
     private ?Task $tache = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $dateDebut = null;
     public function getId(): ?int
     {
         return $this->id;
@@ -88,7 +91,7 @@ class Contrat
         return $this ->montant;
     }
 
-    public function getDateDebut(): ?\DateTimeInterface
+ /*   public function getDateDebut(): ?\DateTimeInterface
     {
         return $this->dateDebut;
     }
@@ -99,7 +102,7 @@ class Contrat
 
         return $this;
     }
-
+*/
     public function getTache(): ?Task
     {
         return $this->tache;
@@ -112,7 +115,21 @@ class Contrat
         return $this;
     }
 
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->dateDebut;
+    }
 
+    /**
+     * @param \DateTimeInterface|null $dateDebut
+     */
+    public function setDateDebut(?\DateTimeInterface $dateDebut): void
+    {
+        $this->dateDebut = $dateDebut;
+    }
 
 
 }
