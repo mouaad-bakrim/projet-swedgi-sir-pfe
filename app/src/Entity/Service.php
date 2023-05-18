@@ -170,4 +170,24 @@ class Service
 
         return $this;
     }
+
+    // Service.php
+
+// ...
+
+    private $dateFin;
+
+// ...
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin(\DateTimeInterface $dateFin): self
+    {
+        $this->dateFin = $dateFin;
+        return $this;
+    }
+
 }

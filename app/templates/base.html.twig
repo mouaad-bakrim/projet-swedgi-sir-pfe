@@ -57,6 +57,7 @@
 {% endblock %}
 {% block header %}
 <body class="hold-transition skin-blue sidebar-mini">
+
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -94,7 +95,7 @@
                         <i class="fa fa-user bg-light fa-lg"></i></a>
                     <ul class="dropdown-menu settings-menu dropdown-menu-right">
                         <li><a class="dropdown-item" href=""><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-                        <li><a class="dropdown-item" href=""><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_profile') }}"><i class="fa fa-user fa-lg"></i> Profile</a></li>
                         <li><a href="#"><i class="fa fa-key"></i><span>Change Password</span></a></li>
                         <li><a class="dropdown-item" href="{{ path('app_logout') }}"><i
                                         class="fa fa-sign-out fa-lg"></i> Logout</a></li>
@@ -214,13 +215,16 @@
         <section class="content-header">
             <h1>
 
-                {# {% if is_granted('ROLE_ADMIN') %}
+                {% if is_granted('ROLE_ADMIN') %}
                     <small>Welcome Administrator!</small>
-                {% elseif is_granted('ROLE_USER') %}
-                    <small>Welcome, user!</small>
+                {% elseif app.user%}
+                    <small>Welcome, {{ app.user.username }} !</small>
                 {%else %}
                     <small>Welcome</small>
-                {% endif %} #}
+                {% endif %}
+                {% if app.user.id == 2 %}
+                    <p>Afficher les informations personnelles pour l'utilisateur avec l'ID 2 </p>
+                {% endif %}
 
 
             </h1>
