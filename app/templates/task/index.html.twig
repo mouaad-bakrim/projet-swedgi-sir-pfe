@@ -4,15 +4,14 @@
 
 {% block body %}
 
-    <!-- Main content -->
+
     <section class="content">
-        <!-- Default box -->
+
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">Mes taches</h3>
                 <form method="GET" action="{{ path('app_task') }}">
                     <div class="form-group pull-right">
-                        <label for="selectedDate">Sélectionner une date de tâche :</label>
                         <input type="date" id="selectedDate" name="selectedDate" class="form-control" max="{{ date() | date('Y-m-d') }}">
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">Afficher</button>
@@ -27,29 +26,80 @@
                             <thead>
                             <tr>
                                 <th>id</th>
+                                <th>Client</th>
                                 <th>Designation</th>
                                 <th>Mission</th>
                                 <th>dataDebut</th>
                                 <th>dataFin</th>
+                                <th>durée</th>
                                 <th>durée</th>
                                 <th>statue</th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for service in services %}
+
                                 <tr align="center">
                                     <td>{{ service.id }}</td>
+                                    <td></td>
                                     <td>{{ service.designation }}</td>
                                     <td>{{ service.mission }}</td>
                                     <td>{{ service.date | date('d/m/Y') }}</td>
-                                    <td>{{ dateFin | date('d/m/Y') }}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ service.date|date_modify('+' ~ service.duree ~ ' days')|date('d/m/Y') }}</td>
+                                    <td>{{ service.duree }}</td>
+                                    <td>
+                                        <span class="days"></span>
+                                        <span class="hours"></span>
+                                        <span class="minutes"></span>
+                                        <span class="seconds"></span>
+                                        <script type="text/javascript">
+                                            // The End Of The Year Date To Countdown To
+                                            // 1000 milliseconds = 1 Second
+
+                                            let countDownDate = new Date("Dec 31, 2021 23:59:59").getTime();
+                                            // console.log(countDownDate);
+
+                                            let counter = setInterval(() => {
+                                                // Get Date Now
+                                                let dateNow = new Date().getTime();
+
+                                                // Find The Date Difference Between Now And Countdown Date
+                                                let dateDiff = countDownDate - dateNow;
+
+                                                // Get Time Units
+                                                // let days = Math.floor(dateDiff / 1000 / 60 / 60 / 24);
+                                                let days = Math.floor(dateDiff / (1000 * 60 * 60 * 24));
+                                                let hours = Math.floor((dateDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                let minutes = Math.floor((dateDiff % (1000 * 60 * 60)) / (1000 * 60));
+                                                let seconds = Math.floor((dateDiff % (1000 * 60)) / 1000);
+
+                                                document.querySelector(".days").innerHTML = days < 10 ? `0${days}` : days;
+                                                document.querySelector(".hours").innerHTML = hours < 10 ? `0${hours}` : hours;
+                                                document.querySelector(".minutes").innerHTML = minutes < 10 ? `0${minutes}` : minutes;
+                                                document.querySelector(".seconds").innerHTML = seconds < 10 ? `0${seconds}` : seconds;
+
+                                                if (dateDiff < 0) {
+                                                    clearInterval(counter);
+                                                }
+                                            }, 1000);
+                                        </script>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger">{{ service.id }}</button>
+                                    </td>
+
+
                                 </tr>
+
                             {% endfor %}
+
+
+
                             </tbody>
                         </table>
                     </div>
+                {% else %}
+                    <p class="no-service-message" style="color:red; font-weight:bold;">Aucun service trouvé pour la date sélectionnée.</p>
                 {% endif %}
             </div>
         </div><!-- /.box -->

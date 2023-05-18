@@ -42,8 +42,10 @@
     padding-top: 100%;
 }
 
-
-
+.no-service-message {
+    color: red;
+    font-weight: bold;
+}
 
 
 

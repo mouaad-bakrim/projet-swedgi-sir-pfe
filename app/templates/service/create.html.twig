@@ -32,26 +32,14 @@
                         <div class="col-md-10">
                             <p>{{ form_widget(form.designation, {'attr': {'class': 'form-control', 'placeholder':'designation'}}) }}</p>
                         </div>
-                        <label class="control-label col-md-2" for="">Date :</label>
-                        <div class="col-md-10">
-                            {% set currentDate = date('Y-m-d') %}
-                            {% set currentMonth = date(currentDate, 'm') %}
-                            {% set currentYear = date(currentDate, 'Y') %}
-                            <form>
-                                <input type="date" name="date" value="{{ currentYear }}-{{ currentMonth }}">
-                                <button type="submit">Soumettre</button>
-                            </form>
-
+                        <label class="control-label col-sm-2" for="">date :</label>
+                        <div class="form-group col-sm-10">
+                            {{ form_widget(form.date, { 'attr': {'class': 'form-control no-resize datetimepicker', 'placeholder': 'Sélectionnez une date'} }) }}
                         </div>
-
-
-
-                        <label class="control-label col-sm-2" for="">description :</label>
-                        <div class="col-sm-10">
-                            <p>{{ form_widget(form.duree, {'attr': {'class': 'form-control',  'placeholder':'duree'}}) }}</p>
+                        <label class="control-label col-sm-2" for="">durée :</label>
+                        <div class="form-group col-sm-10">
+                            {{ form_widget(form.duree, { 'attr': {'class': 'form-control no-resize datetimepicker', 'placeholder': 'Sélectionnez une duree'} }) }}
                         </div>
-
-
                         <label class="control-label col-sm-2" for="">description :</label>
                         <div class="col-sm-10">
                             <p>{{ form_widget(form.description, {'attr': {'class': 'form-control',  'placeholder':'description'}}) }}</p>
