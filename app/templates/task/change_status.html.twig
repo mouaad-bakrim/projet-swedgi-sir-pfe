@@ -1,5 +1,0 @@
-{# templates/task/change_status.html.twig #}
-
-{% if task.getStatus() == 'in_progress' %}
-    <a href="{{ path('task_change_status', {'id': task.id}) }}" class="btn btn-primary">Terminer</a>
-{% endif %}

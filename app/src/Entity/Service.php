@@ -119,33 +119,8 @@ class Service
     }
     public function __toString()
     {
-        return $this ->mission;
+        return $this->date->format('d/m/Y'); // Format de date texte souhaité, par exemple 'd/m/Y'
     }
-
-  /*  public function getTache(): ?Task
-    {
-        return $this->tache;
-    }
-
-    public function setTache(?Task $tache): self
-    {
-        $this->tache = $tache;
-
-        return $this;
-    }
-  */
-
- /* public function getTache(): ?Task
-  {
-      return $this->tache;
-  }
-
-  public function setTache(?Task $tache): self
-  {
-      $this->tache = $tache;
-
-      return $this;
-  }*/
 
     public function getDate(): ?\DateTimeInterface
     {

@@ -29,6 +29,7 @@ class Contrat
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateDebut = null;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,8 +86,10 @@ class Contrat
         $this->dateDebut = $dateDebut;
     }
 
+
     public function __toString()
     {
         return $this->montant;
     }
+
 }

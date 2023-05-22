@@ -45,6 +45,8 @@ class ServiceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $service = $form->getData();
 
+            $currentDate = new DateTime();
+            $service->setDate($currentDate);
 
             $this->entityManager->persist($service);
             $this->entityManager->flush();
@@ -62,68 +64,11 @@ class ServiceController extends AbstractController
         ]);
     }
 
-    //show
-    #[Route('/service/edit/{id}', name: 'service_edit')]
-    public function edit(Service $service, Request $request): Response
-    {
-
-        $form = $this->createForm(ServiceType::class, $service);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $service = $form->getData();
-
-            $this->entityManager->persist($service);
-            $this->entityManager->flush();
-
-            $this->addFlash(
-                'success',
-                'Your task was updated'
-            );
-
-            return $this->redirectToRoute('app_service');
-        }
-
-        return $this->renderForm('service/edit.html.twig', [
-            'form' => $form,
-        ]);
-
-    }
 
 
 
-    #[Route('/service/delete/{id}', name: 'service_delete')]
-    public function delete(Service $service): Response
-    {
-        $this->entityManager->remove($service);
-        $this->entityManager->flush();
-        $this->addFlash(
-            'success',
-            'Your service was removed'
-        );
-
-        return $this->redirectToRoute('app_service');
 
 
-    }
-
-
-    //show list
-    #[Route('/service/show/{id}', name: 'service_show')]
-    public function showw(Service $service, Request $request): Response
-    {
-
-        $form = $this->createForm(ServiceType::class, $service);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $service = $form->getData();
-        }
-        return $this->renderForm('service/show.html.twig', [
-            'service' => $service,
-        ]);
-
-    }
 
 
 }

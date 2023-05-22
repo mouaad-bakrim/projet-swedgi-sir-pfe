@@ -34,7 +34,7 @@
                         </div>
                         <label class="control-label col-sm-2" for="">date :</label>
                         <div class="form-group col-sm-10">
-                            {{ form_widget(form.date, { 'attr': {'class': 'form-control no-resize datetimepicker', 'placeholder': 'Sélectionnez une date'} }) }}
+                            {{ form_widget(form.date, { 'attr': {'class': 'form-control no-resize datetimepicker', 'placeholder': 'Sélectionnez une date', 'value': 'now'|date('Y-m-d')} }) }}
                         </div>
                         <label class="control-label col-sm-2" for="">durée :</label>
                         <div class="form-group col-sm-10">

@@ -46,10 +46,13 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
+        $user->setCreatedAt(new \DateTime());
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -60,25 +63,7 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
-/*
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );
-   */
-      /*      if ($this->current_role == 'ROLE_USER'){
-                $entityManager->persist($user);
-                $entityManager->flush();
-                
-            }else
-                return $userAuthenticator->authenticateUser(
-                    $user,
-                    $authenticator,
-                    $request
-                );
-*/
+
        }
 
         return $this->render('registration/register.html.twig', [
@@ -86,16 +71,7 @@ class RegistrationController extends AbstractController
         ]);
     }
 
- /*   public function authenticate(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager){
-        $user = new User();
-        return $userAuthenticator->authenticateUser(
-            $user,
-            $authenticator,
-            $request
-        );
 
-    }
-*/
     #[Route('/register/delete/{id}', name: 'register_delete')]
     public function delete(User $register): Response
     {

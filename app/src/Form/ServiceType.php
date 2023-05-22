@@ -11,6 +11,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ServiceType extends AbstractType
 {
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Service::class,
+        ]);
+    }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -34,10 +40,5 @@ class ServiceType extends AbstractType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => Service::class,
-        ]);
-    }
+
 }
