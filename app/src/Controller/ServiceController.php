@@ -45,8 +45,7 @@ class ServiceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $service = $form->getData();
 
-            $currentDate = new DateTime();
-            $service->setDate($currentDate);
+
 
             $this->entityManager->persist($service);
             $this->entityManager->flush();

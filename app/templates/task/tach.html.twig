@@ -19,90 +19,31 @@
             </div>
 
             <div class="box-footer">
-                {% if services %}
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover table-striped">
                             <thead>
                             <tr>
                                 <th>id</th>
                                 <th>Client</th>
-                                <th>Designation</th>
-                                <th>Mission</th>
-                                <th>dataDebut</th>
-                                <th>dataFin</th>
-                                <th>durée</th>
-                                <th>durée</th>
+                                <th>Montant</th>
+                                <th>Service</th>
                                 <th>statue</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {% for service in services %}
+                            {% for contrat in contrats %}
                                 <tr align="center">
-                                    <td>{{ service.id }}</td>
+                                    <td>{{ contrat.id }}</td>
+                                    <td>{{ contrat.client }}</td>
+                                    <td>{{ contrat.montant }}</td>
+                                    <td>{{ contrat.service }}</td>
                                     <td></td>
-                                    <td>{{ service.designation }}</td>
-                                    <td>{{ service.mission }}</td>
-                                    <td>{{ service.date | date('d/m/Y') }}</td>
-                                    <td>
-                                        {% set endDate = service.date|date_modify('+' ~ service.duree ~ ' days') %}
-                                        {{ endDate|date('d/m/Y') }}
-                                    </td>
-                                    <td>{{ service.duree }}</td>
-
-                                    <td>
-                                        <button class="btn  remainingBtn" id="remainingBtn-{{ service.id }}"></button>
-                                    </td>
-
-                                    <script>
-                                        let remainingBtn = document.getElementById("remainingBtn-{{ service.id }}");
-                                        let endDate = new Date("{{ endDate|date('Y-m-d') }}");
-
-                                        function countTime() {
-                                            let timing = endDate - new Date();
-                                            let remaining = "Terminé";
-                                            let color = "red";
-
-                                            if (timing > 0) {
-                                                remaining = "En cours";
-                                                color = "green";
-                                                let time = {
-                                                    d: Math.floor(timing / (1000 * 60 * 60 * 24) % 30),
-                                                    h: Math.floor((timing / (1000 * 60 * 60)) % 24),
-                                                    m: Math.floor((timing / 1000 / 60) % 60),
-                                                    s: Math.floor((timing / 1000) % 60),
-                                                };
-
-                                                remaining = Object.keys(time)
-                                                    .map(item => {
-                                                        return `${time[item]} ${item}`;
-                                                    })
-                                                    .join(" ");
-
-                                            }
-
-                                            remainingBtn.innerText = remaining;
-                                            remainingBtn.style.backgroundColor = color;
-                                        }
-
-                                        countTime();
-                                        setInterval(countTime, 1000);
-                                    </script>
-                                    <td>
-                                        {% if service.id  <= 0 %}
-                                            <button class="bg-danger">Terminer</button>
-                                        {% else %}
-                                            <button class="bg-success">En cours</button>
-                                        {% endif %}
-                                    </td>
 
                                 </tr>
                             {% endfor %}
                             </tbody>
                         </table>
                     </div>
-                {% else %}
-                    <p class="no-service-message" style="color:red; font-weight:bold;">Aucun service trouvé pour la date sélectionnée.</p>
-                {% endif %}
             </div>
         </div>
     </section>

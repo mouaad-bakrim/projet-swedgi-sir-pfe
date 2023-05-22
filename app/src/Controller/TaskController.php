@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Service;
+use App\Entity\Contrat;
 use App\Repository\ContratRepository;
 use DateInterval;
 use DateTime;
@@ -29,30 +30,9 @@ class TaskController extends AbstractController
      */
     public function index(Request $request): Response
     {
-        $contrats = $this->contratRepository->findAll();
+        $contrats = $this->contratRepository->getTodayService();
         $selectedDate = $request->query->get('selectedDate');
-        $repository = $this->entityManager->getRepository(Service::class);
-
-
-
-        if ($selectedDate) {
-            $date = new \DateTime($selectedDate);
-            $services = $repository->findBy(['date' => $date]);
-        } else {
-            $services = $repository->findBy(['date' => new \DateTime()]);
-        }
-
-        foreach ($services as $service) {
-            $dateFin = clone $service->getDate();
-            $duree = $service->getDuree();
-            $dateFin->modify("+$duree days");
-            $service->setDateFin($dateFin);
-        }
-
-
-
         return $this->render('task/tach.html.twig', [
-            'services' => $services,
             'contrats' => $contrats,
             'selectedDate' => $selectedDate,
         ]);

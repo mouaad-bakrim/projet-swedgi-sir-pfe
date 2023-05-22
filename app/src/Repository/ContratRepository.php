@@ -39,6 +39,15 @@ class ContratRepository extends ServiceEntityRepository
         }
     }
 
+    public function getTodayService() {
+        return $this->createQueryBuilder('c')
+            ->join('c.Service','service')
+            ->where('service.date = :date')
+            ->setParameter('date', (new \DateTime())->format('Y-m-d'))
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Contrat[] Returns an array of Contrat objects
 //     */
