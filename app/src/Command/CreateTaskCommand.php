@@ -38,7 +38,7 @@ class CreateTaskCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $currentDate = new \DateTime();
-        $repository = $this->entityManager->getRepository(Service::class);
+        $repository = $this->entityManager->getRepository(Contrat::class);
         $services = $repository->findBy(['date' => $currentDate]);
 
         if (empty($services)) {
@@ -48,8 +48,8 @@ class CreateTaskCommand extends Command
 
         $output->writeln('Services trouvés à la date actuelle :');
 
-        foreach ($services as $service) {
-            $output->writeln('Service : ' . $service->getMission());
+        foreach ($services as $contrat) {
+            $output->writeln('Service : ' . $contrat->getService());
             // Faites ce que vous souhaitez avec l'entité Service récupérée ici
         }
 

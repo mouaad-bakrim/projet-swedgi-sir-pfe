@@ -35,6 +35,21 @@ class ServiceController extends AbstractController
 
 //new
 
+    #[Route('/service/delete/{id}', name: 'service_delete')]
+    public function delete(Service $service): Response
+    {
+        $this->entityManager->remove($service);
+        $this->entityManager->flush();
+        $this->addFlash(
+            'success',
+            'Your service was removed'
+        );
+
+        return $this->redirectToRoute('app_service');
+
+
+    }
+
     #[Route('/add/service', name: 'service_add')]
     public function store(Request $request): Response
     {

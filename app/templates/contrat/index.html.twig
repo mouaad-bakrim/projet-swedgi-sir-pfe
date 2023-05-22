@@ -58,7 +58,7 @@
                             {% for contrat in contrats %}
                                 <tr align="center">
                                     <td>{{ contrat.id }}</td>
-                                    <td>{{ contrat.dateDebut |  date('d/m/Y')}}</td>
+                                    <td>{{ contrat.date |  date('d/m/Y')}}</td>
                                     <td>{{ contrat.client }}</td>
                                     <td>{{ contrat.Service }}</td>
                                     <td>{{ contrat.montant }}</td>

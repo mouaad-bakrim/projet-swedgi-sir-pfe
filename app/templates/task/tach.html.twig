@@ -27,6 +27,7 @@
                                 <th>Client</th>
                                 <th>Montant</th>
                                 <th>Service</th>
+                                <th>Duree</th>
                                 <th>statue</th>
                             </tr>
                             </thead>
@@ -37,7 +38,12 @@
                                     <td>{{ contrat.client }}</td>
                                     <td>{{ contrat.montant }}</td>
                                     <td>{{ contrat.service }}</td>
-                                    <td></td>
+                                    <td>{{ contrat.service.duree }}</td>
+                                    <td>
+                                        {% if contrat.tache %}
+                                            <a href="{{ path('task_workflow', {id : contrat.tache.id}) }}">{{ contrat.tache.status }}</a>
+                                        {% endif %}
+                                    </td>
 
                                 </tr>
                             {% endfor %}

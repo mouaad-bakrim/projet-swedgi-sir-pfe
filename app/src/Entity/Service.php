@@ -46,6 +46,10 @@ class Service
     {
         $this->contrats = new ArrayCollection();
     }
+    public function __toString(): string
+    {
+        return $this->mission;
+    }
 
     public function getId(): ?int
     {
@@ -116,10 +120,6 @@ class Service
         }
 
         return $this;
-    }
-    public function __toString()
-    {
-        return $this->date->format('d/m/Y'); // Format de date texte souhaité, par exemple 'd/m/Y'
     }
 
     public function getDate(): ?\DateTimeInterface

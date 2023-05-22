@@ -14,7 +14,7 @@ class ContratType extends AbstractType
     {
         $builder
             ->add('montant')
-            ->add('dateDebut', DateType::class, [
+            ->add('date', DateType::class, [
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
             ])

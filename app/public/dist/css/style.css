@@ -2069,3 +2069,15 @@
         border-left: 1px solid #d2d6de
     }
 }
+main-header .navbar-static-top .b1{
+    border-radius: 66px 0px 0px 66px;
+    position: fixed;
+    top: 14px;
+    right: 137px;
+    width: 40px;
+    outline: none;
+    background-color: black;
+    border: 1px solid silver;
+    transition: 1s;
+}
+
