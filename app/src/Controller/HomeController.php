@@ -35,7 +35,7 @@ class HomeController extends AbstractController
         $clients = $this->clientRepository->findAll();
         $categories = $this->categorieRepository->findAll();
         $registers = $this->userRepository->findAll();
-        return $this->render('home/index.html.twig', [
+        return $this->render('home/home.html.twig', [
             'clients' => $clients,
             'categories' => $categories,
             'countClients' => $countClients,
