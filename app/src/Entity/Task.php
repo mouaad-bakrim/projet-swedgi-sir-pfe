@@ -23,21 +23,24 @@ class Task
     private ?\DateTimeInterface $dateFin = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $status = null;
+    private ?string $status = "draft";
 
     #[ORM\ManyToOne(inversedBy: 'tasks')]
     private ?User $User = null;
 
-    #[ORM\OneToMany(mappedBy: 'tache', targetEntity: Contrat::class)]
-    private Collection $contrats;
 
-    #[ORM\OneToMany(mappedBy: 'tache', targetEntity: Service::class)]
-    private Collection $services;
+
+    #[ORM\ManyToOne(inversedBy: 'tasks')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Contrat $contrat = null;
+
+    #[ORM\ManyToOne(inversedBy: 'tasks')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Service $service = null;
 
 public function __construct()
     {
         $this->contrats = new ArrayCollection();
-        $this->services = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,34 +132,58 @@ public function __construct()
         return $this;
     }
 
-   # /**
+    # /**
     # * @return Collection<int, Service>
-     #*/
-  /*  public function getServices(): Collection
+    #*/
+    /*  public function getServices(): Collection
+      {
+          return $this->services;
+      }
+
+      public function addService(Service $service): self
+      {
+          if (!$this->services->contains($service)) {
+              $this->services->add($service);
+              $service->setTache($this);
+          }
+
+          return $this;
+      }
+
+      public function removeService(Service $service): self
+      {
+          if ($this->services->removeElement($service)) {
+              // set the owning side to null (unless already changed)
+              if ($service->getTache() === $this) {
+                  $service->setTache(null);
+              }
+          }
+
+          return $this;
+      }
+  */
+
+    public function getContrat(): ?Contrat
     {
-        return $this->services;
+        return $this->contrat;
     }
 
-    public function addService(Service $service): self
+    public function setContrat(?Contrat $contrat): self
     {
-        if (!$this->services->contains($service)) {
-            $this->services->add($service);
-            $service->setTache($this);
-        }
+        $this->contrat = $contrat;
 
         return $this;
     }
 
-    public function removeService(Service $service): self
+    public function getService(): ?Service
     {
-        if ($this->services->removeElement($service)) {
-            // set the owning side to null (unless already changed)
-            if ($service->getTache() === $this) {
-                $service->setTache(null);
-            }
-        }
+        return $this->service;
+    }
+
+    public function setService(?Service $service): self
+    {
+        $this->service = $service;
 
         return $this;
     }
-*/
 }

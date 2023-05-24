@@ -34,17 +34,11 @@ class Service
     #[ORM\Column]
     private ?int $duree = null;
 
-  #  #[ORM\ManyToOne(inversedBy: 'services')]
-   # #[ORM\JoinColumn(nullable: false)]
-    #private ?Task $tache = null;
 
-    /*    #[ORM\ManyToOne(inversedBy: 'services')]
-      #[ORM\JoinColumn(nullable: false)]
-       private ?Task $tache = null;
-   */
     public function __construct()
     {
         $this->contrats = new ArrayCollection();
+        $this->tasks = new ArrayCollection();
     }
     public function __toString(): string
     {
@@ -152,6 +146,12 @@ class Service
 
     private $dateFin;
 
+    #[ORM\OneToMany(mappedBy: 'service', targetEntity: Task::class)]
+    private Collection $tasks;
+
+    #[ORM\ManyToOne(inversedBy: 'services')]
+    private ?User $user = null;
+
 // ...
 
     public function getDateFin(): ?\DateTimeInterface
@@ -177,6 +177,49 @@ class Service
     public function getDateCreation(): ?\DateTimeInterface
     {
         return $this->dateCreation;
+    }
+
+
+    /**
+     * @return Collection<int, Task>
+     */
+    public function getTasks(): Collection
+    {
+        return $this->tasks;
+    }
+
+    public function addTask(Task $task): self
+    {
+        if (!$this->tasks->contains($task)) {
+            $this->tasks->add($task);
+            $task->setService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTask(Task $task): self
+    {
+        if ($this->tasks->removeElement($task)) {
+            // set the owning side to null (unless already changed)
+            if ($task->getService() === $this) {
+                $task->setService(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 
 

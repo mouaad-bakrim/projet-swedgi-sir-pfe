@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contrat;
+use App\Entity\Task;
 use App\Form\ContratType;
 use App\Repository\ContratRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -41,7 +42,6 @@ class ContratController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $contrat = $form->getData();
-
             $this->entityManager->persist($contrat);
             $this->entityManager->flush();
 

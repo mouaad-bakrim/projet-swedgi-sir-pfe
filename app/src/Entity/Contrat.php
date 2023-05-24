@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ContratRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,11 +25,16 @@ class Contrat
     #[ORM\ManyToOne(inversedBy: 'contrats')]
     private ?Service $Service = null;
 
-    #[ORM\ManyToOne(inversedBy: 'contrats')]
-    private ?Task $tache = null;
-
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
+
+    #[ORM\OneToMany(mappedBy: 'contrat', targetEntity: Task::class)]
+    private Collection $tasks;
+
+    public function __construct()
+    {
+        $this->tasks = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -66,16 +73,6 @@ class Contrat
         $this->Service = $Service;
     }
 
-    public function getTache(): ?Task
-    {
-        return $this->tache;
-    }
-
-    public function setTache(?Task $tache): void
-    {
-        $this->tache = $tache;
-    }
-
 
     public function __toString()
     {
@@ -96,6 +93,36 @@ class Contrat
     public function setDate(?\DateTimeInterface $date): void
     {
         $this->date = $date;
+    }
+
+    /**
+     * @return Collection<int, Task>
+     */
+    public function getTasks(): Collection
+    {
+        return $this->tasks;
+    }
+
+    public function addTask(Task $task): self
+    {
+        if (!$this->tasks->contains($task)) {
+            $this->tasks->add($task);
+            $task->setContrat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTask(Task $task): self
+    {
+        if ($this->tasks->removeElement($task)) {
+            // set the owning side to null (unless already changed)
+            if ($task->getContrat() === $this) {
+                $task->setContrat(null);
+            }
+        }
+
+        return $this;
     }
 
 }

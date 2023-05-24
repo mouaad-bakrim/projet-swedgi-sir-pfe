@@ -5,7 +5,6 @@ namespace App\Command;
 use App\Entity\Contrat;
 use App\Entity\Service;
 use App\Entity\Task;
-
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -16,10 +15,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Workflow\WorkflowInterface;
 
 class CreateTaskCommand extends Command
 {
@@ -44,7 +39,7 @@ class CreateTaskCommand extends Command
     {
         $currentDate = new \DateTime();
         $repository = $this->entityManager->getRepository(Contrat::class);
-        $services = $repository->findBy(['date' => $currentDate]);
+        $services = $repository->getTodayService();
 
         if (empty($services)) {
             $output->writeln('Aucun service trouvé pour la date actuelle.');
@@ -53,45 +48,29 @@ class CreateTaskCommand extends Command
 
         $output->writeln('Services trouvés à la date actuelle :');
 
+        /**
+         * @var Contrat $contrat
+         */
         foreach ($services as $contrat) {
             $output->writeln('Service : ' . $contrat->getService());
-            // Faites ce que vous souhaitez avec l'entité Service récupérée ici
+            if($contrat->getTasks()->count() > 0) continue;
+            $task = new Task();
+            $task->setContrat($contrat);
+            $task->setUser($contrat->getService()->getUser());
+            $task->setDateDebut($contrat->getService()->getDate());
+            $task->setDateFin((clone $contrat->getService()->getDate())->modify('+ '.$contrat->getService()->getDuree().' days'));
+            $task->setService($contrat->getService());
+            $this->entityManager->persist($task);
+            $this->entityManager->flush();
         }
+        // persist the entity to the database
+
+
+        // output a message to the console indicating success
+        $output->writeln('Task added successfully!');
+
 
         return Command::SUCCESS;
     }
 
-    /**
-     * @Route("/task", name="app_task")
-     */
-    public function index(Request $request): Response
-    {
-        $contrats = $this->contratRepository->getTodayService();
-        $selectedDate = $request->query->get('selectedDate');
-
-        return $this->render('task/tach.html.twig', [
-            'contrats' => $contrats,
-            'selectedDate' => $selectedDate,
-        ]);
-    }
-
-    /**
-     * @Route("/task/{id}/workflow", name="task_workflow")
-     */
-    public function workflow(Request $request, $id, WorkflowInterface $taskRequestStateMachine): Response
-    {
-        $task = $this->entityManager->getRepository(Task::class)->find($id);
-
-        $taskRequestStateMachine->can($task, 'to_progress'); // False
-        $taskRequestStateMachine->can($task, 'to_completed'); // True
-
-        if ($taskRequestStateMachine->can($task, 'to_progress')) {
-            $taskRequestStateMachine->apply($task, 'to_progress');
-        } elseif ($taskRequestStateMachine->can($task, 'to_completed')) {
-            $taskRequestStateMachine->apply($task, 'to_completed');
-        }
-
-        $this->entityManager->flush();
-        return $this->redirectToRoute('app_task');
-    }
 }

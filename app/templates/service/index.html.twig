@@ -3,77 +3,106 @@
 {% block title %}Mission{% endblock %}
 
 {% block body %}
-    <!-- Main content -->
-    <section class="content">
-        <!-- Default box -->
-        <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Services</h3>
-                <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                    <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                        <i class="fa fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="box-body">
-                <!-- Start creating your amazing application! -->
-                <a href="{{ path('service_add') }}" class="btn btn-sm btn-success btn-sm">Add Service
-                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                </a>
-                <div id="table-laundry"></div>
-            </div><!-- /.box-body -->
-            <div class="box-footer">
-                {% for flash_message in app.session.flashbag.get('success') %}
-                    <div class="alert alert-dismissible alert-info">
-                        <button type="button" class="close" data-dismiss="alert">x</button>
-                        <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
+
+
+
+
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Default box -->
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Services</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i
+                                    class="fa fa-times"></i></button>
                     </div>
-                    <script>
-                        // Automatically close the alert after 5 seconds
-                        setTimeout(function() {
-                            $(".alert").alert('close');
-                        }, 2000);
-                    </script>
-                {% endfor %}
-                <div class="table-responsive">
-                    <table id="myTable-laundry" class="table table-bordered table-hover table-striped">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>métier</th>
-                            <th>designation</th>
-                            <th>Date</th>
-                            <th>Duree</th>
-                            <th>Description</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for service in services %}
-                            <tr align="center">
-                                <td>{{ service.id }}</td>
-                                <td>{{ service.mission }}</td>
-                                <td>{{ service.designation }}</td>
-                                <td>{{ service.date | date('d') }}</td>
-                                <td>{{ service.duree }}</td>
-                                <td>{{ service.description }}</td>
-                                <td class="d-flex justify-content-between align-items-center">
-                                    <a href="{{ path('service_add',{id: service.id}) }}" class="btn btn-warning btn-xs">
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                    </a>
-                                    <a href="{{ path('service_delete',{id: service.id}) }}" class="btn btn-xs btn-danger">
-                                        <span class="fa fa-trash-o" aria-hidden="true"></span>
-                                    </a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
                 </div>
-            </div>
-        </div><!-- /.box -->
-    </section><!-- /.content -->
+                <div class="box-body">
+                    <!-- Start creating your amazing application! -->
+
+                    <a href="{{ path('service_add') }}" class="btn btn-sm btn-success btn-sm">Add Service
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
+
+
+
+                    <div id="table-laundry"></div>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <!-- Add -->
+
+
+
+
+                    <!---fin---->
+
+
+                    {% for flash_message in app.session.flashbag.get('success') %}
+                        <div class="alert alert-dismissible alert-info">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
+                        </div>
+                        <script>
+                            // Automatically close the alert after 5 seconds
+                            setTimeout(function() {
+                                $(".alert").alert('close');
+                            }, 2000);
+                        </script>                    {% endfor %}
+
+
+
+                    <div class="table-responsive">
+                        <table id="myTable-laundry" class="table table-bordered table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>métier</th>
+                                <th>designation</th>
+                                <th>Date</th>
+                                <th>Duree</th>
+                                <th>Description</th>
+                                <th>Collaborator</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for service in services %}
+                                <tr align="center">
+                                    <td>{{ service.id }}</td>
+                                    <td>{{ service.mission }}</td>
+                                    <td>{{ service.designation }}</td>
+                                    <td>{{ service.date | date('d ') }}</td>
+                                    <td>{{ service.duree }}</td>
+                                    <td>{{ service.description }}</td>
+                                    <td>{{ service.user }}</td>
+                                    
+                                    <td class="d-flex justify-content-between align-items-center">
+
+                                        <a href="{{ path('service_add',{id: service.id}) }}"  class="btn btn-warning btn-xs">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        </a>
+                                        <a href="{{ path('service_delete',{id: service.id}) }}" class="btn btn-xs btn-danger">
+                                            <span class="fa fa-trash-o" aria-hidden="true"></span>
+
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div><!-- /.box -->
+
+
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
 {% endblock %}
