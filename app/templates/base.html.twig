@@ -214,7 +214,7 @@
         <section class="content-header">
             <h1>
 
-                {% if is_granted('ROLE_ADMIN') %}
+              {#  {% if is_granted('ROLE_ADMIN') %}
                     <small>Welcome Administrator!</small>
                 {% elseif app.user%}
                     <small>Welcome, {{ app.user.username }} !</small>
@@ -222,7 +222,7 @@
                     <small>Welcome</small>
                 {% endif %}
                 {% if app.user %}
-                {% endif %}
+                {% endif %}#}
 
 
             </h1>

@@ -25,8 +25,11 @@
                             <tr>
                                 <th>id</th>
                                 <th>Client</th>
-                                <th>Montant</th>
-                                <th>Service</th>
+                                <th>Mission</th>
+                                <th>Designation</th>
+                                <th>DateDebut</th>
+                                <th>DateFin</th>
+                                <th>Duree</th>
                                 <th>Duree</th>
                                 <th>statue</th>
                             </tr>
@@ -36,9 +39,50 @@
                                 <tr align="center">
                                     <td>{{ contrat.id }}</td>
                                     <td>{{ contrat.client }}</td>
-                                    <td>{{ contrat.montant }}</td>
-                                    <td>{{ contrat.service }}</td>
+                                    <td>{{ contrat.service.mission }}</td>
+                                    <td>{{ contrat.service.designation }}</td>
+                                    <td>{{ contrat.service.date |  date('d/m/Y')}}</td>
+                                    <td>
+                                        {% set endDate = contrat.service.date|date_modify('+' ~ contrat.service.duree ~ ' days') %}
+                                        {{ endDate|date('d/m/Y') }}
+                                    </td>
                                     <td>{{ contrat.service.duree }}</td>
+                                    <td  id="remainingBtn-{{ contrat.service.id }}">
+                                    </td>
+
+                                    <script>
+                                        let remainingBtn = document.getElementById("remainingBtn-{{ contrat.service.id }}");
+                                        let endDate = new Date("{{ endDate|date('Y-m-d') }}");
+
+                                        function countTime() {
+                                            let timing = endDate - new Date();
+                                            let remaining = "Terminé";
+                                            //let color = "red";
+
+                                            if (timing > 0) {
+                                                remaining = "En cours";
+                                                //color = "green";
+                                                let time = {
+                                                    d: Math.floor(timing / (1000 * 60 * 60 * 24) % 30),
+                                                    h: Math.floor((timing / (1000 * 60 * 60)) % 24),
+                                                };
+
+                                                remaining = Object.keys(time)
+                                                    .map(item => {
+                                                        return `${time[item]} ${item}`;
+                                                    })
+                                                    .join(" ");
+
+                                            }
+
+                                            remainingBtn.innerText = remaining;
+                                           // remainingBtn.style.backgroundColor = color;
+                                        }
+
+                                        countTime();
+                                        setInterval(countTime, 1000);
+                                    </script>
+
                                     <td>
                                         {% if contrat.tache %}
                                             <a href="{{ path('task_workflow', {id : contrat.tache.id}) }}">{{ contrat.tache.status }}</a>
@@ -55,3 +99,16 @@
     </section>
     </div>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

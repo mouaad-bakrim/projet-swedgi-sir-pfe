@@ -127,6 +127,29 @@ class CategorieController extends AbstractController
 
 }
 
+    #[Route('/categorie/show/{id}/download', name: 'app_pdf_download')]
+    public function downloadPdf(Categorie $categorie): Response
+    {
+
+        $dompdf = new Dompdf();
+
+        $html = $this->renderView('categorie/show_pdf.html.twig', [
+            'categorie' => $categorie,
+        ]);
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $pdfContent = $dompdf->output();
+
+        $response = new Response($pdfContent);
+        $response->headers->set('Content-Type', 'application/pdf');
+        $response->headers->set('Content-Disposition', 'attachment;filename="categorie.pdf"');
+
+        return $response;
+    }
+
 
 }
 

@@ -32,8 +32,6 @@ class ContratController extends AbstractController
         ]);
     }
 
-//new
-
     #[Route('/add/contrat', name: 'contrat_add')]
     public function add(Request $request): Response
     {

@@ -34,12 +34,11 @@ class Task
     #[ORM\OneToMany(mappedBy: 'tache', targetEntity: Service::class)]
     private Collection $services;
 
-    public function __construct()
+public function __construct()
     {
         $this->contrats = new ArrayCollection();
         $this->services = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {

@@ -53,17 +53,27 @@ class ServiceController extends AbstractController
     #[Route('/add/service', name: 'service_add')]
     public function store(Request $request): Response
     {
-        $service = new Service();
-        $form = $this->createForm(ServiceType::class, $service);
+        $form = $this->createForm(ServiceType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $service = $form->getData();
+            $serviceData = $form->getData();
+            for ($i = 0; $i < 12; $i++) {
+                $service = new Service();
+                $service->setMission($serviceData->getMission());
+                $service->setDesignation($serviceData->getDesignation());
+                $service->setDuree($serviceData->getDuree());
 
+                $date = new DateTime((new DateTime())->format("Y").'-'.(new DateTime())->format("m").'-'.$serviceData->getDate()->format('d'));
+                $modifiedDate = clone $date;
+                $modifiedDate->modify('+' . $i . ' month');
+                $service->setDate($modifiedDate);
 
+                $service->setDescription($serviceData->getDescription());
 
-            $this->entityManager->persist($service);
-            $this->entityManager->flush();
+                $this->entityManager->persist($service);
+                $this->entityManager->flush();
+            }
 
             $this->addFlash(
                 'success',

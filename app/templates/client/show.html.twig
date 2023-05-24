@@ -40,11 +40,8 @@
 
                         </a>
 
-                        <a id="print-button"  class="btn btn-success btn-sm">
-                            Print
-                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                        <a href="{{ path('app_pdf_download', {id: client.id}) }}" class="btn btn-success btn-sm">Download PDF</a>
 
-                        </a>
                         <div class="pull-right">
                             <a href="{{ path('client') }}" class="btn btn-sm btn-warning btn-sm">
                                 <i class="fa fa-reply" aria-hidden="true"></i>

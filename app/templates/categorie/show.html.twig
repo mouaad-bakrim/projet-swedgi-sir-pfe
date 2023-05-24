@@ -12,10 +12,10 @@
             </h1>
         </section>
 
-        <!-- Main content -->
+
         <section class="content">
 
-            <!-- Default box -->
+
             <div class="box">
                 <div class="box-header with-border">
                     <h4 class="box-title">Categorie</h4>
@@ -42,8 +42,9 @@
 
                         </a>
 
-                            <a href="{{ path('app_pdf_download') }}" class="btn btn-success btn-sm">download
-                                <span class="glyphicon glyphicon-print" aria-hidden="true"></span></a>
+                        <a href="{{ path('app_pdf_download', {id: categorie.id}) }}" class="btn btn-success btn-sm">Download PDF</a>
+
+
 
                         <div class="pull-right">
                             <a href="{{ path('categorie') }}" class="btn btn-sm btn-warning btn-sm">

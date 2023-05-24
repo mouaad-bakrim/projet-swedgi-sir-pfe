@@ -9,3 +9,7 @@ task_complete:
 update_task_status:
     path: '/task/{id}/update-status'
     controller: 'App\Controller\TaskController::updateTaskStatus'
+client_print:
+    path: /categorie/show/{id}/download
+    controller: App\Controller\CategorieController::downloadPdf
+    methods: GET

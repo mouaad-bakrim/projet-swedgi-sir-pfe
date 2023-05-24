@@ -29,7 +29,8 @@ class ServiceType extends AbstractType
             ->add('description')
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
+                'format' => 'dd',
+                'html5' => false
             ])
             ->add('duree')
 

@@ -164,5 +164,20 @@ class Service
         $this->dateFin = $dateFin;
         return $this;
     }
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dateCreation;
+
+    public function setDateCreation(\DateTimeInterface $dateCreation): void
+    {
+        $this->dateCreation = $dateCreation;
+    }
+
+    public function getDateCreation(): ?\DateTimeInterface
+    {
+        return $this->dateCreation;
+    }
+
 
 }

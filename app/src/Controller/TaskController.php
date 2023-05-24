@@ -25,7 +25,6 @@ class TaskController extends AbstractController
     {
         $this->entityManager = $doctrine->getManager();
         $this->contratRepository = $contratRepository;
-
     }
 
     /**
@@ -33,11 +32,17 @@ class TaskController extends AbstractController
      */
     public function index(Request $request): Response
     {
+
+
+
+
         $contrats = $this->contratRepository->getTodayService();
         $selectedDate = $request->query->get('selectedDate');
+
         return $this->render('task/tach.html.twig', [
             'contrats' => $contrats,
             'selectedDate' => $selectedDate,
+
         ]);
     }
 
