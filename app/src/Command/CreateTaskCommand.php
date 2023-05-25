@@ -39,7 +39,7 @@ class CreateTaskCommand extends Command
     {
         $currentDate = new \DateTime();
         $repository = $this->entityManager->getRepository(Contrat::class);
-        $services = $repository->findBy(['date' => $currentDate]);
+        $services = $repository->getTodayService();
 
         if (empty($services)) {
             $output->writeln('Aucun service trouvé pour la date actuelle.');
@@ -48,10 +48,27 @@ class CreateTaskCommand extends Command
 
         $output->writeln('Services trouvés à la date actuelle :');
 
+        /**
+         * @var Contrat $contrat
+         */
         foreach ($services as $contrat) {
             $output->writeln('Service : ' . $contrat->getService());
-            // Faites ce que vous souhaitez avec l'entité Service récupérée ici
+            if($contrat->getTasks()->count() > 0) continue;
+            $task = new Task();
+            $task->setContrat($contrat);
+            $task->setUser($contrat->getService()->getUser());
+            $task->setDateDebut($contrat->getService()->getDate());
+            $task->setDateFin((clone $contrat->getService()->getDate())->modify('+ '.$contrat->getService()->getDuree().' days'));
+            $task->setService($contrat->getService());
+            $this->entityManager->persist($task);
+            $this->entityManager->flush();
         }
+        // persist the entity to the database
+
+
+        // output a message to the console indicating success
+        $output->writeln('Task added successfully!');
+
 
         return Command::SUCCESS;
     }
