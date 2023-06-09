@@ -1,0 +1,230 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Task List{% endblock %}
+
+{% block body %}
+
+
+    <div class="card borderless-card">
+        <div class="card-block primary-breadcrumb">
+            <div class="breadcrumb-header">
+                <h5>Tache</h5>
+            </div>
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_home') }}">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a>Tache</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+
+
+            <div class="col-sm-12 col-xl-12">
+                <form action="{{ path('app_task') }}" method="GET">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <select name="status" class="form-control form-control-primary">
+                                <option value="">Select</option>
+                                <option value="draft">Draft</option>
+                                <option value="in_progress">In Progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary" style="height:38px">Filter</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+
+                <section class="content">
+                    <div class="box">
+                        <div class="box-footer">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Client</th>
+                                        <th>Service</th>
+                                        <th>DatrDebut</th>
+                                        <th>DatrFine</th>
+                                        <th>Collaborateur</th>
+                                        <th>Duree</th>
+                                        <th>Dure</th>
+                                        <th>status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for task in tasks %}
+
+                                        {% if  (not app.request.query.has('status') or task.status == app.request.query.get('status')) %}
+                                            <tr align="center">
+                                                <td>{{ task.contrat.id }}</td>
+                                                <td>{{ task.contrat.client }}</td>
+                                                <td>{{ task.contrat.service }}</td>
+                                                <td>{{ task.contrat.service.date|date('d/m/Y') }}</td>
+                                                <td>
+                                                    {% set endDate = task.contrat.service.date|date_modify('+' ~ task.contrat.service.duree ~ ' days') %}
+                                                    {{ endDate|date('d/m/Y') }}
+                                                </td>
+                                                <td>{{ task.contrat.service.user }}</td>
+                                                <td>{{ task.contrat.service.duree }}</td>
+                                                <td
+                                                        id="remainingBtn-{{ task.contrat.service.id }}">
+                                                </td>
+                                                <td>
+                                                    <a href="{{ path('task_workflow', {id: task.id}) }}">{{ task.status }}</a>
+                                                </td>
+
+
+
+                                                <script>
+                                                    let remainingBtn = document.querySelector("#remainingBtn-{{ task.contrat.service.id }}");
+                                                    let endDate = new Date("{{ endDate|date('Y-m-d') }}");
+
+                                                    function countTime() {
+                                                        let timing = endDate - new Date();
+                                                        let remaining = "Terminé";
+                                                        let color = "red";
+
+                                                        if (timing > 0) {
+                                                            remaining = "En cours";
+                                                            color = "green";
+                                                            let time = {
+                                                                d: Math.floor(timing / (1000 * 60 * 60 * 24) % 30),
+                                                                h: Math.floor((timing / (1000 * 60 * 60)) % 24),
+                                                                m: Math.floor((timing / 1000 / 60) % 60),
+                                                                s: Math.floor((timing / 1000) % 60),
+                                                            };
+
+                                                            remaining = Object.keys(time)
+                                                                .map(item => {
+                                                                    return `${time[item]} ${item}`;
+                                                                })
+                                                                .join(" ");
+                                                        }
+
+                                                        remainingBtn.innerText = remaining;
+                                                        remainingBtn.style.backgroundColor = color;
+                                                    }
+
+                                                    countTime();
+                                                    setInterval(countTime, 1000);
+                                                </script>
+
+
+                                            </tr>
+                                        {% endif %}
+
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% elseif app.user%}
+
+                <section class="content">
+                    <div class="box">
+                        <div class="box-footer">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Client</th>
+                                        <th>Service</th>
+                                        <th>DatrDebut</th>
+                                        <th>DatrFine</th>
+                                        <th>Collaborateur</th>
+                                        <th>Duree</th>
+                                        <th>Dure</th>
+                                        <th>status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for task in tasks %}
+
+                                        {% if task.user == app.user and (not app.request.query.has('status') or task.status == app.request.query.get('status')) %}
+                                            <tr align="center">
+                                                <td>{{ task.contrat.id }}</td>
+                                                <td>{{ task.contrat.client }}</td>
+                                                <td>{{ task.contrat.service }}</td>
+                                                <td>{{ task.contrat.service.date|date('d/m/Y') }}</td>
+                                                <td>
+                                                    {% set endDate = task.contrat.service.date|date_modify('+' ~ task.contrat.service.duree ~ ' days') %}
+                                                    {{ endDate|date('d/m/Y') }}
+                                                </td>
+                                                <td>{{ task.contrat.service.user }}</td>
+                                                <td>{{ task.contrat.service.duree }}</td>
+                                                <td
+                                                        id="remainingBtn-{{ task.contrat.service.id }}">
+                                                </td>
+                                                <td>
+                                                    <a href="{{ path('task_workflow', {id: task.id}) }}">{{ task.status }}</a>
+                                                </td>
+
+
+
+                                                <script>
+                                                    let remainingBtn = document.querySelector("#remainingBtn-{{ task.contrat.service.id }}");
+                                                    let endDate = new Date("{{ endDate|date('Y-m-d') }}");
+
+                                                    function countTime() {
+                                                        let timing = endDate - new Date();
+                                                        let remaining = "Terminé";
+                                                        let color = "red";
+
+                                                        if (timing > 0) {
+                                                            remaining = "En cours";
+                                                            color = "green";
+                                                            let time = {
+                                                                d: Math.floor(timing / (1000 * 60 * 60 * 24) % 30),
+                                                                h: Math.floor((timing / (1000 * 60 * 60)) % 24),
+                                                                m: Math.floor((timing / 1000 / 60) % 60),
+                                                                s: Math.floor((timing / 1000) % 60),
+                                                            };
+
+                                                            remaining = Object.keys(time)
+                                                                .map(item => {
+                                                                    return `${time[item]} ${item}`;
+                                                                })
+                                                                .join(" ");
+                                                        }
+
+                                                        remainingBtn.innerText = remaining;
+                                                        remainingBtn.style.backgroundColor = color;
+                                                    }
+
+                                                    countTime();
+                                                    setInterval(countTime, 1000);
+                                                </script>
+
+
+                                            </tr>
+                                        {% endif %}
+
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

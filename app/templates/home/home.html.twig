@@ -1,147 +1,221 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}contrat{% endblock %}
 
 {% block body %}
 
 
-        <div class="row">
+    <div class="row">
 
-            <section class="content">
-                <div class="col-md-6 col-lg-3">
-                    <div class="info-box bg-light shadow" style="border-radius:10px;">
-                        <span class="info-box-icon elevation-1"
-                              style="background-color: #009688; border-radius:10px;"><i
-                                    class="icon fa fa-users fa-x"></i></span>
-                        <div class="info-box-content">
-                            <h4 class="info-box-text text-bold">Client</h4>
-
-                            <h4 class="text-bold"> {{ countClients }}</h4>
-                        </div>
-                    </div>
+        {% if is_granted('ROLE_ADMIN') %}
+        <!-- statustic-card start -->
+        <div class="col-md-6 col-xl-3">
+            <div class="card user-widget-card bg-c-blue">
+                <div class="card-block">
+                    <i class="feather icon-user bg-simple-c-blue card1-icon"></i>
+                    <h4>{{ countClients }}</h4>
+                    <p>Client</p>
+                    <a href="#!" class="more-info">More Info</a>
                 </div>
-
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box bg-light shadow" style="border-radius:10px;">
-                        <span class="info-box-icon bg-maroon-gradient elevation-1" style="border-radius:10px;"><i
-                                    class="fa fa-user"></i></span>
-
-                        <div class="info-box-content">
-                            <h4 class="info-box-text text-bold">Collaborator</h4>
-
-                            <h4 class="text-bold">{{ countClients }}</h4>
-
-                        </div>
-
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-
-
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box bg-light shadow" style="border-radius:10px;">
-                        <span class="info-box-icon bg-blue elevation-1" style="border-radius:10px;"><i
-                                    class="fa fa-th-list"></i></span>
-
-                        <div class="info-box-content">
-                            <h4 class="info-box-text text-bold">Categorie</h4>
-
-                            <h4 class="text-bold"> {{ countCategories }}</h4>
-
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-
-
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box bg-light shadow" style="border-radius:10px;">
-                        <span class="info-box-icon bg-yellow-gradient elevation-1" style="border-radius:10px;"><i
-                                    class="fa fa-th-list"></i></span>
-
-                        <div class="info-box-content">
-                            <h4 class="info-box-text text-bold">Tache</h4>
-
-                            <h4 class="text-bold"> {{ countCategories }}</h4>
-
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="content mt-3">
-                    <div class="animated fadeIn">
-                        <div class="row">
-
-                            <div class="col-lg-6">
-                                <div class="card ">
-                                    <div class="card-body">
-                                        <h4 class="mb-3">Yearly Sales </h4>
-                                        <canvas id="sales-chart"></canvas>
-                                    </div>
-                                </div>
-                            </div><!-- /# column -->
-
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="mb-3">Team Commits </h4>
-                                        <canvas id="team-chart"></canvas>
-                                    </div>
-                                </div>
-                            </div><!-- /# column -->
-
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="mb-3">Bar chart </h4>
-                                        <canvas id="barChart"></canvas>
-                                    </div>
-                                </div>
-                            </div><!-- /# column -->
-
-
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="mb-3">Line Chart </h4>
-                                        <canvas id="lineChart"></canvas>
-                                    </div>
-                                </div>
-                            </div><!-- /# column -->
-
-
-                        </div>
-
-                    </div><!-- .animated -->
-                </div><!-- .content -->
-
-
-
-            </section>
-
-
+            </div>
         </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="card user-widget-card bg-c-pink">
+                <div class="card-block">
+                    <i class="feather icon-home bg-simple-c-pink card1-icon"></i>
+                    <h4>{{ countContrats }}</h4>
+                    <p>Contrat</p>
+                    <a href="#!" class="more-info">More Info</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="card user-widget-card bg-c-green">
+                <div class="card-block">
+                    <i class="feather icon-alert-triangle bg-simple-c-green card1-icon"></i>
+                    <h4>{{ countServices }}</h4>
+                    <p>Service</p>
+                    <a href="#!" class="more-info">More Info</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3">
+            <div class="card user-widget-card bg-c-yellow">
+                <div class="card-block">
+                    <i class="feather icon-user bg-simple-c-yellow card1-icon"></i>
+                    <h4>{{ countRegisters }}</h4>
+                    <p>collaborateur</p>
+                    <a href="#!" class="more-info">More Info</a>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="col-xl-8 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-left ">
+                            <h5>Tache</h5>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="card-block-big">
+                        <div id="monthly-graph" style="height:250px"></div>
+                    </div>
+                </div>
+            </div>
+            {# Dans votre fichier Twig #}
+            <div class="col-xl-4 col-md-12">
+                <div class="card user-activity-card">
+                    <div class="card-header">
+                        <h5>dernier user active </h5>
+                    </div>
+                    <div class="card-block">
+                        {% for user in users %}
+                            <div class="row m-b-25">
+                                <div class="col-auto p-r-0">
+                                    <div class="u-img">
+                                        <img src="..\files\assets\images\breadcrumb-bg.jpg" alt="user image" class="img-radius cover-img">
+                                        <img src="..\files\assets\images\avatar-2.jpg" alt="user image" class="img-radius profile-img">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <h6 class="m-b-5">{{ user.username }}</h6>
+                                    <p class="text-muted m-b-0"></p>
+                                    <p class="text-muted m-b-0">
+                                        <i class="feather icon-clock m-r-10"></i>
+                                        {{ user.lastLogin|date("Y-m-d H:i:s") }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+
+        {% elseif app.user%}
+
+        <div class="col-sm-4">
+            <div class="card bg-c-pink text-white widget-visitor-card">
+                <div class="card-block-small text-center">
+                    <h2>{{ countClients }}</h2>
+                    <h6>Client</h6>
+                    <i class="feather icon-user"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card bg-c-blue text-white widget-visitor-card">
+                <div class="card-block-small text-center">
+                    <h2>{{ countClients }}</h2>
+                    <h6>Contrat</h6>
+                    <i class="feather icon-file-text"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card bg-c-yellow text-white widget-visitor-card">
+                <div class="card-block-small text-center">
+                    <h2>{{ countClients }}</h2>
+                    <h6>Last month visitor</h6>
+                    <i class="feather icon-award"></i>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-8 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-left ">
+                        <h5>les Tache </h5>
+
+                    </div>
+                </div>
+                <div class="card-block-big">
+                    <div id="monthly-graph" style="height:250px"></div>
+                </div>
+            </div>
+        </div>
+            <div class="page-body">
+                <div class="row">
+                    <div class="col-xl-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Line chart</h5>
+                                <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+
+                            </div>
+                            <div class="card-block">
+                                <div id="main" style="height:300px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Pie chart</h5>
+                                <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+
+                            </div>
+                            <div class="card-block">
+                                <div id="pie-chart" style="height:300px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Bar chart</h5>
+                                <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+
+                            </div>
+                            <div class="card-block">
+                                <div id="bar_chart" style="height:300px"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Server load</h5>
+                                <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+
+                            </div>
+                            <div class="card-block">
+                                <div id="server-load" style="height:300px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Scatter chart</h5>
+                                <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+
+                            </div>
+                            <div class="card-block">
+                                <div id="scatter" style="height:300px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        {% endif %}
+
+    </div>
+
+
+    <div id="styleSelector">
 
     </div>
 
 
 
-
-
-    {% block javascripts %}
-
-
-
-        <script src="{{ asset('dist/js/chartjs-init.js') }}"></script>
-        <script src="{{ asset('dist/js/Chart.bundle.min.js') }}"></script>
-        <script src="{{ asset('dist/js/jquery.min.js') }}"></script>
-
-
-
-
-    {% endblock %}
-
-
 {% endblock %}
-

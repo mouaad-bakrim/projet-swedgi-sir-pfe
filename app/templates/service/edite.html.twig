@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <div class="card borderless-card">
+        <div class="card-block primary-breadcrumb">
+            <div class="breadcrumb-header">
+                <h5>Service</h5>
+            </div>
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_home') }}">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#!">Service</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    {{ form_start(form) }}
+
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Services</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fa fa-minus"></i></button>
+
+                </div>
+            </div>
+            <section class="content">
+
+                <div class="row">
+                    <label class="control-label col-md-2" for="">service :</label>
+                    <div class="col-md-10">
+                        <p>{{ form_widget(form.mission, {'attr': {'class': 'form-control', 'placeholder':'mission'}}) }}</p>
+                    </div>
+
+                    <label class="control-label col-sm-2" for="">designation :</label>
+                    <div class="col-sm-10">
+                        <p>{{ form_widget(form.designation, {'attr': {'class': 'form-control',  'placeholder':'designation'}}) }}</p>
+                    </div>
+
+                    <label class="control-label col-sm-2" for=""> description :</label>
+                    <div class="col-sm-10">
+                        <p> {{ form_widget(form.description, {'attr': {'class': 'form-control',  'placeholder':'description'}}) }}</p>
+                    </div>
+
+                    <label class="control-label col-sm-2" for=""> dateDebut :</label>
+                    <div class="col-sm-10">
+                        <p> {{ form_widget(form.date, {'attr': {'class': 'form-control',  'placeholder':'date'}}) }}</p>
+                    </div>
+
+                    <label class="control-label col-sm-2" for=""> duree :</label>
+                    <div class="col-sm-10">
+                        <p> {{ form_widget(form.duree, {'attr': {'class': 'form-control',  'placeholder':'duree'}}) }}</p>
+                    </div>
+
+                    <label class="control-label col-sm-2" for=""> Collaborator :</label>
+                    <div class="col-sm-10">
+                        <p> {{ form_widget(form.user, {'attr': {'class': 'form-control',  'placeholder':'Collaborator'}}) }}</p>
+                    </div>
+
+                    <div class="card-footer col-sm-4 text-center">
+                        <button type="submit"  class="btn btn-success">
+                            <i class="fa fa-refresh fa-spin fa-fw" aria-hidden="true"></i>
+                            Update</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}

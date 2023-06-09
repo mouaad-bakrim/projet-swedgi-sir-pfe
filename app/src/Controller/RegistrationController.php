@@ -22,7 +22,6 @@ class RegistrationController extends AbstractController
 {
     private $registerRepository;
     private  $entityManager;
-    private $current_role;
 
     public function __construct(UserRepository $registerRepository, ManagerRegistry $doctrine)
     {
@@ -42,17 +41,15 @@ class RegistrationController extends AbstractController
     }
 
 
+
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $user->setCreatedAt(new \DateTime());
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($user);
-            $entityManager->flush();
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -64,14 +61,28 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-       }
+
+            $this->addFlash('success', 'Collaborateur ajouté avec succès');
+
+            return $this->redirectToRoute('index_app');
+
+        }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
 
+    /*   public function authenticate(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, AppCustomAuthenticator $authenticator, EntityManagerInterface $entityManager){
+           $user = new User();
+           return $userAuthenticator->authenticateUser(
+               $user,
+               $authenticator,
+               $request
+           );
 
+       }
+   */
     #[Route('/register/delete/{id}', name: 'register_delete')]
     public function delete(User $register): Response
     {
@@ -85,5 +96,50 @@ class RegistrationController extends AbstractController
         return $this->redirectToRoute('index_app');
 
     }
+
+    #[Route('/user/edit/{id}', name: 'user_edit')]
+    public function edit(User $user, Request $request): Response
+    {
+
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Your collaborator was updated'
+            );
+
+            return $this->redirectToRoute('index_app');
+        }
+
+        return $this->renderForm('registration/edite.html.twig', [
+            'registrationForm' => $form,
+        ]);
+
+    }
+
+    #[Route('/user/show/{id}', name: 'user_show')]
+    public function show(User $user, Request $request): Response
+    {
+
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
+        }
+        return $this->renderForm('registration/show.html.twig', [
+            'user' => $user,
+        ]);
+
+    }
+
+
 
 }

@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+{% block title %}show services{% endblock %}
+
+{% block body %}
+
+    <div class="card borderless-card">
+        <div class="card-block primary-breadcrumb">
+            <div class="breadcrumb-header">
+                <h5>Service</h5>
+            </div>
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_home') }}">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#!">Service</a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#!">Show Service</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+<div class="card">
+    <div class="card-header">
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="box">
+
+
+            <div class="box-body">
+
+                <div class="box-header with-border">
+                    <a href="{{ path('service_edit',{id: service.id}) }}" class="btn btn-sm btn-primary btn-sm">
+                        Edite Service
+                        <span class="fa fa-pencil-square-o" aria-hidden="true"></span>
+                    </a>
+
+
+                    <a href="{{ path('service_delete',{id: service.id}) }}" class="btn btn-danger btn-sm">
+                        Delete
+                        <span class="fa fa-trash-o" aria-hidden="true"></span>
+
+                    </a>
+
+                    <div class="pull-right">
+                        <a href="{{ path('app_service') }}" class="btn btn-sm btn-warning btn-sm">
+                            <i class="fa fa-reply" aria-hidden="true"></i>
+                            Reteurn
+                        </a>
+                    </div>
+
+
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                <section class="content">
+
+                    <div class="row">
+
+                        <label class="control-label col-md-2" for="">service :</label>
+                        <div class="col-sm-9">
+                            <p><input type='text' class="form-control" disabled="disabled"
+                                      placeholder="{{ service.mission }}"></p>
+                        </div>
+
+                        <label class="control-label col-sm-2" for="">designation :</label>
+                        <div class="col-sm-9">
+                            <p> <input type='text' class="form-control" disabled="disabled"
+                                       placeholder="{{ service.designation }}"></p>
+                        </div>
+
+                        <label class="control-label col-sm-2" for="">description :</label>
+                        <div class="col-sm-9">
+                            <p> <input type='text' class="form-control" disabled="disabled"
+                                       placeholder="{{ service.description }}"></p>
+                        </div>
+                        <label class="control-label col-sm-2" for=""> dateDebut :</label>
+                        <div class="col-sm-9">
+                            <p> <input type='text' class="form-control" disabled="disabled"
+                                       placeholder="{{ service.date|date('d') }}"></p>
+                        </div>
+                        <label class="control-label col-sm-2" for=""> duree :</label>
+                        <div class="col-sm-9">
+                            <p> <input type='text' class="form-control" disabled="disabled"
+                                       placeholder="{{ service.duree }}"></p>
+                        </div>
+                        <label class="control-label col-sm-2" for=""> Collaborator :</label>
+
+                            <p> <input type='text' class="form-control" disabled="disabled"
+                                       placeholder="{{ service.user }}"></p>
+
+
+                    </div>
+                </section>
+
+
+            </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+
+    </div>
+    </div>
+    </div>
+
+
+{% endblock %}

@@ -4,29 +4,37 @@
 
 {% block body %}
     {{ form_start(form) }}
-    <!-- Content Wrapper. Contains page content -->
 
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1 class="text-success">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                <small>add contrat</small>
-            </h1>
-        </section>
+    <div class="card borderless-card">
+        <div class="card-block primary-breadcrumb">
+            <div class="breadcrumb-header">
+                <h5>Create Contrat</h5>
+            </div>
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_home') }}">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="{{ path('contrat') }}">Contat</a>
+                    </li>
+                    <li class="breadcrumb-item"><a>Create Contrat</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-        <!-- Main content -->
+<div class="card">
+    <div class="card-header">
+
+    <!-- Main content -->
         <section class="content">
 
             <!-- Default box -->
             <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">contrat</h3>
-                    <div class="box-tools pull-right">
-                        <a href="{{ path('contrat') }}">
-                            <i class="fa fa-times"></i>
-                        </a>
-                    </div>
-                </div>
+
                 <section class="content">
 
                     <div class="row">
@@ -36,7 +44,6 @@
                         <div class="form-group col-sm-10">
            {{ form_widget(form.date, { 'attr': {'class': 'form-control no-resize datetimepicker', 'placeholder': 'Sélectionnez une date'} }) }}
                         </div>
-
 
                         <div class="form-group col-sm-2">
                             <label class="control-label" for="client">Client :</label>
@@ -64,6 +71,8 @@
                 </section>
             </div>
         </section>
+    </div>
+    </div>
     </div>
 
     {{ form_end(form) }}

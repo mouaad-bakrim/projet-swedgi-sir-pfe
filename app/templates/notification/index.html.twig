@@ -1,0 +1,23 @@
+<!-- templates/notification/show.html.twig -->
+
+<ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn"
+    data-dropdown-out="fadeOut">
+    <li>
+        <h6>Notifications</h6>
+        <label class="label label-danger">New</label>
+    </li>
+    {% for notification in notifications %}
+        <li>
+            <div class="media">
+                <img class="d-flex align-self-center img-radius"
+                     src="{{ asset('files/assets/images/avatar-4.jpg') }}"
+                     alt="Generic placeholder image">
+                <div class="media-body">
+                    <h5 class="notification-user">{{ notification.user.username }}</h5>
+                    <p class="notification-msg">{{ notification.message }}</p>
+                    <span class="notification-time">{{ notification.createdAt|date('Y-m-d H:i:s') }}</span>
+                </div>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

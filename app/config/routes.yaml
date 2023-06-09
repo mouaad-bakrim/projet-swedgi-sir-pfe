@@ -13,3 +13,6 @@ client_print:
     path: /categorie/show/{id}/download
     controller: App\Controller\CategorieController::downloadPdf
     methods: GET
+error_404:
+    path: /error404
+    controller: App\Controller\ErrorController::error404

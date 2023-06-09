@@ -30,6 +30,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $username = null;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $lastLogin;
+
+    // ...
+
+    public function getLastLogin(): ?\DateTimeInterface
+    {
+        return $this->lastLogin;
+    }
+
+
+
+    /**
      * @return string|null
      */
     public function getUsername(): ?string
@@ -53,6 +67,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Service::class)]
     private Collection $services;

@@ -1,220 +1,632 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Categorie List{% endblock %}
+{% block title %} {% endblock %}
 
 
 {% block body %}
+    {% if app.user %}
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashbordeau</title>
-
-    <style>
-
-
-        .padding {
-            padding: 3rem !important
-        }
-
-        .user-card-full {
-            overflow: hidden;
-        }
-
-        .card {
-            border-radius: 5px;
-            -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
-            box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
-            border: none;
-            margin-bottom: 30px;
-        }
-
-        .m-r-0 {
-            margin-right: 0px;
-        }
-
-        .m-l-0 {
-            margin-left: 0px;
-        }
-
-        .user-card-full .user-profile {
-            border-radius: 5px 0 0 5px;
-        }
-
-        .bg-c-lite-green {
-            background: -webkit-gradient(linear, left top, right top, from(#009688), to(#009688));
-            background: linear-gradient(to right, rgb(0,150,136), #6f8891);
-        }
-
-        .user-profile {
-            padding: 53px 0;
-        }
-
-        .card-block {
-            padding: 1.25rem;
-        }
-
-        .m-b-25 {
-            margin-bottom: 25px;
-        }
-
-        .img-radius {
-            border-radius: 5px;
-        }
-
-
-
-        h6 {
-            font-size: 14px;
-        }
-
-        .card .card-block p {
-            line-height: 25px;
-        }
-
-        @media only screen and (min-width: 1400px){
-            p {
-                font-size: 14px;
-            }
-        }
-
-        .card-block {
-            padding: 1.25rem;
-        }
-
-        .b-b-default {
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .m-b-20 {
-            margin-bottom: 20px;
-        }
-
-        .p-b-5 {
-            padding-bottom: 5px !important;
-        }
-
-        .card .card-block p {
-            line-height: 25px;
-        }
-
-        .m-b-10 {
-            margin-bottom: 10px;
-        }
-
-        .text-muted {
-            color: #919aa3 !important;
-        }
-
-        .b-b-default {
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .f-w-600 {
-            font-weight: 600;
-        }
-
-        .m-b-20 {
-            margin-bottom: 20px;
-        }
-
-        .m-t-40 {
-            margin-top: 20px;
-        }
-
-        .p-b-5 {
-            padding-bottom: 5px !important;
-        }
-
-        .m-b-10 {
-            margin-bottom: 10px;
-        }
-
-        .m-t-40 {
-            margin-top: 20px;
-        }
-
-        .user-card-full .social-link li {
-            display: inline-block;
-        }
-
-        .user-card-full .social-link li a {
-            font-size: 20px;
-            margin: 0 10px 0 0;
-            -webkit-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-        }
-
-
-
-    </style>
-</head>
-
-<body>
-  <section class="content">
-
-<div class="page-content page-container " id="page-content">
-    <div class="padding ">
-
-                <div class="card user-card-full bg-light">
-                    <div class="row m-l-0 m-r-0">
-                        <div class="col-sm-4 bg-c-lite-green user-profile">
-                            <div class="card-block text-center text-white">
-                                <div class="m-b-25">
-                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
-                                </div>
-                                 {% if app.user%}
-              <h6 class="f-w-600">{{ app.user.username }}</h6>
-                                <p>Web Designer</p>
-
-                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
-                            </div>
+        <div class="page-header">
+            <div class="row align-items-end">
+                <div class="col-lg-8">
+                    <div class="page-header-title">
+                        <div class="d-inline">
+                            <h4>User Profile</h4>
                         </div>
-                        <div class="col-sm-8">
-                            <div class="card-block">
-                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Email</p>
-                                        <h6 class="text-muted f-w-400">{{ app.user.email }}</h6>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="page-header-breadcrumb">
+                        <ul class="breadcrumb-title">
+                            <li class="breadcrumb-item">
+                                <a href="{{ path('app_home') }}"> <i class="feather icon-home"></i>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="{{ path('app_home') }}">Home</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="{{ path('profile') }}">Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page-header end -->
+
+        <!-- Page-body start -->
+        <div class="page-body">
+            <!--profile cover start-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="cover-profile">
+                        <div class="profile-bg-img">
+                            <img class="profile-bg-img img-fluid"
+                                 src="{{ asset('files/assets/images/user-profile/bg-img1.jpg') }}"
+                                 alt="bg-img">
+                            <div class="card-block user-info">
+                                <div class="col-md-12">
+                                    <div class="media-left">
+                                        <a href="#" class="profile-image">
+                                            <img class="user-img img-radius"
+                                                 src="{{ asset('files/assets/images/avatar-4.jpg') }}"
+                                                 alt="user-img">
+                                        </a>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Phone</p>
-                                        <h6 class="text-muted f-w-400">98979989898</h6>
+                                    <div class="media-body row">
+                                        <div class="col-lg-12">
+                                            <div class="user-title">
+                                                <h2 class="f-w-600">{{ app.user.username }}</h2>
+                                                <span class="text-white">Web designer</span>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
-                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Recent</p>
-                                        <h6 class="text-muted f-w-400">Sam Disuja</h6>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="m-b-10 f-w-600">Most Viewed</p>
-                                        <h6 class="text-muted f-w-400">Dinoter husainm</h6>
-                                    </div>
-                                </div>
-                                <ul class="social-link list-unstyled m-t-40 m-b-10">
-                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="fa fa-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="fa fa-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="fa fa-linkedin feather icon-linkden linkden" aria-hidden="true"></i></a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-              {% endif %}
+            <!--profile cover end-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- tab header start -->
+                    <div class="tab-header card">
+                        <ul class="nav nav-tabs md-tabs tab-timeline" role="tablist"
+                            id="mytab">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab"
+                                   href="#personal" role="tab">Personal Info</a>
+                                <div class="slide"></div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#binfo"
+                                   role="tab">User's Services</a>
+                                <div class="slide"></div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#contacts"
+                                   role="tab">User's Contacts</a>
+                                <div class="slide"></div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#review"
+                                   role="tab">Reviews</a>
+                                <div class="slide"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- tab header end -->
+                    <!-- tab content start -->
+                    <div class="tab-content">
+                        <!-- tab panel personal start -->
+                        <div class="tab-pane active" id="personal" role="tabpanel">
+                            <!-- personal card start -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-header-text">About Me</h5>
+                                    <button id="edit-btn" type="button"
+                                            class="btn btn-sm btn-primary waves-effect waves-light f-right">
+                                        <i class="icofont icofont-edit"></i>
+                                    </button>
+                                </div>
+
+
+                                <div class="card-block">
+                                    <div class="view-info">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="general-info">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-xl-6">
+                                                            <div class="table-responsive">
+                                                                <table class="table m-0">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <th scope="row">Full
+                                                                            Name
+                                                                        </th>
+                                                                        <td>
+                                                                            {{ app.user.username }}
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">
+                                                                            Gender
+                                                                        </th>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">
+                                                                            Birth Date
+                                                                        </th>
+                                                                        <td>October 25th,
+                                                                            1990
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <th scope="row">
+                                                                            Location
+                                                                        </th>
+                                                                        <td>New York, USA
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <!-- end of table col-lg-6 -->
+                                                        <div class="col-lg-12 col-xl-6">
+                                                            <div class="table-responsive">
+                                                                <table class="table">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <th scope="row">
+                                                                            Email
+                                                                        </th>
+                                                                        <td>
+                                                                            <a href=""> {{ app.user.email }}</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">
+                                                                            Mobile Number
+                                                                        </th>
+                                                                        <td>(0123) -
+                                                                            4567891
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row">
+                                                                            Website
+                                                                        </th>
+                                                                        <td><a href="#!">www.demo.com</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <!-- end of table col-lg-6 -->
+                                                    </div>
+                                                    <!-- end of row -->
+                                                </div>
+                                                <!-- end of general info -->
+                                            </div>
+                                            <!-- end of col-lg-12 -->
+                                        </div>
+                                        <!-- end of row -->
+                                    </div>
+                                    <!-- end of view-info -->
+                                    <!-- end of edit-info -->
+                                </div>
+                                <!-- end of card-block -->
+                            </div>
+
+                            <!-- personal card end-->
+                        </div>
+                        <!-- tab pane personal end -->
+                        <!-- tab pane info start -->
+                        <div class="tab-pane" id="binfo" role="tabpanel">
+                            <!-- info card start -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-header-text">User Services</h5>
+                                </div>
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="card b-l-success business-info services m-b-20">
+                                                <div class="card-header">
+                                                    <div class="service-header">
+                                                        <a href="#">
+                                                            <h5 class="card-header-text">
+                                                                Shivani Hero</h5>
+                                                        </a>
+                                                    </div>
+                                                    <span class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                                                          data-toggle="dropdown"
+                                                          aria-haspopup="true"
+                                                          aria-expanded="true"
+                                                          role="tooltip">
+                                         </span>
+                                                    <div class="dropdown-menu dropdown-menu-right b-none services-list">
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-edit"></i>
+                                                            Edit</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-ui-delete"></i>
+                                                            Delete</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-eye-alt"></i>
+                                                            View</a>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <p class="task-detail">Lorem
+                                                                ipsum dolor sit amet,
+                                                                consectet ur adipisicing
+                                                                elit, sed do eiusmod temp or
+                                                                incidi dunt ut labore
+                                                                et.Lorem ipsum dolor sit
+                                                                amet, consecte.</p>
+                                                        </div>
+                                                        <!-- end of col-sm-8 -->
+                                                    </div>
+                                                    <!-- end of row -->
+                                                </div>
+                                                <!-- end of card-block -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card b-l-danger business-info services">
+                                                <div class="card-header">
+                                                    <div class="service-header">
+                                                        <a href="#">
+                                                            <h5 class="card-header-text">
+                                                                Dress and Sarees</h5>
+                                                        </a>
+                                                    </div>
+                                                    <span class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                                                          data-toggle="dropdown"
+                                                          aria-haspopup="true"
+                                                          aria-expanded="true"
+                                                          role="tooltip">
+                                         </span>
+                                                    <div class="dropdown-menu dropdown-menu-right b-none services-list">
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-edit"></i>
+                                                            Edit</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-ui-delete"></i>
+                                                            Delete</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-eye-alt"></i>
+                                                            View</a>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <p class="task-detail">Lorem
+                                                                ipsum dolor sit amet,
+                                                                consectet ur adipisicing
+                                                                elit, sed do eiusmod temp or
+                                                                incidi dunt ut labore
+                                                                et.Lorem ipsum dolor sit
+                                                                amet, consecte.</p>
+                                                        </div>
+                                                        <!-- end of col-sm-8 -->
+                                                    </div>
+                                                    <!-- end of row -->
+                                                </div>
+                                                <!-- end of card-block -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card b-l-info business-info services">
+                                                <div class="card-header">
+                                                    <div class="service-header">
+                                                        <a href="#">
+                                                            <h5 class="card-header-text">
+                                                                Shivani Auto Port</h5>
+                                                        </a>
+                                                    </div>
+                                                    <span class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                                                          data-toggle="dropdown"
+                                                          aria-haspopup="true"
+                                                          aria-expanded="true"
+                                                          role="tooltip">
+                                         </span>
+                                                    <div class="dropdown-menu dropdown-menu-right b-none services-list">
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-edit"></i>
+                                                            Edit</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-ui-delete"></i>
+                                                            Delete</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-eye-alt"></i>
+                                                            View</a>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <p class="task-detail">Lorem
+                                                                ipsum dolor sit amet,
+                                                                consectet ur adipisicing
+                                                                elit, sed do eiusmod temp or
+                                                                incidi dunt ut labore
+                                                                et.Lorem ipsum dolor sit
+                                                                amet, consecte.</p>
+                                                        </div>
+                                                        <!-- end of col-sm-8 -->
+                                                    </div>
+                                                    <!-- end of row -->
+                                                </div>
+                                                <!-- end of card-block -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card b-l-warning business-info services">
+                                                <div class="card-header">
+                                                    <div class="service-header">
+                                                        <a href="#">
+                                                            <h5 class="card-header-text">
+                                                                Hair stylist</h5>
+                                                        </a>
+                                                    </div>
+                                                    <span class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                                                          data-toggle="dropdown"
+                                                          aria-haspopup="true"
+                                                          aria-expanded="true"
+                                                          role="tooltip">
+                                         </span>
+                                                    <div class="dropdown-menu dropdown-menu-right b-none services-list">
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-edit"></i>
+                                                            Edit</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-ui-delete"></i>
+                                                            Delete</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-eye-alt"></i>
+                                                            View</a>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <p class="task-detail">Lorem
+                                                                ipsum dolor sit amet,
+                                                                consectet ur adipisicing
+                                                                elit, sed do eiusmod temp or
+                                                                incidi dunt ut labore
+                                                                et.Lorem ipsum dolor sit
+                                                                amet, consecte.</p>
+                                                        </div>
+                                                        <!-- end of col-sm-8 -->
+                                                    </div>
+                                                    <!-- end of row -->
+                                                </div>
+                                                <!-- end of card-block -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card b-l-danger business-info services">
+                                                <div class="card-header">
+                                                    <div class="service-header">
+                                                        <a href="#">
+                                                            <h5 class="card-header-text">BMW
+                                                                India</h5>
+                                                        </a>
+                                                    </div>
+                                                    <span class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                                                          data-toggle="dropdown"
+                                                          aria-haspopup="true"
+                                                          aria-expanded="true"
+                                                          role="tooltip">
+                                         </span>
+                                                    <div class="dropdown-menu dropdown-menu-right b-none services-list">
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-edit"></i>
+                                                            Edit</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-ui-delete"></i>
+                                                            Delete</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-eye-alt"></i>
+                                                            View</a>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <p class="task-detail">Lorem
+                                                                ipsum dolor sit amet,
+                                                                consectet ur adipisicing
+                                                                elit, sed do eiusmod temp or
+                                                                incidi dunt ut labore
+                                                                et.Lorem ipsum dolor sit
+                                                                amet, consecte.</p>
+                                                        </div>
+                                                        <!-- end of col-sm-8 -->
+                                                    </div>
+                                                    <!-- end of row -->
+                                                </div>
+                                                <!-- end of card-block -->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card b-l-success business-info services">
+                                                <div class="card-header">
+                                                    <div class="service-header">
+                                                        <a href="#">
+                                                            <h5 class="card-header-text">
+                                                                Shivani Hero</h5>
+                                                        </a>
+                                                    </div>
+                                                    <span class="dropdown-toggle addon-btn text-muted f-right service-btn"
+                                                          data-toggle="dropdown"
+                                                          aria-haspopup="true"
+                                                          aria-expanded="true"
+                                                          role="tooltip">
+                                         </span>
+                                                    <div class="dropdown-menu dropdown-menu-right b-none services-list">
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-edit"></i>
+                                                            Edit</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-ui-delete"></i>
+                                                            Delete</a>
+                                                        <a class="dropdown-item"
+                                                           href="#!"><i
+                                                                    class="icofont icofont-eye-alt"></i>
+                                                            View</a>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <p class="task-detail">Lorem
+                                                                ipsum dolor sit amet,
+                                                                consectet ur adipisicing
+                                                                elit, sed do eiusmod temp or
+                                                                incidi dunt ut labore
+                                                                et.Lorem ipsum dolor sit
+                                                                amet, consecte.</p>
+                                                        </div>
+                                                        <!-- end of col-sm-8 -->
+                                                    </div>
+                                                    <!-- end of row -->
+                                                </div>
+                                                <!-- end of card-block -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- info card end -->
+                        </div>
+                        <!-- tab pane info end -->
+                        <!-- tab pane contact start -->
+                        <div class="tab-pane" id="contacts" role="tabpanel">
+                            <div class="row">
+                                <div class="col-xl-3">
+                                    <!-- user contact card left side start -->
+                                    <div class="card">
+
+                                        <div class="card-block groups-contact">
+                                            <h4>Groups</h4>
+                                            <ul class="list-group">
+                                                <li class="list-group-item justify-content-between">
+                                                    Project
+                                                    <span class="badge badge-primary badge-pill">30</span>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                    Notes
+                                                    <span class="badge badge-success badge-pill">20</span>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                    Activity
+                                                    <span class="badge badge-info badge-pill">100</span>
+                                                </li>
+                                                <li class="list-group-item justify-content-between">
+                                                    Schedule
+                                                    <span class="badge badge-danger badge-pill">50</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-xl-9">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <!-- contact data table card start -->
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5 class="card-header-text">
+                                                        Contacts</h5>
+                                                </div>
+                                                <div class="card-block contact-details">
+                                                    <div class="data_table_main table-responsive dt-responsive">
+                                                        <table id="simpletable"
+                                                               class="table  table-striped table-bordered nowrap">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Email</th>
+                                                                <th>Mobileno.</th>
+                                                                <th>Favourite</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                            <tr>
+                                                                <td>Garrett Winters</td>
+                                                                <td>
+                                                                    <a
+                                                                            class="__cf_email__"
+                                                                            data-cfemail="a3c2c1c0929190e3c4cec2cacf8dc0ccce">[email&#160;protected]</a>
+                                                                </td>
+                                                                <td>9989988988</td>
+                                                                <td><i class="fa fa-star-o"
+                                                                       aria-hidden="true"></i>
+                                                                    k
+                                                                </td>
+                                                                <td class="dropdown">
+                                                                    <button type="button"
+                                                                            class="btn btn-primary dropdown-toggle"
+                                                                            data-toggle="dropdown"
+                                                                            aria-haspopup="true"
+                                                                            aria-expanded="false">
+                                                                        <i class="fa fa-cog"
+                                                                           aria-hidden="true"></i>
+                                                                    </button>
+                                                                    <div class="dropdown-menu dropdown-menu-right b-none contact-menu">
+                                                                        <a class="dropdown-item"
+                                                                           href="#"><i
+                                                                                    class="icofont icofont-edit"></i>Edit</a>
+                                                                        <a class="dropdown-item"
+                                                                           href="#"><i
+                                                                                    class="icofont icofont-ui-delete"></i>Delete</a>
+                                                                        <a class="dropdown-item"
+                                                                           href="#"><i
+                                                                                    class="icofont icofont-eye-alt"></i>View</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+
+                                                            </tbody>
+
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- contact data table card end -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- tab pane contact end -->
+                    </div>
+                </div>
+            </div>
         </div>
-
-</section>
-</div>
-
-</body>
-
-</html>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    {% endif %}
 {% endblock %}

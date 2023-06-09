@@ -5,6 +5,7 @@ namespace App\Command;
 use App\Entity\Contrat;
 use App\Entity\Service;
 use App\Entity\Task;
+use App\Repository\ContratRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -21,11 +22,13 @@ class CreateTaskCommand extends Command
     protected static $defaultName = 'app:get-current-service';
 
     private $entityManager;
+    private $contratRepository;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager,ContratRepository $contratRepository)
     {
         parent::__construct();
         $this->entityManager = $entityManager;
+        $this->contratRepository = $contratRepository;
     }
 
     protected function configure()
@@ -37,11 +40,12 @@ class CreateTaskCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $currentDate = new \DateTime();
+        # $currentDate = new \DateTime();
         $repository = $this->entityManager->getRepository(Contrat::class);
-        $services = $repository->getTodayService();
+        //$services = $repository->getTodayService();
+        $contrats = $this->contratRepository->findAll();
 
-        if (empty($services)) {
+        if (empty($contrats)) {
             $output->writeln('Aucun service trouvé pour la date actuelle.');
             return Command::FAILURE;
         }
@@ -51,7 +55,7 @@ class CreateTaskCommand extends Command
         /**
          * @var Contrat $contrat
          */
-        foreach ($services as $contrat) {
+        foreach ($contrats as $contrat) {
             $output->writeln('Service : ' . $contrat->getService());
             if($contrat->getTasks()->count() > 0) continue;
             $task = new Task();

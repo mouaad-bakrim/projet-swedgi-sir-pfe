@@ -22,9 +22,7 @@ class SomeController extends AbstractController
      */
     public function sendEmail(): Response
     {
-        $recipientEmail = 'mouaadbakrim@gmail.com';
-        $subject = 'Sujet de l\'e-mail';
-        $body = 'Contenu de l\'e-mail';
+
 
         $this->emailService->sendEmail($recipientEmail, $subject, $body);
 

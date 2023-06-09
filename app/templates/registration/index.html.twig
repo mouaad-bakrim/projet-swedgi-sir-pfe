@@ -4,79 +4,95 @@
 
 {% block body %}
 
-
-
-
-
-
-    <!-- Main content -->
-    <section class="content">
-
-
-        <!-- Default box -->
-        <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Collaborator</h3>
-                <div class="box-tools pull-right">
-                    <a href="{{ path('app_register') }}" class="btn btn-sm btn-success btn-sm pull-right">   <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Collaborator
-                    </a>
-                </div>
+    <div class="card borderless-card">
+        <div class="card-block primary-breadcrumb">
+            <div class="breadcrumb-header">
+                <h5>Employer</h5>
             </div>
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_home') }}">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#">Collaborateur</a>
+                    </li>
 
-            <div class="box-footer">
+                </ul>
+            </div>
+        </div>
+    </div>
 
-                <div class="table-responsive">
-                    <table id="myTable-laundry" class="table table-bordered table-hover table-striped">
-                        <thead>
-                        <tr>
 
-                            <th>id</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>Roles</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
 
-                        {% for register in registers %}
+
+
+    <div class="card">
+        <div class="card-header">
+
+
+                <div class="box-body" style="padding-bottom:10px">
+                    <a  href="{{ path('app_register') }}" class="btn hor-grd btn-grd-success "><i class="fa fa-user-plus"></i>Add Collaborateur</a>
+                </div>
+
+        <div class="box-footer">
+
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                    <tr class="table-primary">
+
+                        <th>id</th>
+                        <th  style="text-align:center">Username</th>
+                        <th  style="text-align:center">Email</th>
+                        <th  style="text-align:center">Password</th>
+                        <th  style="text-align:center">Roles</th>
+                        <th  style="text-align:center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for register in registers %}
                         <tr align="center">
                             <td>{{ register.id }}</td>
-                            <td><span class="logo-mini pull-left"><img src="{{ asset('assets/img/logo.jpg') }}" width="35px"
-                                                             height="35px"  style="border-radius:30px"></span>
-                            {{ register.username }}</td>
+                            <td>
+
+                                {{ register.username }}</td>
                             <td>{{ register.email }}</td>
-                            <td>{{ register.password }}</td>
+                            <td>**********</td>
                             <td>{{ register.roles ? register.roles|json_encode : '' }}
                             </td>
 
 
-                            <td class="d-flex justify-content-between align-items-center">
-
-                                <a  class="btn btn-warning btn-xs">
-                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                </a>
-                                <a  href="{{ path('register_delete',{id: register.id}) }}" class="btn btn-xs btn-danger">
-                                    <span class="fa fa-trash-o" aria-hidden="true"></span>
-
-                                </a>
+                            <td class="d-flex justify-content-between align-items-center" style="padding:3px">
+                                <a href="{{ path('user_show',{id: register.id}) }}" type="button"
+                                   class="btn btn-primary btn-icon waves-effect waves-light" data-toggle="tooltip"
+                                   data-placement="top" title="Show">
+                                    <i class="fa fa-eye" style="margin-left:6px"></i></a>
+                                <a href="{{ path('user_edit',{id: register.id}) }}" type="button"
+                                   class="btn btn-warning btn-icon waves-effect waves-light" data-toggle="tooltip"
+                                   data-placement="top" title="Edite">
+                                    <i class="ti-pencil" style="margin-left:6px"></i></a>
+                                <a href="{{ path('client_delete',{id: register.id}) }}" type="button"
+                                   class="btn btn-danger btn-icon waves-effect waves-light" data-toggle="tooltip"
+                                   data-placement="top" title="Delete">
+                                    <i class="fa fa-trash-o" style="margin-left:6px"></i></a>
                             </td>
 
                         </tr>
-                        {% endfor %}
+                    {% endfor %}
 
 
-
-                        </tbody>
-                    </table>
-                </div>
-
+                    </tbody>
+                </table>
             </div>
-        </div><!-- /.box -->
+
+        </div>
+    </div><!-- /.box -->
 
 
-    </section><!-- /.content -->
-</div><!-- /.content-wrapper -->
+
+
 
 {% endblock %}

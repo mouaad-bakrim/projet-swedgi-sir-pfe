@@ -4,28 +4,35 @@
 
 {% block body %}
     {{ form_start(form) }}
-    <!-- Content Wrapper. Contains page content -->
+    <div class="card borderless-card">
+        <div class="card-block primary-breadcrumb">
+            <div class="breadcrumb-header">
+                <h5>Show Client</h5>
+            </div>
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_home') }}">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#!">Categorie</a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#!">Edite Categorie</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1 class="text-primary">
-                <small>Edite Categorie!</small>
-            </h1>
-        </section>
 
-        <!-- Main content -->
+
+    <!-- Main content -->
         <section class="content">
 
             <!-- Default box -->
             <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Categorie</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                            <i class="fa fa-minus"></i></button>
 
-                    </div>
-                </div>
                 <section class="content">
 
                     <div class="row">
@@ -44,11 +51,11 @@
                             <p> {{ form_widget(form.codeGroupe, {'attr': {'class': 'form-control',  'placeholder':'codeGroupe'}}) }}</p>
                         </div>
 
-                        <div class="card-footer col-sm-4 text-center">
+
                             <button type="submit"  class="btn btn-success">
                                 <i class="fa fa-refresh fa-spin fa-fw" aria-hidden="true"></i>
                                 Update</button>
-                        </div>
+
                     </div>
                 </section>
             </div>

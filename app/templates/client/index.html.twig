@@ -3,124 +3,130 @@
 {% block title %}Client index{% endblock %}
 
 {% block body %}
+    <div class="card borderless-card">
+        <div class="card-block primary-breadcrumb">
+            <div class="breadcrumb-header">
+                <h5>Client</h5>
+            </div>
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_home') }}">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a>Client</a>
+                    </li>
 
-        <section class="content">
+                </ul>
+            </div>
+        </div>
+    </div>
 
-            <!-- Default box -->
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Client</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                            <i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i
-                                    class="fa fa-times"></i></button>
-                    </div>
+
+    <div class="card">
+    <div class="card-header">
+
+
+
+                <div class="box-body" style="padding-bottom:10px">
+                    <a  href="{{ path('client_add') }}" class="btn hor-grd btn-grd-success "><i class="fa fa-user-plus"></i>Add Client</a>
+                    <a class="fa fa-trash-o btn hor-grd btn-grd-danger "> Delete </a>
                 </div>
-                <div class="box-body">
-                    <!-- Start creating your amazing application! -->
-                    <a href="{{ path('client_add') }}" class="btn btn-sm btn-success btn-sm">Add Client
-                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a>
-                    <button id="delLaun" type="button" class="btn btn-danger btn-sm">
-                        Delete
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </button>
 
-                    <div id="table-laundry"></div>
-                </div><!-- /.box-body -->
-                <div class="box-footer">
-                    <!-- Footer -->
-
-
-                    {% for flash_message in app.session.flashbag.get('success') %}
-                        <div class="alert alert-dismissible alert-info">
-                            <button type="button" class="close" data-dismiss="alert">x</button>
-                            <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
-                        </div>
-                    {% endfor %}
-
-
-                    <div class="table-responsive">
-                        <table id="myTable-laundry" class="table table-bordered table-hover table-striped">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>Id</th>
-                                <th>Nom</th>
-                                <th>Prenom</th>
-                                <th>Ville</th>
-                                <th>TelMobile</th>
-                                <th>Email</th>
-                                <th>NomSociete</th>
-                                <th>Type</th>
-                                <th>actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
-                            {% for client in clients %}
-                            <tr align="center">
-                                <td><input type="checkbox" name="imSlepy" value="<?= $l['laun_id']; ?>"></td>
-                                <td>{{ client.id }}</td>
-                                <td>{{ client.nom }}</td>
-                                <td>{{ client.prenom }}</td>
-                                <td>{{ client.ville }}</td>
-                                <td>{{ client.telMobile }}</td>
-                                <td>{{ client.email }}</td>
-                                <td>{{ client.nomSociete }}</td>
-                                <td>{{ client.type }}</td>
-                                <td class="d-flex justify-content-between align-items-center">
-                                    <a href="{{ path('client_view',{id: client.id}) }}" class="btn btn-xs btn-primary">
-                                        <span class="fa fa-eye" aria-hidden="true"></span>
-                                    </a>
-                                    <a href="{{ path('client_edit',{id: client.id}) }}" class="btn btn-warning btn-xs">
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                    </a>
-                                    <a href="{{ path('client_delete',{id: client.id}) }}" class="btn btn-xs btn-danger">
-                                        <span class="fa fa-trash-o" aria-hidden="true"></span>
-
-                                    </a>
-                                </td>
-
-{%endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-
-
-                    <!-- ... -->
-                    <form action="{{ path('send_email') }}" method="POST">
-                        <div class="form-group">
-                            <label for="subject">Subject:</label>
-                            <input type="text" id="subject" name="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message:</label>
-                            <textarea id="message" name="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Email</button>
-                    </form>
-                    <!-- ... -->
-
-                    <!-- ... -->
-
-                    {% for flash_message in app.session.flashbag.get('success') %}
-                        <div class="alert alert-dismissible alert-success">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                            {{ flash_message }}
-                        </div>
-                    {% endfor %}
-
-                    <!-- ... -->
-
-
-
+        {% for flash_message in app.session.flashbag.get('success') %}
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 pull-right">
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
                 </div>
-            </div><!-- /.box -->
+                <script>
+                    // Automatically close the alert after 5 seconds
+                    setTimeout(function() {
+                        $(".alert").alert('close');
+                    }, 15000);
+                </script>
+            </div>
+        {% endfor %}
 
 
-        </section><!-- /.content -->
-    </div><!-- /.content-wrapper -->
+        {% for flash_message in app.session.flashbag.get('delete') %}
+            <div class="col-xs-6 col-sm-6 col-sm-offset-3 pull-right">
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    <strong><i class="fa fa-check"></i></strong> {{ flash_message|trans }}
+                </div>
+                <script>
+                    setTimeout(function() {
+                        $(".alert").alert('close');
+                    }, 15000);
+                </script>
+            </div>
+        {% endfor %}
+
+
+
+
+
+
+        <div class="table-responsive">
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                <tr class="table-primary">
+
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Ville</th>
+                    <th>TelMobile</th>
+                    <th style="text-align:center">Email</th>
+                    <th>NomSociete</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for client in clients %}
+                    <tr align="center">
+                        <td>{{ client.id }}</td>
+                        <td>{{ client.nom }}</td>
+                        <td>{{ client.prenom }}</td>
+                        <td>{{ client.ville }}</td>
+                        <td>{{ client.telMobile }}</td>
+                        <td>{{ client.email }}</td>
+                        <td>{{ client.nomSociete }}</td>
+                        <td>{{ client.type }}</td>
+                        <td class="d-flex justify-content-between align-items-center" style="padding:3px">
+                            <a href="{{ path('client_view', {id: client.id}) }}" type="button" class="btn btn-primary btn-icon waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Show">
+                                <i class="fa fa-eye" style="margin-left:6px"></i>
+                            </a>
+                            <a href="{{ path('client_edit', {id: client.id}) }}" type="button" class="btn btn-warning btn-icon waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Edit">
+                                <i class="ti-pencil" style="margin-left:6px"></i>
+                            </a>
+                            <a href="{{ path('client_delete', {id: client.id}) }}" type="button" class="btn btn-danger btn-icon waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <i class="fa fa-trash-o" style="margin-left:6px"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+    </div>
+    </div>
 
 
 {% endblock %}

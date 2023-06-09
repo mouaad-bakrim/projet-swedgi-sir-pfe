@@ -2,30 +2,35 @@
 {% block title %}show categorie{% endblock %}
 
 {% block body %}
+    <div class="card borderless-card">
+        <div class="card-block primary-breadcrumb">
+            <div class="breadcrumb-header">
+                <h5>Show Client</h5>
+            </div>
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item">
+                        <a href="#!">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#!">Client</a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#!">Sow Client</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 
-        <section class="content-header">
-            <h1>
-                <small class="text-primary">
-                    <i class="fa fa-eye" aria-hidden="true"></i>
-                    Show Categorie!</small>
-            </h1>
-        </section>
 
 
-        <section class="content">
+
 
 
             <div class="box">
-                <div class="box-header with-border">
-                    <h4 class="box-title">Categorie</h4>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                            <i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i
-                                    class="fa fa-times"></i></button>
-                    </div>
-                </div>
+
 
                 <div class="box-body">
 
@@ -42,8 +47,9 @@
 
                         </a>
 
-                        <a href="{{ path('app_pdf_download', {id: categorie.id}) }}" class="btn btn-success btn-sm">Download PDF</a>
 
+                        <a href="{{ path('app_pdf_download', {id: categorie.id}) }}" type="button" class="btn btn-info btn-icon waves-effect waves-light" data-toggle="tooltip" data-placement="top" title=".icofont-print">
+                            <i class="icofont icofont-print"></i></a>
 
 
                         <div class="pull-right">
@@ -56,21 +62,29 @@
 
                     </div>
 
-                    <section class="content">
+                    <div class="card">
+                        <div class="card-header">
+
+                        <section class="content">
 
                         <div class="row">
-
-                            <label class="control-label col-md-2" for="">libellee :</label>
+                            <div class="form-group col-sm-2">
+                                <label class="control-label" for="dateDebut">libellee :</label>
+                            </div>
                             <div class="col-sm-9">
                               <p><input type='text' class="form-control" disabled="disabled"
                                         placeholder="{{ categorie.libellee }}"></p>
                             </div>
-                            <label class="control-label col-sm-2" for="">description :</label>
+                            <div class="form-group col-sm-2">
+                                <label class="control-label" for="dateDebut">description :</label>
+                            </div>
                             <div class="col-sm-9">
                                <p> <input type='text' class="form-control" disabled="disabled"
                                           placeholder="{{ categorie.description }}"></p>
                             </div>
-                            <label class="control-label col-sm-2" for=""> codeGroupe :</label>
+                            <div class="form-group col-sm-2">
+                                <label class="control-label" for="dateDebut">codeGroupe :</label>
+                            </div>
                             <div class="col-sm-9">
                                <p> <input type='text' class="form-control" disabled="disabled"
                                           placeholder="{{ categorie.codeGroupe }}"></p>
@@ -81,10 +95,12 @@
 
                 </div>
             </div>
-        </section>
+            </div>
+            </div>
 
 
-    </div>
+
+
 
 
 {% endblock %}

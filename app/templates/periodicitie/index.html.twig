@@ -1,9 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Categorie List{% endblock %}
+{% block title %}Periodicite {% endblock %}
 
 {% block body %}
 
+
+    <div class="card borderless-card">
+        <div class="card-block primary-breadcrumb">
+            <div class="breadcrumb-header">
+                <h5>Periodicitie</h5>
+            </div>
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('app_home') }}">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#!">Periodicitie</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -16,14 +36,7 @@
 
         <!-- Default box -->
         <div class="box ">
-            <div class="box-header with-border">
-                <h3 class="box-title">periodicitie</h3>
-                <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fa fa-minus"></i></button>
 
-                </div>
-            </div>
             <div class="card">
                 <div class="box-footer">
 
@@ -40,7 +53,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>1.</td>
+                                    <td>2.</td>
                                     <td>Mensuel</td>
                                     <td>
                                         <div class="progress progress-xs">
@@ -71,6 +84,8 @@
                             </table>
                         </div>
 
+
+
                     </div>
                 </div>
             </div>
@@ -78,8 +93,11 @@
 
 
 
+
+
+
     </section>
-    </div>
+
 
 
 

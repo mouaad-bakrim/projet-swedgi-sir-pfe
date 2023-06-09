@@ -25,6 +25,7 @@
         "chart.js": "^4.3.0",
         "compose": "^0.1.2",
         "composer": "^4.1.0",
+        "datatables.net-dt": "^1.13.4",
         "intl": "^1.2.5"
     }
 }
